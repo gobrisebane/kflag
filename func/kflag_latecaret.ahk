@@ -18,8 +18,10 @@ initImgCaret(){
 			; DllCall("QueryPerformanceFrequency", "Int64*", freq)
 			; DllCall("QueryPerformanceCounter", "Int64*", CounterBefore)
 
+
 			caret.getPos(x,y,w,h)
 			; MsgBox("initImgCaret() :: X : " x " / Y : " y " / W : " w " / H " h)
+
 
 			; DllCall("QueryPerformanceCounter", "Int64*", CounterAfter)
 			; MsgBox("Elapsed QPC time is "(CounterAfter - CounterBefore) / freq * 1000 " ms")
@@ -87,8 +89,6 @@ searchingLateCaret(loopCount){
 
 			caret.getPos(x,y,w,h)
 
-			; DllCall("QueryPerformanceCounter", "Int64*", CounterAfter)
-			; MsgBox("Elapsed QPC time is "(CounterAfter - CounterBefore) / freq * 1000 " ms")
 
 
 
@@ -113,6 +113,15 @@ searchingLateCaret(loopCount){
 				; 2)네이버 -> 구글 이동시 없어지므로 break걸면 안됨
 				hideSplashGUI()
 			}
+
+
+
+
+
+
+			; DllCall("QueryPerformanceCounter", "Int64*", CounterAfter)
+			; MsgBox("Elapsed QPC time is "(CounterAfter - CounterBefore) / freq * 1000 " ms")
+
 
 
 
@@ -143,18 +152,16 @@ initInstantCaret(){
 
 
 
-	DllCall("QueryPerformanceFrequency", "Int64*", freq)
-	DllCall("QueryPerformanceCounter", "Int64*", CounterBefore)
+	; DllCall("QueryPerformanceFrequency", "Int64*", freq)
+	; DllCall("QueryPerformanceCounter", "Int64*", CounterBefore)
 
 	caret.getPos(x,y,w,h)
 
 
 
-	MsgBox("w : " w)
-	MsgBox("current_w : " current_w)
 
 
-
+/*
 	if(w > 0){
 		timeRecord("initInstantCaret()-1-1 (W>0) / SplashImageGUI() w : " w)
 		; MsgBox("INSTANT-1-WORKS")
@@ -164,21 +171,21 @@ initInstantCaret(){
 		; MsgBox("INSTANT-2-HIDE")
 		hideSplashGUI()
 	}
+ */
 
-
-/*
 	if(current_w > 0){
 		timeRecord("initInstantCaret()-1-1 (W>0) / SplashImageGUI() w : " w)
 		; MsgBox("INSTANT-1-WORKS")
-		SplashImageGUI(x, y)
+		SplashImageGUI()
 	} else {
 		timeRecord("initInstantCaret()-1-1 (W<1) / hideSplashGUI() w : " w)
 		; MsgBox("INSTANT-2-HIDE")
 		hideSplashGUI()
 	}
- */
-	DllCall("QueryPerformanceCounter", "Int64*", CounterAfter)
-	MsgBox("Elapsed QPC time is "(CounterAfter - CounterBefore) / freq * 1000 " ms")
+
+
+	; DllCall("QueryPerformanceCounter", "Int64*", CounterAfter)
+	; MsgBox("Elapsed QPC time is "(CounterAfter - CounterBefore) / freq * 1000 " ms")
 
 
 

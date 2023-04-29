@@ -312,7 +312,7 @@ correntFlagAndCaretXY(loopCount:=5){
 	loop %loopCount%{
 		caret.getPos(x,y,w,h)
 
-		MsgBox("loopindex " a_index)
+		; MsgBox("loopindex " a_index)
 
 		if(fX != x OR fY != y ){
 			MsgBox("1 -----. not correcting.. coreecting new")

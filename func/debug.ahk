@@ -772,8 +772,7 @@ Winset, region, 131-296 841-296 841-741 131-741 131-296      168-342 316-342 316
 	; MsgBox("----------")
 	; MsgBox("eleFocus. : " eleFocus.value)
 
-	MsgBox("selectedRange!!! : " selectedRange)
-	MsgBox("se2lectedRange!! : " selectedRange.GetText())
+	MsgBox("selectedRange : " selectedRange.GetText())
 
 	MsgBox("V3 V2")
 

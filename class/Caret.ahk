@@ -126,7 +126,6 @@ class Caret{
 		w := this.CaretW
 		h := this.CaretH
 
-
 		current_w := this.CaretW
 		current_h := this.CaretH
 

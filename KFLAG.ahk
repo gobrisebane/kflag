@@ -124,19 +124,6 @@ initKflag()
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 ~Space::
 ~^Space::
 ~+Space::
@@ -331,7 +318,6 @@ return
 
 
 	if(holdingArrow = True){
-		MsgBox("hold-off")
 
 		sleep 50
 		initInstantCaret()
@@ -378,7 +364,7 @@ return
 	if( refinedThisHotkey = refinedPriorHotkey ){
 
 		holdingArrow := True
-		MsgBox("1. you are holindg")
+		; MsgBox("1. you are holindg")
 
 	} else {
 
@@ -386,7 +372,7 @@ return
 		initInstantCaret()
 
 		; correntFlagAndCaretXY(15)
-		MsgBox("2. you are not hold")
+		; MsgBox("2. you are not hold")
 	}
 
 
@@ -420,6 +406,12 @@ return
 
 
 return
+
+
+
+
+
+
 
 
 

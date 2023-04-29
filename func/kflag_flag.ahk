@@ -102,7 +102,7 @@ drawFlag(){
 
 SplashImageGUI(X, Y){
 
-				CoordMode, ToolTip
+	CoordMode, ToolTip
 
 
 	drawFlag()
@@ -110,49 +110,16 @@ SplashImageGUI(X, Y){
 
 	Try {
 
-		timeRecord("SplashImageGUI - 3 / x : " X " y : " Y)
+		; timeRecord("SplashImageGUI - 3 / x : " X " y : " Y)
 		timeRecord("SplashImageGUI - 3 / cx : " current_x  " cy : " current_y )
 		; MsgBox("SplashImageGUI - 3 / x : " x " y : " y)
 		; MsgBox("SplashImageGUI - 3 / cx : " current_x  " cy : " current_y )
 
-		if(current_x AND current_y AND X AND Y){
 
 
-			; 팬텀플래그 현상을 제거하기 위해 처음값과 매치되었을 때만 반영한다
-			if(current_x = X and current_y = Y){
+		if(current_x AND current_y){
 
-
-
-				timeRecord("SplashImageGUI - 3-1 / MATCH")
-				; MsgBox("SplashImageGUI - 3-1 / MATCH")
-				Gui, XPT10:Show, x%X% y%Y% NoActivate
-
-			} else {
-
-
-				timeRecord("SplashImageGUI - 3-2 / NOT MATCH")
-				; MsgBox("!! === SplashImageGUI - 3-2 / NOT MATCH === !!")
-
-
-
-				; MsgBox("!-----------------------------!")
-				; MsgBox("!-----CURRENT NOT MATCH-------!")
-				; MsgBox("!-----------------------------!")
-				; MsgBox("current_x : " current_x)
-				; MsgBox("current_y : " current_y)
-				; MsgBox("X : " X)
-				; MsgBox("Y : " Y)
-				; ToolTip, NOTMATCH, current_x, current_y
-				; SetTimer, RemoveToolTip, -5000
-
-				; 만약 값이 다르면.. x와 y에 현재값을 대입
-				Gui, XPT10:Show, x%current_x% y%current_y% NoActivate
-
-				; Gui, XPT10:Show, x%X% y%Y% NoActivate
-
-
-			}
-
+			Gui, XPT10:Show, x%current_x% y%current_y% NoActivate
 
 		} else {
 
@@ -172,10 +139,6 @@ SplashImageGUI(X, Y){
 		throw e
 
 	}
-
-
-
-
 
 
 
