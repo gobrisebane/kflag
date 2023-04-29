@@ -48,6 +48,9 @@ global current_y
 global current_w
 global current_h
 
+global prev_x
+global prev_y
+
 
 global current_lang
 global caretChangeDelay := 25
@@ -65,7 +68,6 @@ global current_exe
 
 
 
-
 ; holder
 global holdingBackSpace
 global holdingEnter
@@ -74,12 +76,10 @@ global spaceCount := 0
 
 
 
-
 ; late caret
 global initClickCount = 0
 global keyTyping := False
 global enterCount := 0
-
 
 global prev_enter_x
 global prev_enter_y
@@ -87,8 +87,6 @@ global prev_box_l
 global prev_box_r
 global prev_box_t
 global prev_box_b
-
-
 
 
 global lastKeyTypingSec := 0
@@ -510,15 +508,6 @@ return
 
 
 
-
-	; MsgBox("----------")
-	; caret.detect()
-	; MsgBox("caret.getPos() : " caret.getPos().x)
-	; MsgBox("caret.getPos() : " caret.getPos().y)
-	; MsgBox("caret.getPos() : " caret.getPos().w)
-	; MsgBox("caret.getPos() : " caret.getPos().h)
-	; MsgBox("current_x : " current_x)
-	; MsgBox("current_y : " current_y)
 
 
 

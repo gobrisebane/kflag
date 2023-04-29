@@ -86,7 +86,7 @@ return
 
 
 !9::
-	SplashImageGUI(x, y)
+	SplashImageGUI()
 	MsgBox("A9 / SplashImageGUI()")
 return
 
@@ -113,12 +113,7 @@ return
 
 ^!4::
 
-	caret.getPos(x,y,w,h)
-	MsgBox("x : " x)
-	MsgBox("y : " y)
-	MsgBox("w : " w)
-	MsgBox("h : " h)
-	MsgBox("B4 / caret.getPos()")
+
 
 return
 
@@ -204,7 +199,7 @@ return
 	Gui, XPT10:Destroy
 	;~ Gui, XPT10:+LastFound
 
-	caret.getPos(x,y,w,h)
+	caret.detect()
 	Gui, XPT10:Show, x%X% y%Y% NoActivate
 
 
@@ -216,7 +211,7 @@ return
 
 ^\::
 
-	caret.getPos(x,y,w,h)
+	caret.detect()
 	Gui, XPT10:Show, x%X% y%Y% NoActivate
 
 return
@@ -268,7 +263,7 @@ return
 	Gui, XPT10:Destroy
 
 
-	caret.getPos(x,y,w,h)
+	caret.detect()
 	Gui, XPT10:Show, x%X% y%Y% NoActivate
 return
 
@@ -277,8 +272,8 @@ return
 
 	MsgBox("REVIVE SWITCH - 1 / when no GuiID")
 
-	caret.getPos(x,y,w,h)
-	SplashImageGUIPatch(X, Y)
+	caret.detect()
+	; SplashImageGUIPatch(X, Y)
 	;~ MsgBox("KILL SWITCH - 3")
 	;~ Gui, XPT10:Destroy
 
@@ -692,14 +687,7 @@ Winset, region, 131-296 841-296 841-741 131-741 131-296      168-342 316-342 316
 
 
 
-	; MsgBox("----------")
-	; caret.detect()
-	; MsgBox("caret.getPos() : " caret.getPos().x)
-	; MsgBox("caret.getPos() : " caret.getPos().y)
-	; MsgBox("caret.getPos() : " caret.getPos().w)
-	; MsgBox("caret.getPos() : " caret.getPos().h)
-	; MsgBox("current_x : " current_x)
-	; MsgBox("current_y : " current_y)
+
 
 
 
@@ -754,7 +742,7 @@ Winset, region, 131-296 841-296 841-741 131-741 131-296      168-342 316-342 316
 
 
 
-	; caret.getPos(x,y,w,h)
+	; caret.detect()
 	; MsgBox("x : " x)
 	; MsgBox("y : " y)
 

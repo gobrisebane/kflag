@@ -19,7 +19,7 @@ initImgCaret(){
 			; DllCall("QueryPerformanceCounter", "Int64*", CounterBefore)
 
 
-			caret.getPos(x,y,w,h)
+			caret.detect()
 			; MsgBox("initImgCaret() :: X : " x " / Y : " y " / W : " w " / H " h)
 
 
@@ -28,9 +28,9 @@ initImgCaret(){
 
 
 
-			if( w > 0 ){
-				SplashImageGUI(x, y)
-			} else if( w = 0 ){
+			if( current_w > 0 ){
+				SplashImageGUI()
+			} else if( current_w = 0 ){
 				hideSplashGUI()
 			}
 
@@ -87,7 +87,7 @@ searchingLateCaret(loopCount){
 			; DllCall("QueryPerformanceFrequency", "Int64*", freq)
 			; DllCall("QueryPerformanceCounter", "Int64*", CounterBefore)
 
-			caret.getPos(x,y,w,h)
+			caret.detect()
 
 
 
@@ -106,9 +106,9 @@ searchingLateCaret(loopCount){
 			}
 
 
-			if( w != 0 ){
-				SplashImageGUI(x, y)
-			} else if(w = 0){
+			if( current_w != 0 ){
+				SplashImageGUI()
+			} else if(current_w = 0){
 				; 1)이쪽에 넣지 않으면 url->네이버->검색창 이동 때 반짝임 현상 있음
 				; 2)네이버 -> 구글 이동시 없어지므로 break걸면 안됨
 				hideSplashGUI()
@@ -155,23 +155,12 @@ initInstantCaret(){
 	; DllCall("QueryPerformanceFrequency", "Int64*", freq)
 	; DllCall("QueryPerformanceCounter", "Int64*", CounterBefore)
 
-	caret.getPos(x,y,w,h)
+	caret.detect()
 
 
 
 
 
-/*
-	if(w > 0){
-		timeRecord("initInstantCaret()-1-1 (W>0) / SplashImageGUI() w : " w)
-		; MsgBox("INSTANT-1-WORKS")
-		SplashImageGUI(x, y)
-	} else {
-		timeRecord("initInstantCaret()-1-1 (W<1) / hideSplashGUI() w : " w)
-		; MsgBox("INSTANT-2-HIDE")
-		hideSplashGUI()
-	}
- */
 
 	if(current_w > 0){
 		timeRecord("initInstantCaret()-1-1 (W>0) / SplashImageGUI() w : " w)

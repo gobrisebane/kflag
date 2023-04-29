@@ -100,7 +100,7 @@ drawFlag(){
 
 
 
-SplashImageGUI(X, Y){
+SplashImageGUI(){
 
 	CoordMode, ToolTip
 

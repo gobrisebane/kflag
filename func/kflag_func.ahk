@@ -310,11 +310,11 @@ correntFlagAndCaretXY(loopCount:=5){
 	sleep 50
 
 	loop %loopCount%{
-		caret.getPos(x,y,w,h)
+		caret.detect()
 
 		; MsgBox("loopindex " a_index)
 
-		if(fX != x OR fY != y ){
+		if(fX != current_x OR fY != current_y ){
 			MsgBox("1 -----. not correcting.. coreecting new")
 			initInstantCaret()
 
@@ -333,16 +333,15 @@ identifyBackspaceCaret(){
 
 	; sleep caretChangeDelay
 
-	caret.getPos(x,y,w,h)
-	; MsgBox("x : " x " / y : " y)
-
-	if(w > 0){
-		MsgBox("1 . w > 0 ")
-
-		detectRightOrBottomFlagAndCorrect(x,y)
 
 
-	} else if(w = 0) {
+	caret.detect()
+
+	if(current_w > 0){
+		; MsgBox("1 . w > 0 ")
+		detectRightOrBottomFlagAndCorrect()
+
+	} else if(current_w = 0) {
 		; MsgBox("1 . w = 0 ")
 		initImgCaret()
 	}
@@ -365,24 +364,27 @@ correctFlagAfterSelectionRemove(){
 
 
 
-detectRightOrBottomFlagAndCorrect(x,y){
+detectRightOrBottomFlagAndCorrect(){
 
 	if(flagId){
 			GuiGetPos( fX,fY,fW,fH, flagId )
 			fx := fx + 8
 
 			; MsgBox("flag_x : " fx)
-			; MsgBox("x : " x)
+			; MsgBox("current_x : " current_x)
 			; MsgBox("flag_y : " fy)
-			; MsgBox("y : " y)
+			; MsgBox("current_y : " current_y)
 
-			if(fX > x OR fy > y){
+
+			if(fX > current_x OR fy > current_y){
 				; MsgBox("1. 현재 flag 가 오른쪽으로 떨어져있다.")
 				initInstantCaret()
 
-			} else if (fX <= x){
+			} else if (fX <= current_x){
 				; MsgBox("2. 현재 flag가 왼쪽에 있거나 같다.")
 			}
+
+
 
 
 		}
@@ -401,14 +403,14 @@ detectingCaretYPosChange(){
 		sleep caretChangeDelay
 		; 딜레이를 주지 않으면 변경된 y값을 받지 못함 (y값이 업데이트 안되어 prev와 y값이 같아짐)
 
-		caret.getPos(x,y,w,h,prev_y)
+		caret.detect()
 
-		; MsgBox("prev_y : " prev_y)
-		; MsgBox("y : " y)
+		MsgBox("prev_y_works")
+		MsgBox("prev_y : " prev_y)
+		MsgBox("current_y : " current_y)
 
-		if( y > prev_y ){
+		if( current_y > prev_y ){
 			initInstantCaret()
-
 		}
 
 	}

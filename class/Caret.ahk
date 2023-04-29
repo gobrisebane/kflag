@@ -1,14 +1,10 @@
 ﻿
 class Caret{
 
-
 	CaretX := 0
 	CaretY := 0
 	CaretW := 0
 	CaretH := 0
-
-	prev_x := 0
-	prev_y := 0
 
 	focusedH := 0
 
@@ -16,8 +12,8 @@ class Caret{
 	pre_exe := ""
 	cur_winid := ""
 	pre_winid := ""
-
 	type := ""
+
 	X_margin := 3
  	Y_margin := 20
 
@@ -31,21 +27,15 @@ class Caret{
 
 		this.cur_exe := cur_exe
 		this.cur_winid := cur_winid
-		this.prev_x := this.CaretX
-		this.prev_y := this.CaretY
+		prev_x := current_x
+		prev_y := current_y
 
 
 
-		; MsgBox("----->-----")
-		; MsgBox("this.CaretX : " this.CaretX)
-		; MsgBox("this.CaretY : " this.CaretY)
-		; MsgBox("this.CaretW : " this.CaretW)
-		; MsgBox("this.CaretH : " this.CaretH)
 		; MsgBox("this.cur_winid : " this.cur_winid)
 		; MsgBox("this.pre_winid : " this.pre_winid)
-
-
 		; MsgBox("this.type : " this.type)
+
 
 		if( this.cur_winid = this.pre_winid AND this.type){
 			; MsgBox("MODE : 1. USING / WINID")
@@ -57,8 +47,6 @@ class Caret{
 
 
 
-
-
 		this.setFocusedHeight()
 		this.pre_exe := this.cur_exe
 		this.pre_winid := this.cur_winid
@@ -67,7 +55,7 @@ class Caret{
 
 
 	setFocusedHeight(){
-		if( this.CaretW > 0 AND isBrowser() AND ( this.isXYMove() OR this.isWinidDiff())  ){
+		if( current_w > 0 AND isBrowser() AND ( this.isXYMove() OR this.isWinidDiff())  ){
 			if( this.HasBrowserKey() ){
 				try {
 					eleFocus := UIA.GetFocusedElement()
@@ -86,7 +74,7 @@ class Caret{
 
 
 	isXYMove(){
-		if(this.CaretX != this.prev_x OR this.CaretY != this.prev_y){
+		if(current_x != prev_x OR current_y != prev_y){
 			; MsgBox("1. X,Y값 달라졌음")
 			return True
 		} else {
@@ -114,25 +102,6 @@ class Caret{
 		}
 	}
 
-
-
-	getPos(Byref x="", Byref y="",Byref w="",Byref h="", Byref prev_y="", Byref prev_x=""){
-
-		this.detect()
-		prev_x := this.prev_x
-		prev_y := this.prev_y
-		x := this.CaretX
-		y := this.CaretY
-		w := this.CaretW
-		h := this.CaretH
-
-		current_w := this.CaretW
-		current_h := this.CaretH
-
-
-
-
-	}
 
 
 	getFocusedH(Byref focusedH=""){
@@ -183,13 +152,10 @@ class Caret{
 
 		if (A_CaretX OR A_CaretY) {
 
-			this.CaretX := A_CaretX + this.X_margin
-			this.CaretY := A_CaretY + this.Y_margin
-			this.CaretW := 1
-			this.CaretH := 15
-			current_x := this.CaretX
-			current_y := this.CaretY
-
+			current_x := A_CaretX + this.X_margin
+			current_y := A_CaretY + this.Y_margin
+			current_w := 1
+			current_h := 15
 
 			; MsgBox("--------- A-1. wincaret works")
 			return true
@@ -217,16 +183,14 @@ class Caret{
 			{
 				Acc:=ComObject(9,pacc,1), ObjAddRef(pacc)
 				, Acc.accLocation( ComObj(0x4003,&x:=0), ComObj(0x4003,&y:=0), ComObj(0x4003,&w:=0), ComObj(0x4003,&h:=0), ChildId:=0)
-				, this.CaretX:=NumGet(x,0,"int") + this.X_margin
-				, this.CaretY:=NumGet(y,0,"int") + this.Y_margin
-				, this.CaretW:=NumGet(w,0,"int")
-				, this.CaretH:=NumGet(h,0,"int")
-				, current_x := this.CaretX
-				, current_y := this.CaretY
+				, current_x:=NumGet(x,0,"int") + this.X_margin
+				, current_y:=NumGet(y,0,"int") + this.Y_margin
+				, current_w:=NumGet(w,0,"int")
+				, current_h:=NumGet(h,0,"int")
 			}
 		}
 
-		if (this.CaretW > 0 AND this.CaretH > 0){
+		if (current_w > 0 AND current_h > 0){
 			; MsgBox("--------- B-1. acccaret works")
 			return true
 		} else {
@@ -239,9 +203,6 @@ class Caret{
 
 
 	checkUIACaret(){
-
-
-
 
 		;~ https://www.autoahk.com/archives/44158
 		static iUIAutomation, hOleacc, IID_IAccessible
@@ -268,20 +229,19 @@ class Caret{
 				|| !rects || (rects := ComObject(0x2005, rects, 1)).MaxIndex() < 3
 				Sleep 1
 				try{
-					this.CaretX := Round(rects[0]) + this.X_margin,
-					this.CaretY := Round(rects[1]) + this.Y_margin,
-					this.CaretW := Round(rects[2]),
-					this.CaretH := Round(rects[3]),
+					current_x := Round(rects[0]) + this.X_margin,
+					current_y := Round(rects[1]) + this.Y_margin,
+					current_w := Round(rects[2]),
+					current_h := Round(rects[3]),
 					hwnd := hwndFocus
-					current_x := this.CaretX
-					current_y := this.CaretY
 				}
 
 				timeRecord("GetCaret - 3-3 : iUIAuto")
-				timeRecord("CaretX : " this.CaretX  " / CaretY : " this.CaretY " CaretW : " this.CaretW " CaretH :" this.CaretH)
-				; MsgBox("GetCaret - 3-3 / CaretX : " this.CaretX  " / CaretY : " this.CaretY " CaretW : " this.CaretW " CaretH :" this.CaretH)
+				timeRecord("current_x : " current_x  " / current_y : " current_y " current_w : " current_w " current_h :" current_h)
+				; MsgBox("GetCaret - 3-3 / current_x : " current_x  " / current_y : " current_y " current_w : " current_w " current_h :" current_h)
 
-				if(this.CaretW > 0 AND this.CaretH > 0){
+
+				if(current_w > 0 AND current_h > 0){
 
 					; MsgBox("--------- C-1-1. UIA WORKS")
 					return True
@@ -291,7 +251,7 @@ class Caret{
 				; 크롬에서 셀렉팅한 텍스트를 인식함
 
 				/*
-				else if (this.CaretW < 1 AND this.CaretH < 1){
+				else if (current_w < 1 AND current_h < 1){
 					; use IUIAutomationTextPattern::GetSelection
 					if DllCall(NumGet(NumGet(eleFocus + 0), 16 * A_PtrSize), "ptr", eleFocus, "int", 10014, "ptr*", textPattern) || !textPattern
 					|| DllCall(NumGet(NumGet(textPattern + 0), 5 * A_PtrSize), "ptr", textPattern, "ptr*", selectionRangeArray) || !selectionRangeArray
@@ -308,15 +268,13 @@ class Caret{
 						rects := ComObject(0x2005, rects, 1)
 						Sleep 1
 						try{
-							this.CaretX := Round(rects[0]) + this.X_margin,
-							this.CaretY := Round(rects[1]) + this.Y_margin,
-							this.CaretW := Round(rects[2]),
-							this.CaretH := Round(rects[3]),
-							current_x := this.CaretX,
-							current_y := this.CaretY,
+							current_x := Round(rects[0]) + this.X_margin,
+							current_y := Round(rects[1]) + this.Y_margin,
+							current_w := Round(rects[2]),
+							current_h := Round(rects[3]),
 							hwnd := hwndFocus
 						}
-						if(this.CaretW > 0 AND this.CaretH > 0){
+						if(current_w > 0 AND current_h > 0){
 							MsgBox("--------- C-1-2. UIA WORKS")
 							return True
 						} else {
@@ -328,8 +286,8 @@ class Caret{
 						}
 
 						timeRecord("GetCaret - 3-4 : usergetselection")
-						timeRecord("CaretX : " this.CaretX  " / CaretY : " this.CaretY " CaretW : " this.CaretW " CaretH :" this.CaretH)
-						; MsgBox("GetCaret - 3-4 / CaretX : " this.CaretX  " / CaretY : " this.CaretY " CaretW : " this.CaretW " CaretH :" this.CaretH)
+						timeRecord("CaretX : " current_x  " / CaretY : " current_y " CaretW : " current_w " CaretH :" current_h)
+						; MsgBox("GetCaret - 3-4 / CaretX : " current_x  " / CaretY : " current_y " CaretW : " current_w " CaretH :" current_h)
 						goto cleanCaret
 				}
 				*/
