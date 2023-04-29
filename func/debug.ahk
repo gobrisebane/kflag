@@ -775,7 +775,7 @@ Winset, region, 131-296 841-296 841-741 131-741 131-296      168-342 316-342 316
 	MsgBox("selectedRange : " selectedRange)
 	MsgBox("selectedRange : " selectedRange.GetText())
 
-	MsgBox("V3")
+	MsgBox("V3 V2")
 
 
 return
