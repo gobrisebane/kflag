@@ -777,9 +777,7 @@ Winset, region, 131-296 841-296 841-741 131-741 131-296      168-342 316-342 316
 
 
 
-	MsgBox("V3-v4check")
-	MsgBox("v5")
-
+	MsgBox("V666")
 
 
 return
