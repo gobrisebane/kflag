@@ -1,4 +1,4 @@
-GetCaret(Byref CaretX="", Byref CaretY="",Byref CaretW="",Byref CaretH=""){
+﻿GetCaret(Byref CaretX="", Byref CaretY="",Byref CaretW="",Byref CaretH=""){
 
 
 	CoordMode, Caret, Screen

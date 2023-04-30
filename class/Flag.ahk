@@ -1,4 +1,4 @@
-class Flag{
+﻿class Flag{
 
 
 
