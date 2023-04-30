@@ -585,73 +585,133 @@ drawFlagPatch(){
 
 
 
-correctFlagAfterSelectionRemoveForTypingBK(){
+correctFlagAfterSelectionRemoveForTyping(){
 
-			keyCount++
-			MsgBox("keyCount : " keyCount)
-			if( keyCount == 1){
+		sleep 25
 
+		keyCount++
+		; MsgBox("keyCount : " keyCount)
 
-				/*
+		if( keyCount = 1 ){
+			loop 20{
+				caret.detect()
+				if(prev_x != current_x OR prev_y != current_y){
 
-				MsgBox("correct flag hello")
-				; correntFlagAndCaretXY(1)
-				; sleep 100
-				fixed_x := current_x
-				fixed_y := current_y
-				MsgBox("fixed_x : " fixed_x)
-				MsgBox("fixed_y : " fixed_y)
-				current_x := fixed_x
-				current_y := fixed_y
-				SplashImageGUI()
-				*/
+					; MsgBox("1. 이전과 현재가 다른경우다.. 이경우에는 바로 업데이트")
+					SplashImageGUI()
+					break
 
-				diffCount := 0
+				} else if(prev_x = current_x AND prev_y = current_y){
 
-				loop 20{
-
-					if(!saved_x OR !saved_y){
-						saved_x := current_x
-						saved_y := current_y
-					}
-
+					; MsgBox("2. 이전과 현재가 같은 경우다. 이경우에는 룹을 돌려야한다.")
 					caret.detect()
-					MsgBox("1. x : " current_x " / y : " current_y)
-					MsgBox("sx : " saved_x " / sy : " saved_y)
-
-
-
-					if(saved_x != current_x OR saved_y != current_y ){
-
-						MsgBox("1차 통과")
-						caret.detect()
-
-						MsgBox("2. x : " current_x " / y : " current_y)
-						MsgBox("sx : " saved_x " / sy : " saved_y)
-
-						if(saved_x = current_x AND saved_y = current_y){
-							MsgBox("2차 통과")
-							; SplashImageGUI()
-							; break
-						}
-					}
-
-					saved_x := current_x
-					saved_y := current_y
-					sleep 10
-
+					SplashImageGUI()
+					break
 				}
+				sleep 10
+			}
+		}
+}
 
 
 
-			} else {
-				MsgBox("kill all process hello!!")
-				; current_x := 700
-				; current_y := 700
-				; SplashImageGUI()
+
+
+
+
+
+comparePrevTest(){
+
+	sleep 25
+	;SELECTING 삭제 후 사용할 목적으로 만듦
+
+
+		MsgBox("prev_x : " prev_x)
+		MsgBox("current_x : " current_x)
+		MsgBox("keyCount : " keyCount)
+
+		if(!keyTyping){
+
+
+			if(prev_x > current_x OR prev_y > current_y){
+				SplashImageGUI()
+				MsgBox("1.이전 위치가 우측에 있음 / 현재 select로 삭제하면서 타이핑한것임.")
+
+			} else if(prev_x <= current_x) {
+				MsgBox("2.이전위치가 좌측이이거나 같음.. 이것은 일반적인 타이핑이므로 무시")
 			}
 
-
+		}
 
 
 }
+
+
+
+comparePrevXYAndCorrecting(){
+
+	; sleep 100
+	;SELECTING 삭제 후 사용할 목적으로 만듦
+
+		MsgBox("KEY" A_ThisHotKey)
+		MsgBox("keyCount : " keyCount)
+
+		if(keyCount = 1){
+
+			MsgBox(">>>-------------START--")
+
+			MsgBox("prev_x : " prev_x)
+			MsgBox("current_x : " current_x)
+
+			if(prev_x > current_x OR prev_y > current_y){
+				SplashImageGUI()
+				MsgBox("1.이전 위치가 우측에 있음 / 현재 select로 삭제하면서 타이핑한것임.")
+			} else if(prev_x <= current_x) {
+				MsgBox("2.이전위치가 좌측이이거나 같음.. 이것은 일반적인 타이핑이므로 무시")
+			}
+
+
+		} else {
+
+			MsgBox("keycount upward")
+		}
+}
+
+
+
+compareFlagXYandCorrecting(){
+
+	sleep 25
+	;SELECTING 삭제 후 사용할 목적으로 만듦
+
+
+	MsgBox("keyCount : " keyCount)
+
+	if(keyCount = 1){
+
+		if(flagId){
+
+				GuiGetPos( fX,fY,fW,fH, flagId )
+				fx := fx + 8
+
+				; MsgBox("flag_x : " fx)
+				; MsgBox("current_x : " current_x)
+				; MsgBox("flag_y : " fy)
+				; MsgBox("current_y : " current_y)
+
+
+				if(fX > current_x OR fy > current_y){
+					MsgBox("1. 현재 flag 가 오른쪽으로 떨어져있다.")
+					MsgBox("KEY" A_ThisHotKey)
+
+					SplashImageGUI()
+
+				} else if (fX <= current_x){
+					; MsgBox("2. 현재 flag가 왼쪽에 있거나 같다.")
+				}
+
+
+		}
+	}
+}
+

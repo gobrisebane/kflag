@@ -4,16 +4,12 @@ initImgCaret(){
 
 
 		initKey()
-		MsgBox("***************** INIT CALLED")
+		; MsgBox("***************** INIT CALLED")
 
 
-
-
-		loop 20 {
 		; loop 5 {
+		loop 10 {
 
-			; DllCall("QueryPerformanceFrequency", "Int64*", freq)
-			; DllCall("QueryPerformanceCounter", "Int64*", CounterBefore)
 
 
 			caret.detect()
@@ -22,22 +18,14 @@ initImgCaret(){
 
 
 
+
 			if( keyTyping ) {
 
-					MsgBox("tpying so break..")
-					; MsgBox("keytyping() :: X : " current_x " / Y : " current_y " / W : " current_w " / H " current_h)
 
-					; current_x:= prev_x
-					; current_y:= prev_y
-					; SplashImageGUI()
 
+				MsgBox("TYPING so break")
 				break
 			}
-
-
-			; DllCall("QueryPerformanceCounter", "Int64*", CounterAfter)
-			; MsgBox("Elapsed QPC time is "(CounterAfter - CounterBefore) / freq * 1000 " ms")
-
 
 
 			if( current_w > 0 ){
@@ -47,7 +35,7 @@ initImgCaret(){
 			}
 
 
-			sleep 100
+			sleep 50
 		}
 
 
@@ -103,8 +91,6 @@ searchingLateCaret(loopCount){
 
 
 
-			; DllCall("QueryPerformanceFrequency", "Int64*", freq)
-			; DllCall("QueryPerformanceCounter", "Int64*", CounterBefore)
 
 			caret.detect()
 
@@ -112,8 +98,7 @@ searchingLateCaret(loopCount){
 
 
 			; MsgBox("INDEX : " A_Index)
-			timeRecord("searchingLateCaret - 2 / Loop i : " A_Index)
-			; MsgBox("LateCaret INDEX : " A_Index " X : " x " / Y : " y " / W : " w " / H " h)
+			; MsgBox("LateCaret INDEX : " A_Index " X : " current_x " / Y : " current_y " / W : " current_w " / H " current_h)
 
 
 
@@ -133,9 +118,6 @@ searchingLateCaret(loopCount){
 				hideSplashGUI()
 			}
 
-
-			; DllCall("QueryPerformanceCounter", "Int64*", CounterAfter)
-			; MsgBox("Elapsed QPC time is "(CounterAfter - CounterBefore) / freq * 1000 " ms")
 
 
 			Sleep 50
@@ -158,20 +140,14 @@ searchingLateCaret(loopCount){
 initInstantCaret(){
 
 
+	initKey()
+
+
 	; MsgBox("*************** CALLING INITIMGINSTANT *****************")
 	timeRecord("initInstantCaret()-1 START")
 
 
-
-
-
-	; DllCall("QueryPerformanceFrequency", "Int64*", freq)
-	; DllCall("QueryPerformanceCounter", "Int64*", CounterBefore)
-
 	caret.detect()
-
-
-
 
 
 
@@ -186,8 +162,6 @@ initInstantCaret(){
 	}
 
 
-	; DllCall("QueryPerformanceCounter", "Int64*", CounterAfter)
-	; MsgBox("Elapsed QPC time is "(CounterAfter - CounterBefore) / freq * 1000 " ms")
 
 
 
@@ -208,8 +182,9 @@ initKey(){
 		이것 누락시
 		크롬시동 -> url 클릭 -> www.naver.com 타이핑 -> 엔터클릭 = 네이버 검색창에 플래그 안뜸
 		*/
+
 		initClickCount := 0
-		keyCount := 0
+
 }
 
 

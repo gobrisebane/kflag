@@ -315,9 +315,9 @@ correntFlagAndCaretXY(loopCount:=5){
 		; MsgBox("loopindex " a_index)
 
 		if(fX != current_x OR fY != current_y ){
-			; MsgBox("1 -----. not correcting.. coreecting new")
-			initInstantCaret()
 
+			MsgBox("1 -----. not correcting.. coreecting new")
+			SplashImageGUI()
 
 		}
 		sleep 15
@@ -361,35 +361,6 @@ correctFlagAfterSelectionRemove(){
 
 
 
-correctFlagAfterSelectionRemoveForTyping(){
-
-		sleep 25
-
-		keyCount++
-		; MsgBox("keyCount : " keyCount)
-
-		if( keyCount = 1 ){
-			loop 20{
-				caret.detect()
-				if(prev_x != current_x OR prev_y != current_y){
-
-					; MsgBox("1. 이전과 현재가 다른경우다.. 이경우에는 바로 업데이트")
-					SplashImageGUI()
-					break
-
-				} else if(prev_x = current_x AND prev_y = current_y){
-
-					; MsgBox("2. 이전과 현재가 같은 경우다. 이경우에는 룹을 돌려야한다.")
-					caret.detect()
-					SplashImageGUI()c
-					break
-				}
-				sleep 10
-			}
-		}
-}
-
-
 
 
 
@@ -398,7 +369,7 @@ detectRightOrBottomFlagAndCorrect(){
 
 	if(flagId){
 			GuiGetPos( fX,fY,fW,fH, flagId )
-			fx := fx + 8
+			fx := fx + caret_flag_margin
 
 			; MsgBox("flag_x : " fx)
 			; MsgBox("current_x : " current_x)
@@ -407,18 +378,57 @@ detectRightOrBottomFlagAndCorrect(){
 
 
 			if(fX > current_x OR fy > current_y){
-				; MsgBox("1. 현재 flag 가 오른쪽으로 떨어져있다.")
-				initInstantCaret()
-
+				; MsgBox("1. BACKSPACE / 현재 flag 가 오른쪽으로 떨어져있다.")
+				SplashImageGUI()
 			} else if (fX <= current_x){
-				; MsgBox("2. 현재 flag가 왼쪽에 있거나 같다.")
+				; MsgBox("2. BACKSPACE / 현재 flag가 왼쪽에 있거나 같다.")
+			}
+	}
+
+}
+
+
+
+removeSelectingAndCompareFlagForTyping(){
+
+	sleep caretChangeDelay
+
+	if(flagId){
+			GuiGetPos( fX,fY,fW,fH, flagId )
+			fx := fx + caret_flag_margin
+
+			; MsgBox("current_x : " current_x)
+			; MsgBox("fx : " fx)
+
+
+			/*
+			 keyCount로 할경우 1이 건너뛰어지는 현상이 있어서
+			 keyTyping 으로 처리했으며, keyTyping := True를 다음에 주어서 딱한번만 반응하게 함
+			*/
+			if(!keyTyping){
+				; MsgBox("SUCCEED")
+				if(fX > current_x OR fy > current_y){
+					; MsgBox("1. 현재 flag 가 오른쪽으로 떨어져있다. :: 선택상태 - 삭제")
+
+					/*
+					initInstantCaret을 사용할 경우 내부에 keyTyping := False가있어서
+					피하기 위해 splash를 사용함
+					*/
+					caret.detect()
+					SplashImageGUI()
+
+
+				} else if (fX <= current_x){
+					; MsgBox("2. 현재 flag가 왼쪽에 있거나 같다. :: 일반상태 - 무시")
+				}
+
+			} else {
+				; MsgBox("FAIL BUT OKAY")
 			}
 
-
-
-
-		}
+	}
 }
+
 
 
 

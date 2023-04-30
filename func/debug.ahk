@@ -805,9 +805,20 @@ return
 */
 
 
-	caret.detect()
-	MsgBox("x : " current_x)
-	MsgBox("y : " current_y)
+	; caret.detect()
+	; MsgBox("X : " current_x " / Y : " current_y)
+
+
+
+	UIA := UIA_Interface() ; Initialize UIA interface
+		; el := UIA.GetFocusedElement()
+	; MsgBox("el : " CaretBidiMode() )
+
+
+	npEl := UIA.ElementFromHandle(WinExist("A"))
+
+	MsgBox("npEl : " npEl.Name )
+
 
 
 return

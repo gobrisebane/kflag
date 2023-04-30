@@ -65,6 +65,7 @@ global picture
 global flagId
 global prev_exe
 global current_exe
+global caret_flag_margin := 8
 
 
 
@@ -74,7 +75,6 @@ global holdingEnter
 global holdingArrow
 
 global spaceCount := 0
-global keyCount := 0
 global initClickCount = 0
 global enterCount := 0
 
@@ -96,6 +96,7 @@ global lastKeyTypingSec := 0
 global typingIdleSec := 5
 
 
+
 ;img
 global imgpath_flag_eng_up := folderpath . "\flag_eng_up.png"
 global imgpath_flag_eng_lo := folderpath . "\flag_eng_lo.png"
@@ -109,11 +110,6 @@ global UIA := UIA_Interface()
 
 
 initKflag()
-
-
-
-
-
 
 
 
@@ -157,6 +153,7 @@ initKflag()
 		}
 
 		correctFlagAfterSelectionRemove()
+
 	}
 
 return
@@ -171,6 +168,7 @@ return
 		initInstantCaret()
 
 		correntFlagAndCaretXY()
+
 
 		holdingSpace := False
 	}
@@ -209,7 +207,12 @@ return
 		holdingBackSpace := True
 	} else {
 		; MsgBox("2. not holding")
+
+
 		identifyBackspaceCaret()
+
+
+
 
 		correctFlagAfterSelectionRemove()
 
@@ -383,7 +386,6 @@ return
 		sleep caretChangeDelay
 		initInstantCaret()
 
-		; correntFlagAndCaretXY(15)
 		; MsgBox("2. you are not hold")
 	}
 
@@ -493,119 +495,11 @@ return
 
 
 
-~LButton::
 
 
-	initClickCount++
 
-return
 
 
-
-
-
-
-
-~^l::
-~MButton::
-~XButton1::
-~XButton2::
-~LButton up::
-~LWin::
-~RWin::
-
-
-~!LButton::
-
-
-
-
-
-
-
-
-
-
-
-	/*
-	구글->네이버 이동시 플래그가 url에 남아있음
-	이전의 keyTyping := True가 5초간 진행중이어서
-	searchingLateCaret에서 break가 걸린것임
-	*/
-	keyTyping := False
-
-
-
-
-	timeRecord("1-LBUTTON UP / ENTER")
-	timeRecordCurrentProgram()
-
-
-	MsgBox("-----------------------")
-	MsgBox("------CLICK START------")
-	MsgBox("-----------------------")
-
-
-	initImgCaret()
-
-
-
-
-
-
-
-return
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-
-
-
-~Wheelup::
-~Wheeldown::
-
-		HideSplashGUI()
-		Sleep 50
-		initImgCaret()
-
-return
-
- */
 
 
 
@@ -705,7 +599,7 @@ return
 
 
 
-
+#include %A_ScriptDir%/key/mouse.ahk
 #include %A_ScriptDir%/key/common.ahk
 
 
