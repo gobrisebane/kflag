@@ -1,10 +1,6 @@
 ﻿
 class Caret{
 
-	CaretX := 0
-	CaretY := 0
-	CaretW := 0
-	CaretH := 0
 
 	focusedH := 0
 
@@ -34,7 +30,7 @@ class Caret{
 
 		; MsgBox("this.cur_winid : " this.cur_winid)
 		; MsgBox("this.pre_winid : " this.pre_winid)
-		; MsgBox("this.type : " this.type)
+		MsgBox("this.type : " this.type)
 
 
 		if( this.cur_winid = this.pre_winid AND this.type){
@@ -45,9 +41,8 @@ class Caret{
 			this.detectCaretType()
 		}
 
-
-
 		this.setFocusedHeight()
+
 		this.pre_exe := this.cur_exe
 		this.pre_winid := this.cur_winid
 
@@ -121,6 +116,14 @@ class Caret{
 
 	detectCaretType(){
 
+
+		if(this.cur_exe = "WINWORD.EXE"){
+			this.type := "UIA_CARET"
+			return
+		}
+
+
+
 		if( this.checkWindowCaret() ){
 			; MsgBox("windowCaret WORKS")
 			this.type := "WINDOW_CARET"
@@ -139,6 +142,7 @@ class Caret{
 			return
 		}
 
+
 		;여기까지 오면 일치하는 타입 없음
 		this.type := ""
 
@@ -148,10 +152,12 @@ class Caret{
 
 
 
+
+
 	checkWindowCaret(){
 
-		if (A_CaretX OR A_CaretY) {
 
+		if (A_CaretX OR A_CaretY) {
 			current_x := A_CaretX + this.X_margin
 			current_y := A_CaretY + this.Y_margin
 			current_w := 1
@@ -160,10 +166,61 @@ class Caret{
 			; MsgBox("--------- A-1. wincaret works")
 			return true
 
+
 		} else {
 			; MsgBox("--------- A-2. wincaret fail..")
 			return false
 		}
+
+
+
+ /*
+			try{
+
+			oWord := ComObjActive("Word.application")
+			oWin := oWord.application.activeWindow
+			oRan := oWord.selection.range
+
+			VarSetCapacity(var_L, 24, 0)
+			Left_ref := ComObject(0x4003, &var_L)  ; 0x400C is a combination of VT_BYREF and VT_I4 (long).
+			VarSetCapacity(var_T, 24, 0)
+			Top_ref := ComObject(0x4003, &var_T)  ; 0x400C is a combination of VT_BYREF and VT_I4 (long).
+			VarSetCapacity(var_W, 24, 0)
+			Width_ref := ComObject(0x4003, &var_W)  ; 0x400C is a combination of VT_BYREF and VT_I4 (long).
+			VarSetCapacity(var_H, 24, 0)
+			Height_ref := ComObject(0x4003, &var_H)  ; 0x400C is a combination of VT_BYREF and VT_I4 (long).
+			oWin.GetPoint(Left_ref, Top_ref, Width_ref, Height_ref, oRan)
+
+			;~ MsgBox("Left_ref[] : " Left_ref[])
+			;~ MsgBox("Top_ref[] : " Top_ref[])
+			;~ MsgBox("width_ref[] : " width_ref[])
+			;~ MsgBox("height_ref[] : " height_ref[])
+
+			; CaretX := Left_ref[] + X_margin
+			; CaretY := Top_ref[] + Y_margin
+			current_x := Left_ref[] + this.x_margin
+			current_y := CaretY := Top_ref[] + this.y_margin
+			current_w := 1
+			current_h := 15
+
+		}
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	}
 

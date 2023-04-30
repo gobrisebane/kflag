@@ -578,3 +578,80 @@ drawFlagPatch(){
 	; fx := fx + 15
 	; I 잘 안맞음
 	*/
+
+
+
+
+
+
+
+correctFlagAfterSelectionRemoveForTypingBK(){
+
+			keyCount++
+			MsgBox("keyCount : " keyCount)
+			if( keyCount == 1){
+
+
+				/*
+
+				MsgBox("correct flag hello")
+				; correntFlagAndCaretXY(1)
+				; sleep 100
+				fixed_x := current_x
+				fixed_y := current_y
+				MsgBox("fixed_x : " fixed_x)
+				MsgBox("fixed_y : " fixed_y)
+				current_x := fixed_x
+				current_y := fixed_y
+				SplashImageGUI()
+				*/
+
+				diffCount := 0
+
+				loop 20{
+
+					if(!saved_x OR !saved_y){
+						saved_x := current_x
+						saved_y := current_y
+					}
+
+					caret.detect()
+					MsgBox("1. x : " current_x " / y : " current_y)
+					MsgBox("sx : " saved_x " / sy : " saved_y)
+
+
+
+					if(saved_x != current_x OR saved_y != current_y ){
+
+						MsgBox("1차 통과")
+						caret.detect()
+
+						MsgBox("2. x : " current_x " / y : " current_y)
+						MsgBox("sx : " saved_x " / sy : " saved_y)
+
+						if(saved_x = current_x AND saved_y = current_y){
+							MsgBox("2차 통과")
+							; SplashImageGUI()
+							; break
+						}
+					}
+
+					saved_x := current_x
+					saved_y := current_y
+					sleep 10
+
+				}
+
+
+
+			} else {
+				MsgBox("kill all process hello!!")
+				; current_x := 700
+				; current_y := 700
+				; SplashImageGUI()
+			}
+
+
+
+
+}

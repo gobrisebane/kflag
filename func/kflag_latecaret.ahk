@@ -2,16 +2,16 @@
 
 initImgCaret(){
 
-		keyTyping := False
-		initClickCount := 0
 
-		; MsgBox("***************** INIT CALLED")
+		initKey()
+		MsgBox("***************** INIT CALLED")
+
+
+
+
 
 		loop 5 {
 
-
-			; GetCaret(x,y,w,h)
-			; MsgBox("GetCaret() :: X : " x " / Y : " y " / W : " w " / H " h)
 
 
 
@@ -20,7 +20,7 @@ initImgCaret(){
 
 
 			caret.detect()
-			; MsgBox("initImgCaret() :: X : " x " / Y : " y " / W : " w " / H " h)
+			MsgBox("initImgCaret() :: X : " current_x " / Y : " current_y " / W : " current_w " / H " current_h)
 
 
 			; DllCall("QueryPerformanceCounter", "Int64*", CounterAfter)
@@ -67,14 +67,7 @@ initImgCaret(){
 
 searchingLateCaret(loopCount){
 
-
-		keyTyping := False
-
-		/*
-		이것 누락시
-		크롬시동 -> url 클릭 -> www.naver.com 타이핑 -> 엔터클릭 = 네이버 검색창에 플래그 안뜸
-		*/
-		initClickCount := 0
+		initKey()
 
 
 
@@ -115,15 +108,8 @@ searchingLateCaret(loopCount){
 			}
 
 
-
-
-
-
 			; DllCall("QueryPerformanceCounter", "Int64*", CounterAfter)
 			; MsgBox("Elapsed QPC time is "(CounterAfter - CounterBefore) / freq * 1000 " ms")
-
-
-
 
 
 			Sleep 50
@@ -144,6 +130,7 @@ searchingLateCaret(loopCount){
 
 
 initInstantCaret(){
+
 
 	; MsgBox("*************** CALLING INITIMGINSTANT *****************")
 	timeRecord("initInstantCaret()-1 START")
@@ -186,6 +173,18 @@ initInstantCaret(){
 
 
 
+
+initKey(){
+		keyTyping := False
+
+
+		/*
+		이것 누락시
+		크롬시동 -> url 클릭 -> www.naver.com 타이핑 -> 엔터클릭 = 네이버 검색창에 플래그 안뜸
+		*/
+		initClickCount := 0
+		keyCount := 0
+}
 
 
 

@@ -742,27 +742,42 @@ Winset, region, 131-296 841-296 841-741 131-741 131-296      168-342 316-342 316
 
 
 
-	; caret.detect()
-	; MsgBox("x : " x)
-	; MsgBox("y : " y)
 
-
-
-
+	/*
 
 	UIA := UIA_Interface() ; Initialize UIA interface
 	el := UIA.GetFocusedElement()
 
 	textPattern := el.GetCurrentPatternAs("TextPattern")
 	selectedRange := textPattern.GetSelection()[1] ; Get the first TextRange (may be multiple if multiple selections are allowed, though this is rare)
-
-
 	; MsgBox("----------")
 	; MsgBox("eleFocus. : " eleFocus.value)
-
 	MsgBox("selectedRange : " selectedRange.GetText())
-
 	MsgBox("V3 V2")
+*/
+
+
+
+
+
+	caret.detect()
+
+
+			oWord := ComObjActive("Word.application")
+			oWin := oWord.application.activeWindow
+			oRan := oWord.selection.range
+
+	; MsgBox("x : " x)
+	; MsgBox("y : " y)
+	SplashImageGUI()
+	MsgBox("--spalshworks--")
+
+
+
+
+
+
+
 
 
 return
@@ -775,23 +790,25 @@ return
 
 ^g::
 
-
-
+/*
 	UIA := UIA_Interface() ; Initialize UIA interface
 	el := UIA.GetFocusedElement()
-
 	; textPattern := el.GetCurrentPatternAs("TextPattern")
 	; selectedRange := textPattern.GetSelection()[1]
 	; MsgBox("selectedRange : " selectedRange.GetText())
-
-
 
 	textPattern := el.GetCurrentPatternAs("TextPattern")
 	selectedRange := textPattern.GetSelection()[1]
 	MsgBox("selectedRange : " selectedRange.GetText())
 	; MsgBox("textPattern : " textPattern.Dump() )
-
 	; MsgBox("selectedRange : " selectedRange)
+*/
+
+
+	caret.detect()
+	MsgBox("x : " current_x)
+	MsgBox("y : " current_y)
+
 
 return
 

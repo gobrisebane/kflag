@@ -72,15 +72,18 @@ global current_exe
 global holdingBackSpace
 global holdingEnter
 global holdingArrow
+
 global spaceCount := 0
+global keyCount := 0
+global initClickCount = 0
+global enterCount := 0
+
+
 
 
 
 ; late caret
-global initClickCount = 0
 global keyTyping := False
-global enterCount := 0
-
 global prev_enter_x
 global prev_enter_y
 global prev_box_l
@@ -179,7 +182,16 @@ return
 
 
 
+MsgBox("del works?")
 
+return
+
+
+
+
+~Del::
+~+Del::
+~^Del::
 ~BackSpace::
 ~+BackSpace::
 ~^BackSpace::
@@ -208,7 +220,9 @@ return
 
 
 
-
+~Del up::
+~+Del up::
+~^Del up::
 ~BackSpace up::
 ~+BackSpace up::
 ~^BackSpace up::
@@ -425,7 +439,6 @@ return
 
 
 		caret.getFocusedH(focusedH)
-
 
 		MsgBox("focusedH : " focusedH)
 

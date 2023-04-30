@@ -2,6 +2,50 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+~^z::
+~^y::
+~^+z::
+
+
+return
+
+
+
+~^z up::
+~^y up::
+~^+z up::
+
+		sleep caretChangeDelay
+		initInstantCaret()
+
+return
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ~^1::
 ~^2::
 ~^3::
@@ -178,10 +222,14 @@ return
 
 
 	spaceCount := 0
+
 	lastKeyTypingSec := 0
 
 	keyTyping := True
 
 	detectingCaretYPosChange()
+
+	correctFlagAfterSelectionRemoveForTyping()
+
 
 return

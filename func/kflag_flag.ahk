@@ -169,7 +169,7 @@ initFlag(){
 			timeRecord("SplashImageGUI - 2-2-1 / Transparent")
 			Winset, TransColor, ffffff
 			; WinSet, Trans, 179
-			WinSet, Trans, 176
+			WinSet, Trans, 178
 
 
 		} catch e {
