@@ -30,7 +30,7 @@ class Caret{
 
 		; MsgBox("this.cur_winid : " this.cur_winid)
 		; MsgBox("this.pre_winid : " this.pre_winid)
-		MsgBox("this.type : " this.type)
+		; MsgBox("this.type : " this.type)
 
 
 		if( this.cur_winid = this.pre_winid AND this.type){
@@ -121,7 +121,6 @@ class Caret{
 			this.type := "UIA_CARET"
 			return
 		}
-
 
 
 		if( this.checkWindowCaret() ){

@@ -9,18 +9,30 @@ initImgCaret(){
 
 
 
-
-		loop 5 {
-
-
-
+		loop 20 {
+		; loop 5 {
 
 			; DllCall("QueryPerformanceFrequency", "Int64*", freq)
 			; DllCall("QueryPerformanceCounter", "Int64*", CounterBefore)
 
 
 			caret.detect()
-			MsgBox("initImgCaret() :: X : " current_x " / Y : " current_y " / W : " current_w " / H " current_h)
+			; MsgBox("initImgCaret() :: X : " current_x " / Y : " current_y " / W : " current_w " / H " current_h)
+
+
+
+
+			if( keyTyping ) {
+
+					MsgBox("tpying so break..")
+					; MsgBox("keytyping() :: X : " current_x " / Y : " current_y " / W : " current_w " / H " current_h)
+
+					; current_x:= prev_x
+					; current_y:= prev_y
+					; SplashImageGUI()
+
+				break
+			}
 
 
 			; DllCall("QueryPerformanceCounter", "Int64*", CounterAfter)
@@ -47,6 +59,20 @@ initImgCaret(){
 		*/
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

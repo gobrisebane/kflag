@@ -364,8 +364,8 @@ correctFlagAfterSelectionRemove(){
 correctFlagAfterSelectionRemoveForTyping(){
 
 		sleep 25
-		keyCount++
 
+		keyCount++
 		; MsgBox("keyCount : " keyCount)
 
 		if( keyCount = 1 ){
@@ -381,7 +381,7 @@ correctFlagAfterSelectionRemoveForTyping(){
 
 					; MsgBox("2. 이전과 현재가 같은 경우다. 이경우에는 룹을 돌려야한다.")
 					caret.detect()
-					SplashImageGUI()
+					SplashImageGUI()c
 					break
 				}
 				sleep 10
