@@ -249,39 +249,34 @@ return
 	; MsgBox("A_ThisHotKey : " A_ThisHotKey)
 
 
-	; keyCount++
+	keyCount++
 	; MsgBox("keyCount : " keyCount)
 
 
 
 
-	; if(keyCount = 1 ){
-	; 	fix_X := prev_x
-	; 	fix_Y := prev_y
-	; }
+	if(keyCount = 1 ){
+		; fix_X := prev_x
+		; fix_Y := prev_y
+
+		fix_X := Current_X
+		fix_Y := Current_Y
+
+	}
+
 	; Current_X := fix_X
 	; Current_Y := fix_Y
 	; SplashImageGUI()
 
 
 	/*
-
-
 	hello hello
 	hello
 	hello world
-
-
-
-
-
-
 	this
 	*/
 
 	; correctFlagAfterSelectionRemove()
-
-
 	; correctFlagAfterSelectionRemoveForTyping()
 
 return
@@ -290,6 +285,46 @@ return
 
 
 
+
+correctFlagAfterSelectionRemove4(){
+
+	; 해당 함수는, block 지정 후 삭제시 딜레이가 있기때문에 한번더 correct를 해준다
+	keyCount++
+
+	; MsgBox("keyCount : " keyCount)
+
+	if(keyCount = 1){
+		correntFlagAndCaretXY(1)
+	}
+
+
+	if(!keyTyping){
+		MsgBox("CORRECT WORKS")
+		; 현재 타이핑이 아닐경우에만 자리를 잡아준다.
+		; > 만약 하지 않으면 스페이스나 엔터 후 타이핑시 트레일링 된다.
+
+		correntFlagAndCaretXY(1)
+	}
+
+
+}
+
+
+correctFlagAfterSelectionRemove3(){
+	MsgBox("1.A_ThisHotkey : " A_ThisHotkey)
+
+	key_arr := ["BackSpace","Enter","Del","Space"]
+	if( isStringInArray(A_ThisHotkey,key_arr) ){
+
+
+
+			MsgBox("2.A_ThisHotkey : " A_ThisHotkey)
+			MsgBox("CORRECT WORKS - contain key")
+			correntFlagAndCaretXY(1)
+
+	}
+
+}
 
 
 correctFlagAfterSelectionRemoveForTyping(){

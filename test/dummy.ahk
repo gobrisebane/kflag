@@ -1,28 +1,11 @@
 ﻿/*
 	Introduction & credits
 	This library implements Microsoft's UI Automation framework. More information is here: https://docs.microsoft.com/en-us/windows/win32/winauto/entry-uiauto-win32
-	Credit for this file mostly goes to jethrow: https://github.com/jethrow/UIA_Interface/blob/master/UIA_Interface.ahk
-	I have added a lot of modifications to it, including custom methods for elements (eg element.Click()), UIA_Enum class etc
+
+ testeste
+
 */
 
-/*
-	Usage test test test whole sdsdsdsdsfvsdg asdsadas increase a UIA_Interface object:
-	UIA := UIA_Interface()
-	After calling this function, all UIA_Interface class properties and methods can be accessed through it.
-	In addition some extra variables are initialized:
-		CurrentVersion contains the version number of IUIAutomation interface
-		TrueCondition contains a UIA_TrueCondition
-		TreeWalkerTrue contains an UIA_TreeWalker that was created with UIA_TrueCondition
-	Note that a new UIA_Interface object can't be created with the "new" keyword.
-
-	guswdho xkdlvldd dnlxmsms
-	UIAutomation constants and enumerations are available from the UIA_Enum class (see a more thorough description at the class header).
-	Microsoft document
-	For mboards/viewtopic.php?f=6&t=104999
-
-		dk잔
-		와퍼ㅏ오파ㅓㅏㅇ 와퍼ㅏ와퍼 와퍼ㅏ와파ㅓㅇ 와퍼ㅏ오파오ㅓㅏ
-*/
 
 
 
@@ -36,8 +19,6 @@
  	Questions:
 	- if method returns a SafeArray, should we return a Wrapped SafeArray, Raw SafeArray, or AHK Array. Currently we return wrapped AHK arrays for SafeArrays. Although SafeArrays are more convenient to loop over, this causes more confusion in users who are not familiar with SafeArrays (questjlksdfgenerated (eg Microsoft Teams, when a meeting is started then the toolbar buttons (eg Mute, react) aren't visible to UIA, but hovering over them with the cursor or calling ElementFromPoint causes Teams to generate and make them visible to UIA.
 	- better way of supporting differing versions of IUIAutomation (version 2, 3, 4)
-	- Get methods vs property getter: currently we use properties when the item stores data, fetching the data is "cheap" and when it doesn't have side-effects, and in computationally expensive cases use Get...().
-	- should ElementFromHandle etc methods have activateChromiumAccessibility set to True or False? Currently is True, because Chromium apps are very common, and checking whether its on should be relatively fast.
 */
 
 

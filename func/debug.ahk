@@ -853,7 +853,7 @@ return
 debugWindow(){
 
 
-	static devWin, varStatus,varStatus2,varStatus3
+	static devWin,var,var2,var3,var4,var5
 
 
 	if !devWin
@@ -861,17 +861,20 @@ debugWindow(){
 		Gui, dev:New, +HwnddevWin +Caption +AlwaysOnTop
 		Gui, dev:Font, s15 w500, Arial
 		Gui, dev:Color, white
-		Gui, dev:Add, Text, w500 vVarStatus
-		Gui, dev:Add, Text, w500 vVarStatus2
-		Gui, dev:Add, Text, w500 vVarStatus3
+		Gui, dev:Add, Text, w500 vVar
+		Gui, dev:Add, Text, w500 vVar2
+		Gui, dev:Add, Text, w500 vVar3
+		Gui, dev:Add, Text, w500 vVar4
+		Gui, dev:Add, Text, w500 vVar5
 		Gui +LastFound
-		Gui, dev:Show,w500 x600 y0
+		Gui, dev:Show, w500 x600 y0 NoActivate
 	} else {
 
 		Gui, dev:Default
-		GuiControl,, VarStatus, keyTyping : %keyTyping%
-		GuiControl,, VarStatus2, spaceCount : %spaceCount%
-		GuiControl,, VarStatus3, keyCount : %keyCount%
+		GuiControl,, Var, keyTyping : %keyTyping%
+		GuiControl,, Var2, spaceCount : %spaceCount%
+		GuiControl,, Var3, keyCount : %keyCount%
+		GuiControl,, Var4, prev_x : %prev_x%  /  prev_y : %prev_y%
 
 	}
 

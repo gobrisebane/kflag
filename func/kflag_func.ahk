@@ -359,64 +359,21 @@ identifyBackspaceCaret(){
 
 
 
-
 correctFlagAfterSelectionRemove(){
 
 	; 해당 함수는, block 지정 후 삭제시 딜레이가 있기때문에 한번더 correct를 해준다
-
-
-
-	keyCount++
-
-	; MsgBox("keyCount : " keyCount)
-
-	if(keyCount = 1){
-		correntFlagAndCaretXY(1)
-	}
-
-
 	if(!keyTyping){
-		MsgBox("CORRECT WORKS")
+		MsgBox("CORRECT WORKS from space etc")
 		; 현재 타이핑이 아닐경우에만 자리를 잡아준다.
 		; > 만약 하지 않으면 스페이스나 엔터 후 타이핑시 트레일링 된다.
 
 		correntFlagAndCaretXY(1)
-	}
 
-
-}
-
-
-correctFlagAfterSelectionRemove3(){
-	MsgBox("1.A_ThisHotkey : " A_ThisHotkey)
-
-	key_arr := ["BackSpace","Enter","Del","Space"]
-	if( isStringInArray(A_ThisHotkey,key_arr) ){
-
-
-
-			MsgBox("2.A_ThisHotkey : " A_ThisHotkey)
-			MsgBox("CORRECT WORKS - contain key")
-			correntFlagAndCaretXY(1)
 
 	}
-
 }
 
 
-
-correctFlagAfterSelectionRemove2(){
-
-	; 해당 함수는, block 지정 후 삭제시 딜레이가 있기때문에 한번더 correct를 해준다
-
-	if(!keyTyping){
-		MsgBox("CORRECT WORKS")
-		; 현재 타이핑이 아닐경우에만 자리를 잡아준다.
-		; > 만약 하지 않으면 스페이스나 엔터 후 타이핑시 트레일링 된다.
-
-		correntFlagAndCaretXY(1)
-	}
-}
 
 
 

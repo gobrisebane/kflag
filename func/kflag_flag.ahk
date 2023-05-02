@@ -3,50 +3,6 @@
 
 
 
-SplashImageGUI(){
-
-
-
-
-	CoordMode, ToolTip
-	drawFlag()
-
-
-	; MsgBox("!SPLASH CALLED")
-
-
-	Try {
-
-		timeRecord("SplashImageGUI - 3 / cx : " current_x  " cy : " current_y )
-		; MsgBox("SplashImageGUI - 3 / cx : " current_x  " cy : " current_y )
-
-
-		if(current_x AND current_y){
-			Gui, XPT10:Show, x%current_x% y%current_y% NoActivate
-		} else {
-			timeRecord("!! === CRITICAL ERROR-4 : current_X,current_Y LOST === !!")
-			MsgBox("!! === CRITICAL ERROR-4 : current_X,current_Y LOST === !!")
-		}
-
-	} catch e {
-
-
-		timeRecord("!! === CRITICAL ERROR-3 : Lost X Y value ")
-		timeRecord("!! === e.what : " e.what " / e.message : " e.message " / e.extra : " e.extra)
-		MsgBox("e.what : " e.what)
-		MsgBox("e.message : " e.message)
-		MsgBox("e.extra : " e.extra)
-		throw e
-
-	}
-
-
-
-	prev_exe := current_exe
-
-}
-
-
 
 drawFlag(){
 
@@ -150,6 +106,50 @@ drawFlag(){
 
 
 
+SplashImageGUI(){
+
+
+
+
+	CoordMode, ToolTip
+	drawFlag()
+
+
+	; MsgBox("!SPLASH CALLED")
+
+
+	Try {
+
+		timeRecord("SplashImageGUI - 3 / cx : " current_x  " cy : " current_y )
+		; MsgBox("SplashImageGUI - 3 / cx : " current_x  " cy : " current_y )
+
+
+		if(current_x AND current_y){
+			Gui, XPT10:Show, x%current_x% y%current_y% NoActivate
+		} else {
+			timeRecord("!! === CRITICAL ERROR-4 : current_X,current_Y LOST === !!")
+			MsgBox("!! === CRITICAL ERROR-4 : current_X,current_Y LOST === !!")
+		}
+
+	} catch e {
+
+
+		timeRecord("!! === CRITICAL ERROR-3 : Lost X Y value ")
+		timeRecord("!! === e.what : " e.what " / e.message : " e.message " / e.extra : " e.extra)
+		MsgBox("e.what : " e.what)
+		MsgBox("e.message : " e.message)
+		MsgBox("e.extra : " e.extra)
+		throw e
+
+	}
+
+
+
+	prev_exe := current_exe
+
+}
+
+
 
 
 initFlag(){
@@ -159,6 +159,7 @@ initFlag(){
 		Try {
 
 			Gui, XPT10:Destroy
+
 			Gui, XPT10:Margin , 0, 0
 			Gui, XPT10:Add, Picture,vFlagApp, %SplashImage%
 			Gui, XPT10:+LastFound -Caption +AlwaysOnTop +ToolWindow -Border
@@ -167,9 +168,9 @@ initFlag(){
 
 			timeRecord("SplashImageGUI - 2-2-1 / Transparent")
 			Winset, TransColor, ffffff
+			WinSet, Trans, 193
 			; WinSet, Trans, 179
 			; WinSet, Trans, 178
-			WinSet, Trans, 193
 
 
 		} catch e {

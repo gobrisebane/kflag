@@ -110,6 +110,9 @@ global folderpath := A_AppData . "\TWEPO\kflag"
 global UIA := UIA_Interface()
 
 
+global fix_X
+global fix_Y
+
 
 initKflag()
 
