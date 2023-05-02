@@ -850,6 +850,38 @@ return
 
 
 
+debugWindow(){
+
+
+	static devWin, varStatus,varStatus2,varStatus3
+
+
+	if !devWin
+	{
+		Gui, dev:New, +HwnddevWin +Caption +AlwaysOnTop
+		Gui, dev:Font, s15 w500, Arial
+		Gui, dev:Color, white
+		Gui, dev:Add, Text, w500 vVarStatus
+		Gui, dev:Add, Text, w500 vVarStatus2
+		Gui, dev:Add, Text, w500 vVarStatus3
+		Gui +LastFound
+		Gui, dev:Show,w500 x600 y0
+	} else {
+
+		Gui, dev:Default
+		GuiControl,, VarStatus, keyTyping : %keyTyping%
+		GuiControl,, VarStatus2, spaceCount : %spaceCount%
+		GuiControl,, VarStatus3, keyCount : %keyCount%
+
+	}
+
+
+
+
+
+}
+
+
 
 
 
@@ -981,36 +1013,6 @@ GetCaretPosEx3(byref x = 0, byref y = 0, byref w = 0, byref h = 0) {
 
 
 
-
-
-debugWindow(){
-
-
-	static devWin, varStatus,varStatus2
-
-
-	if !devWin
-	{
-		Gui, dev:New, +HwnddevWin +Caption +AlwaysOnTop
-		Gui, dev:Font, s15 w500, Arial
-		Gui, dev:Color, white
-		Gui, dev:Add, Text, w500 vVarStatus ,
-		Gui, dev:Add, Text, w500 vVarStatus2 ,
-		Gui +LastFound
-		Gui, dev:Show,w500 x600 y0
-	} else {
-
-		Gui, dev:Default
-		GuiControl,, VarStatus, keyTyping : %keyTyping%
-		GuiControl,, VarStatus2, spaceCount : %spaceCount%
-
-	}
-
-
-
-
-
-}
 
 
 

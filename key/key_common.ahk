@@ -249,7 +249,7 @@ return
 	; MsgBox("A_ThisHotKey : " A_ThisHotKey)
 
 
-	keyCount++
+	; keyCount++
 	; MsgBox("keyCount : " keyCount)
 
 
@@ -266,11 +266,32 @@ return
 
 	/*
 	weneed this is our soceiet and out manday
+jlksdflksfjdlafjkdj;flkasdaajsdl;kfasd;lknnsdfajk;qwoiejqewijouiqwoeqrupowepiwqpoieeeeeeeeeeeepoqwrueeruiowrujworjouiwsrjfsoufuoshfuoqweouhhhhhhhhhhhhhhhhhhhhhhqwouehquwoehpuowqeeeeeeeepiqwrejepoqwuepiqwpeiuqwipeujqwipeewjeipasuejipsaejuiwjdieqjdieuwojdoiweujfhoirefjeroifjroeijfrifjreoigjerogijteigojoeifjewfoijewoifokepowqeiopqwekopqwiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiirjhqoipwwwwwwwwwwwwwwwwwwwwwwwwwwghqubriwop;llllllanflsdjkkkkkkkkkkkkknlasfdjkkkkkkkkkk
+tjdskfjkdsf
+dsfjsdfkjsdlfjsdlkfjsdfdfskdfjsdlkf
+thell o morty how area you
+hello morthy
+hello morty
+hello moarty
+hello
+hello
+hello
+
+
+hello
+
+
+hello morty how area you this is
+hello
+
 
 	this
 	*/
 
-	correctFlagAfterSelectionRemove()
+	; correctFlagAfterSelectionRemove()
+
+
+	; correctFlagAfterSelectionRemoveForTyping()
 
 return
 
@@ -280,6 +301,46 @@ return
 
 
 
+correctFlagAfterSelectionRemoveForTyping(){
+
+		; sleep 25
+
+		keyCount++
+
+		MsgBox("keyCount : " keyCount)
+
+
+		if( keyCount = 1 ){
+			MsgBox("hello one keycound")
+		}
+
+
+
+		; keyCount++
+		; MsgBox("keyCount : " keyCount)
+
+		; if( keyCount = 1 ){
+		; 	loop 20{
+		; 		caret.detect()
+		; 		if(prev_x != current_x OR prev_y != current_y){
+
+		; 			; MsgBox("1. 이전과 현재가 다른경우다.. 이경우에는 바로 업데이트")
+		; 			SplashImageGUI()
+		; 			break
+
+		; 		} else if(prev_x = current_x AND prev_y = current_y){
+
+		; 			; MsgBox("2. 이전과 현재가 같은 경우다. 이경우에는 룹을 돌려야한다.")
+		; 			caret.detect()
+		; 			SplashImageGUI()c
+		; 			break
+		; 		}
+		; 		sleep 10
+		; 	}
+		; }
+
+
+}
 
 
 

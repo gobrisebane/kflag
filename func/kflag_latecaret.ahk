@@ -4,6 +4,8 @@ initImgCaret(){
 
 
 		initKey()
+
+		keyCount := 0
 		; MsgBox("***************** INIT CALLED")
 
 
@@ -61,6 +63,7 @@ searchingLateCaret(loopCount){
 
 		initKey()
 
+		keyCount := 0
 
 		; MsgBox("1...clickCount : " clickCount)
 
@@ -127,6 +130,7 @@ searchingLateCaret(loopCount){
 
 initInstantCaret(){
 
+		keyCount := 0
 
 	; initKey()
 	; keyTyping := False

@@ -585,7 +585,7 @@ drawFlagPatch(){
 
 
 
-correctFlagAfterSelectionRemoveForTyping(){
+correctFlagAfterSelectionRemoveForTyping2(){
 
 		sleep 25
 

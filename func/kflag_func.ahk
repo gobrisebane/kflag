@@ -366,14 +366,13 @@ correctFlagAfterSelectionRemove(){
 
 
 
+	keyCount++
+
 	MsgBox("keyCount : " keyCount)
 
-
-	if(!keyTyping){
-		MsgBox("CORRECT WORKS")
-		; 현재 타이핑이 아닐경우에만 자리를 잡아준다.
-		; > 만약 하지 않으면 스페이스나 엔터 후 타이핑시 트레일링 된다.
-
+	if(keyCount = 1){
+		; 만약 하지 않으면 스페이스나 엔터 후 타이핑시 트레일링 된다.
+		MsgBox("== keycount = 1 works ==")
 		correntFlagAndCaretXY(1)
 	}
 }
@@ -385,17 +384,12 @@ correctFlagAfterSelectionRemove3(){
 	key_arr := ["BackSpace","Enter","Del","Space"]
 	if( isStringInArray(A_ThisHotkey,key_arr) ){
 
-
-
 			MsgBox("2.A_ThisHotkey : " A_ThisHotkey)
 			MsgBox("CORRECT WORKS - contain key")
+
 			correntFlagAndCaretXY(1)
 
-
-
-
 	}
-
 
 }
 
