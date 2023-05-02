@@ -364,10 +364,7 @@ correctFlagAfterSelectionRemove(){
 
 	; 해당 함수는, block 지정 후 삭제시 딜레이가 있기때문에 한번더 correct를 해준다
 
-/*
 
-
-*/
 
 	MsgBox("keyCount : " keyCount)
 
