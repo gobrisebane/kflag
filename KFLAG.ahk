@@ -1,4 +1,6 @@
-﻿#NoEnv
+﻿
+
+#NoEnv
 #Persistent
 #SingleInstance force
 #MaxHotkeysPerInterval 200
@@ -6,7 +8,7 @@
 
 
 
-; SetTimer, caretWatcher, 1000
+; SetTimer, caretWatcher, 10
 
 
 
@@ -40,6 +42,7 @@ if not A_IsAdmin {
 
 
 
+global keyCount
 
 
 ; caret
@@ -125,6 +128,10 @@ initKflag()
 ~+Space::
 
 
+
+
+
+
 	refinedThisHotkey := RegExReplace(A_ThisHotkey, "\W", "")
 	refinedPriorHotkey := RegExReplace(A_PriorHotkey, "\W", "")
 
@@ -153,6 +160,8 @@ initKflag()
 
 		correctFlagAfterSelectionRemove()
 
+
+
 	}
 
 return
@@ -167,7 +176,6 @@ return
 		initInstantCaret()
 
 		correntFlagAndCaretXY()
-
 
 		holdingSpace := False
 	}
@@ -369,6 +377,11 @@ return
 ~^+Left::
 ~^+Right::
 
+
+	KeyTyping := False
+
+
+
 	refinedThisHotkey := RegExReplace(A_ThisHotkey, "\W", "")
 	refinedPriorHotkey := RegExReplace(A_PriorHotkey, "\W", "")
 
@@ -437,10 +450,11 @@ return
 
 
 
+
+
 	if( isBrowser() ){
 
 		caret.getFocusedH(focusedH)
-		MsgBox("focusedH : " focusedH)
 
 		if(focusedH <= 80){
 			; MsgBox("1. 크롬임 / 80이하.. 검색창임")
@@ -597,8 +611,8 @@ return
 
 
 
-#include %A_ScriptDir%/key/mouse.ahk
-#include %A_ScriptDir%/key/common.ahk
+#include %A_ScriptDir%/key/key_mouse.ahk
+#include %A_ScriptDir%/key/key_common.ahk
 
 
 #include %A_ScriptDir%/func/UIA_Interface.ahk

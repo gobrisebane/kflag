@@ -28,6 +28,7 @@ return
 ~^y up::
 ~^+z up::
 
+		KeyTyping := False
 
 		sleep caretChangeDelay
 		initInstantCaret()
@@ -229,16 +230,7 @@ return
 
 
 
-
-
-
-
-
-
-
-
 	removeSelectingAndCompareFlagForTyping()
-
 
 
 	keyTyping := True
@@ -248,8 +240,39 @@ return
 
 
 
-return
 
+
+
+
+
+	; MsgBox("-->")
+	; MsgBox("A_ThisHotKey : " A_ThisHotKey)
+
+
+	keyCount++
+	; MsgBox("keyCount : " keyCount)
+
+
+
+
+	; if(keyCount = 1 ){
+	; 	fix_X := prev_x
+	; 	fix_Y := prev_y
+	; }
+	; Current_X := fix_X
+	; Current_Y := fix_Y
+	; SplashImageGUI()
+
+
+	/*
+	weneed this is our soceiet and out manday
+
+	this
+	*/
+
+	correctFlagAfterSelectionRemove()
+
+return
 
 
 

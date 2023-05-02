@@ -825,8 +825,8 @@ return
 
 
 
-	; caret.detect()
-	; MsgBox("X : " current_x " / Y : " current_y)
+	caret.detect()
+	MsgBox("X : " current_x " / Y : " current_y)
 
 
 	; GetCaretPos(x, y)
@@ -842,17 +842,7 @@ return
 
 
 
-
-
 return
-
-
-
-
-
-
-
-
 
 
 
@@ -987,7 +977,40 @@ GetCaretPosEx3(byref x = 0, byref y = 0, byref w = 0, byref h = 0) {
 
 
 
+; Gui, MyGui:add, text, Center w100 vTxtUpdate, Updates = %Updates%
 
+
+
+
+
+debugWindow(){
+
+
+	static devWin, varStatus,varStatus2
+
+
+	if !devWin
+	{
+		Gui, dev:New, +HwnddevWin +Caption +AlwaysOnTop
+		Gui, dev:Font, s15 w500, Arial
+		Gui, dev:Color, white
+		Gui, dev:Add, Text, w500 vVarStatus ,
+		Gui, dev:Add, Text, w500 vVarStatus2 ,
+		Gui +LastFound
+		Gui, dev:Show,w500 x600 y0
+	} else {
+
+		Gui, dev:Default
+		GuiControl,, VarStatus, keyTyping : %keyTyping%
+		GuiControl,, VarStatus2, spaceCount : %spaceCount%
+
+	}
+
+
+
+
+
+}
 
 
 
@@ -1024,8 +1047,6 @@ MsgBox(vOutput,color:="")
 		Gui, Show,% Format("w{} h{} x{} y{} NoActivate ", vWinW, vWinH, x,y)
 
 		; Gui, Add, Edit, % Format("+HwndhEdit x0 y0 w{} h{}", vWinW, vWinH)
-
-
 
 }
 	;~ Gui, +LastFound +Resize -Caption -Border -MaximizeBox +MinSize%GuiW%x%GuiH%

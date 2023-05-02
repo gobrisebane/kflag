@@ -10,6 +10,7 @@
 
 ~LButton up::
 
+		initInstantCaret()
 
 return
 

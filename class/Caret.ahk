@@ -63,7 +63,9 @@ class Caret{
 				try {
 					eleFocus := UIA.GetFocusedElement()
 					this.focusedH := eleFocus.BoundingRectangle.b-eleFocus.BoundingRectangle.t
+
 					; MsgBox("5.WORKS : this.focusedH : " this.focusedH)
+
 				} catch e{
 						timeRecord("!! === CRITICAL ERROR : getFocuisedELement ")
 						timeRecord("!! === e.what : " e.what " / e.message : " e.message " / e.extra : " e.extra)
@@ -116,6 +118,7 @@ class Caret{
 		switch this.type
 		{
 			case "WINDOW_CARET": this.checkWindowCaret()
+
 			case "ACC_CARET": this.checkAccCaret()
 			case "UIA_CARET": this.checkUIACaret()
 
@@ -126,7 +129,6 @@ class Caret{
 
 
 	detectCaretType(){
-
 
 
 		if(this.cur_exe = "WINWORD.EXE"){
@@ -140,18 +142,19 @@ class Caret{
 			return
 		}
 
+
 		if( this.checkAccCaret() ){
 			; MsgBox("accCaret WORKS")
 			this.type := "ACC_CARET"
 			return
 		}
 
+
 		if( this.checkUIACaret() ){
 			; MsgBox("UIACaret WORKS")
 			this.type := "UIA_CARET"
 			return
 		}
-
 
 		;여기까지 오면 일치하는 타입 없음
 		this.type := ""

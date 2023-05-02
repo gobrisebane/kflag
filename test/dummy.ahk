@@ -6,8 +6,7 @@
 */
 
 /*
-	Usage
-	UIA needs to be initialized with UIA_Interface() function, which returns a UIA_Interface object:
+	Usage test test test whole sdsdsdsdsfvsdg asdsadas increase a UIA_Interface object:
 	UIA := UIA_Interface()
 	After calling this function, all UIA_Interface class properties and methods can be accessed through it.
 	In addition some extra variables are initialized:
@@ -16,9 +15,13 @@
 		TreeWalkerTrue contains an UIA_TreeWalker that was created with UIA_TrueCondition
 	Note that a new UIA_Interface object can't be created with the "new" keyword.
 
+	guswdho xkdlvldd dnlxmsms
 	UIAutomation constants and enumerations are available from the UIA_Enum class (see a more thorough description at the class header).
 	Microsoft document
 	For mboards/viewtopic.php?f=6&t=104999
+
+		dk잔
+		와퍼ㅏ오파ㅓㅏㅇ 와퍼ㅏ와퍼 와퍼ㅏ와파ㅓㅇ 와퍼ㅏ오파오ㅓㅏ
 */
 
 

@@ -7,10 +7,10 @@ initKflag(){
 	timeRecord("=====START KFLAG=====")
 
 
-
 	caret := new Caret()
 
 
+	SetTimer, debugWindow, 200
 
 
 
@@ -49,6 +49,9 @@ return
 
 
 caretWatcher(){
+
+
+	; MsgBox("CARETWATCHER WORKS")
 
 
 	if(keyTyping = True){
@@ -349,13 +352,69 @@ identifyBackspaceCaret(){
 
 
 
+
+
+
+
+
+
+
+
 correctFlagAfterSelectionRemove(){
 
 	; 해당 함수는, block 지정 후 삭제시 딜레이가 있기때문에 한번더 correct를 해준다
+
+/*
+
+
+*/
+
+	MsgBox("keyCount : " keyCount)
+
+
 	if(!keyTyping){
+		MsgBox("CORRECT WORKS")
+		; 현재 타이핑이 아닐경우에만 자리를 잡아준다.
+		; > 만약 하지 않으면 스페이스나 엔터 후 타이핑시 트레일링 된다.
+
 		correntFlagAndCaretXY(1)
 	}
+}
 
+
+correctFlagAfterSelectionRemove3(){
+	MsgBox("1.A_ThisHotkey : " A_ThisHotkey)
+
+	key_arr := ["BackSpace","Enter","Del","Space"]
+	if( isStringInArray(A_ThisHotkey,key_arr) ){
+
+
+
+			MsgBox("2.A_ThisHotkey : " A_ThisHotkey)
+			MsgBox("CORRECT WORKS - contain key")
+			correntFlagAndCaretXY(1)
+
+
+
+
+	}
+
+
+}
+
+
+
+correctFlagAfterSelectionRemove2(){
+
+	; 해당 함수는, block 지정 후 삭제시 딜레이가 있기때문에 한번더 correct를 해준다
+
+	if(!keyTyping){
+		MsgBox("CORRECT WORKS")
+		; 현재 타이핑이 아닐경우에만 자리를 잡아준다.
+		; > 만약 하지 않으면 스페이스나 엔터 후 타이핑시 트레일링 된다.
+
+		correntFlagAndCaretXY(1)
+	}
 }
 
 
@@ -444,14 +503,31 @@ detectingCaretYPosChange(){
 
 		caret.detect()
 
+		; MsgBox("---")
 		; MsgBox("prev_y : " prev_y)
 		; MsgBox("current_y : " current_y)
 
-		if( current_y > prev_y ){
+		if( isCurrentYandPrevYDiffer() ){
 			initInstantCaret()
 		}
 
 	}
+
+}
+
+
+isCurrentYandPrevYDiffer(){
+
+	res := current_y-prev_y
+
+	; MsgBox("res : " res)
+	; MsgBox("res/abs : " Abs(res) )
+	if( Abs(res) > 1 ){
+		; MsgBox("1. 오차 1보다 크다..")
+		return True
+
+	}
+
 
 
 }

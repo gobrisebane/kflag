@@ -128,7 +128,9 @@ searchingLateCaret(loopCount){
 initInstantCaret(){
 
 
-	initKey()
+	; initKey()
+	; keyTyping := False
+
 
 
 	; MsgBox("*************** CALLING INITIMGINSTANT *****************")
@@ -162,17 +164,15 @@ initInstantCaret(){
 
 
 
+
 initKey(){
+
 		keyTyping := False
-
-
 		/*
 		이것 누락시
 		크롬시동 -> url 클릭 -> www.naver.com 타이핑 -> 엔터클릭 = 네이버 검색창에 플래그 안뜸
 		*/
-
 		clickCount := 0
-
 }
 
 
