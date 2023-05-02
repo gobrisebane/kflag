@@ -265,24 +265,15 @@ return
 
 
 	/*
-	weneed this is our soceiet and out manday
-jlksdflksfjdlafjkdj;flkasdaajsdl;kfasd;lknnsdfajk;qwoiejqewijouiqwoeqrupowepiwqpoieeeeeeeeeeeepoqwrueeruiowrujworjouiwsrjfsoufuoshfuoqweouhhhhhhhhhhhhhhhhhhhhhhqwouehquwoehpuowqeeeeeeeepiqwrejepoqwuepiqwpeiuqwipeujqwipeewjeipasuejipsaejuiwjdieqjdieuwojdoiweujfhoirefjeroifjroeijfrifjreoigjerogijteigojoeifjewfoijewoifokepowqeiopqwekopqwiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiirjhqoipwwwwwwwwwwwwwwwwwwwwwwwwwwghqubriwop;llllllanflsdjkkkkkkkkkkkkknlasfdjkkkkkkkkkk
-tjdskfjkdsf
-dsfjsdfkjsdlfjsdlkfjsdfdfskdfjsdlkf
-thell o morty how area you
-hello morthy
-hello morty
-hello moarty
-hello
-hello
-hello
 
 
-hello
+	hello hello
+	hello
+	hello world
 
 
-hello morty how area you this is
-hello
+
+
 
 
 	this
@@ -302,6 +293,9 @@ return
 
 
 correctFlagAfterSelectionRemoveForTyping(){
+
+
+	;이건 그냥 테스트용으로 가져온것
 
 		; sleep 25
 
