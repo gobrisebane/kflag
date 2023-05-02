@@ -760,17 +760,23 @@ Winset, region, 131-296 841-296 841-741 131-741 131-296      168-342 316-342 316
 
 
 
-	caret.detect()
+	; caret.detect()
+	; MsgBox("X : " current_x " / Y : " current_y " / W : " current_w " / H : " current_h)
 
-
-			oWord := ComObjActive("Word.application")
-			oWin := oWord.application.activeWindow
-			oRan := oWord.selection.range
 
 	; MsgBox("x : " x)
 	; MsgBox("y : " y)
-	SplashImageGUI()
-	MsgBox("--spalshworks--")
+	; SplashImageGUI()
+	; MsgBox("--spalshworks--")
+
+
+
+
+	try{
+		ppt := ComObjActive("PowerPoint.application")
+		ppt.ActiveWindow.Selection.Type
+		; type 3
+	}
 
 
 
@@ -810,14 +816,31 @@ return
 
 
 
-	UIA := UIA_Interface() ; Initialize UIA interface
+	; UIA := UIA_Interface() ; Initialize UIA interface
 		; el := UIA.GetFocusedElement()
 	; MsgBox("el : " CaretBidiMode() )
 
+	; npEl := UIA.ElementFromHandle(WinExist("A"))
+	; MsgBox("npEl : " npEl.Name )
 
-	npEl := UIA.ElementFromHandle(WinExist("A"))
 
-	MsgBox("npEl : " npEl.Name )
+
+	; caret.detect()
+	; MsgBox("X : " current_x " / Y : " current_y)
+
+
+	; GetCaretPos(x, y)
+	; MsgBox("x : " x)
+	; MsgBox("y : " y)
+
+
+	; MsgBox(">>")
+	; MsgBox("x : " A_Caret("x"))
+	; MsgBox("y : " A_Caret("y"))
+	; MsgBox("w : " A_Caret("w"))
+	; MsgBox("h : " A_Caret("h"))
+
+
 
 
 

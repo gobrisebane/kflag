@@ -57,7 +57,6 @@ global caretChangeDelay := 25
 
 
 
-
 ; flag
 global SplashImage
 global FlagApp
@@ -75,7 +74,7 @@ global holdingEnter
 global holdingArrow
 
 global spaceCount := 0
-global initClickCount = 0
+global clickCount = 0
 global enterCount := 0
 
 
@@ -180,9 +179,6 @@ return
 
 
 
-MsgBox("del works?")
-
-return
 
 
 
@@ -261,17 +257,17 @@ return
 ~+VK15::
 ~^+VK15::
 
+
 	capsLockToLowCase()
-
-
 
 	/*
 	2가지 사용 결과 위치를 바꾸는 것도 좋은 것 같음
+	아래는 변환이고 위는 따라오게 하는 것임
 	*/
 
-	initInstantCaret()
+	; initInstantCaret()
 
-	; swapLangImage()
+	swapLangImage()
 
 return
 
@@ -411,6 +407,8 @@ return
 ~Enter up::
 ~+Enter up::
 
+
+
 	initInstantCaret()
 
 	if(holdingEnter = True){
@@ -437,11 +435,11 @@ return
 
 
 
+
+
 	if( isBrowser() ){
 
-
 		caret.getFocusedH(focusedH)
-
 		MsgBox("focusedH : " focusedH)
 
 		if(focusedH <= 80){

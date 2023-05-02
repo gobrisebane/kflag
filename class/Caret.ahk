@@ -14,6 +14,12 @@ class Caret{
  	Y_margin := 20
 
 
+	__new(){
+		this.detect()
+	}
+
+
+
 	detect(){
 
 
@@ -36,7 +42,9 @@ class Caret{
 		if( this.cur_winid = this.pre_winid AND this.type){
 			; MsgBox("MODE : 1. USING / WINID")
 			this.usingCaretType()
+
 		} else {
+
 			; MsgBox("MODE : 2. DETECT")
 			this.detectCaretType()
 		}
@@ -110,6 +118,9 @@ class Caret{
 			case "WINDOW_CARET": this.checkWindowCaret()
 			case "ACC_CARET": this.checkAccCaret()
 			case "UIA_CARET": this.checkUIACaret()
+
+			case "OFFICE_CARET": this.checkOfficeCaret()
+
 		}
 	}
 
@@ -117,11 +128,11 @@ class Caret{
 	detectCaretType(){
 
 
+
 		if(this.cur_exe = "WINWORD.EXE"){
 			this.type := "UIA_CARET"
 			return
 		}
-
 
 		if( this.checkWindowCaret() ){
 			; MsgBox("windowCaret WORKS")
@@ -153,32 +164,16 @@ class Caret{
 
 
 
-	checkWindowCaret(){
+	checkOfficeCaret(){
 
 
-		if (A_CaretX OR A_CaretY) {
-			current_x := A_CaretX + this.X_margin
-			current_y := A_CaretY + this.Y_margin
-			current_w := 1
-			current_h := 15
-
-			; MsgBox("--------- A-1. wincaret works")
-			return true
-
-
-		} else {
-			; MsgBox("--------- A-2. wincaret fail..")
-			return false
-		}
-
-
-
- /*
 			try{
 
 			oWord := ComObjActive("Word.application")
 			oWin := oWord.application.activeWindow
 			oRan := oWord.selection.range
+
+
 
 			VarSetCapacity(var_L, 24, 0)
 			Left_ref := ComObject(0x4003, &var_L)  ; 0x400C is a combination of VT_BYREF and VT_I4 (long).
@@ -204,20 +199,32 @@ class Caret{
 
 		}
 
-*/
+
+
+	}
 
 
 
 
 
 
+	checkWindowCaret(){
 
 
+		if (A_CaretX OR A_CaretY) {
+			current_x := A_CaretX + this.X_margin
+			current_y := A_CaretY + this.Y_margin
+			current_w := 1
+			current_h := 15
 
+			detectPowerpointCaretW(this.cur_exe)
+			; MsgBox("--------- A-1. wincaret works")
+			return true
 
-
-
-
+		} else {
+			; MsgBox("--------- A-2. wincaret fail..")
+			return false
+		}
 
 
 
@@ -260,6 +267,7 @@ class Caret{
 
 	checkUIACaret(){
 
+
 		;~ https://www.autoahk.com/archives/44158
 		static iUIAutomation, hOleacc, IID_IAccessible
 
@@ -292,10 +300,10 @@ class Caret{
 					hwnd := hwndFocus
 				}
 
+
 				timeRecord("GetCaret - 3-3 : iUIAuto")
 				timeRecord("current_x : " current_x  " / current_y : " current_y " current_w : " current_w " current_h :" current_h)
 				; MsgBox("GetCaret - 3-3 / current_x : " current_x  " / current_y : " current_y " current_w : " current_w " current_h :" current_h)
-
 
 				if(current_w > 0 AND current_h > 0){
 

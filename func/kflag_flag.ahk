@@ -31,6 +31,7 @@ drawFlag(){
 			timeRecord("drawFlag() - 1 / XPT10 Exist")
 			; MsgBox("drawFlag() - 1 / XPT10 Exist")
 
+
 			GuiGetPos( fX,fY,fW,fH, flagId )
 
 			timeRecord("drawFlag() / GuiGetPos / flagId : " flagId " / fX : " fX " / fY : " fY " / fW : " fW " / fH : " fH )
@@ -110,22 +111,15 @@ SplashImageGUI(){
 
 	Try {
 
-		; timeRecord("SplashImageGUI - 3 / x : " X " y : " Y)
 		timeRecord("SplashImageGUI - 3 / cx : " current_x  " cy : " current_y )
-		; MsgBox("SplashImageGUI - 3 / x : " x " y : " y)
 		; MsgBox("SplashImageGUI - 3 / cx : " current_x  " cy : " current_y )
 
 
-
 		if(current_x AND current_y){
-
 			Gui, XPT10:Show, x%current_x% y%current_y% NoActivate
-
 		} else {
-
-			timeRecord("!! === CRITICAL ERROR-4 : CX,CY,X,Y LOST === !!")
-			MsgBox("!! === CRITICAL ERROR-4 : CX,CY,X,Y LOST === !!")
-
+			timeRecord("!! === CRITICAL ERROR-4 : current_X,current_Y LOST === !!")
+			MsgBox("!! === CRITICAL ERROR-4 : current_X,current_Y LOST === !!")
 		}
 
 	} catch e {

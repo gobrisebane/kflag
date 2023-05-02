@@ -159,8 +159,26 @@ GetCaretPos(ByRef x, ByRef y)
 {
 	;https://www.autohotkey.com/boards/viewtopic.php?t=64101
 
+
+  ; G : GuiThreadInfo caret
+  ; 또 다른 방식
+  ; https://www.autohotkey.com/boards/viewtopic.php?t=4826&start=20
+
+  ; C-CARET
+  ; https://www.autohotkey.com/boards/viewtopic.php?p=179637#p179637
+
+
+
   static Size:=8+(A_PtrSize*6)+16, hwndCaret:=8+A_PtrSize*5
-  Static CaretX:=8+(A_PtrSize*6), CaretY:=CaretX+4
+  Static CaretX:=8+(A_PtrSize*6), CaretY:=12+(A_PtrSize*6)
+
+
+
+  ; NewSize:=20+(A_PtrSize*6)
+  ; MsgBox("newsize : " NewSize)
+
+
+
 
   VarSetCapacity(Info, Size, 0), NumPut(Size, Info, "Int")
 
@@ -179,5 +197,63 @@ GetCaretPos(ByRef x, ByRef y)
   x:=NumGet(pt, 0, "Int"),
   y:=NumGet(pt, 4, "Int")
 
+  MsgBox("Size : " Size)
+
   return, 1
 }
+
+
+A_Caret(param, coordMode = "Relative")
+{
+	target_window := DllCall("GetForegroundWindow")
+	If !target_window
+		Return ""
+
+
+  VarSetCapacity(guiThreadInfo, 48)
+	NumPut(48, guiThreadInfo, 0)
+	DllCall("GetGUIThreadInfo", uint, 0, str, guiThreadInfo)
+
+  ; hwndCaret := NumGet(GuiThreadInfo, 28)
+	hwndCaret := 8+A_PtrSize*5
+
+  MsgBox("hwndCaret : " hwndCaret)
+	If !hwndCaret
+
+		Return ""
+	top := NumGet(guiThreadInfo, 36)
+	bottom := NumGet(guiThreadInfo, 44)
+
+	If param = h
+		Return bottom - top
+	left := NumGet(guiThreadInfo, 32)
+	right := NumGet(guiThreadInfo, 40)
+	If param = w
+		Return right - left
+
+	VarSetCapacity(sPoint, 8, 0)
+	NumPut(left, sPoint, 0, "Int")
+	NumPut(top, sPoint, 4, "Int")
+
+	DllCall("ClientToScreen", "UInt", hwndCaret, "UInt", &sPoint)
+
+	left := NumGet(sPoint, 0, "Int")
+	top := NumGet(sPoint, 4, "Int")
+
+	If coordMode = Relative
+	{
+		VarSetCapacity(rect, 16)
+		DllCall("GetWindowRect", UInt, target_window, UInt, &rect)
+		left -= NumGet(Rect, 0, True)
+		top  -= NumGet(Rect, 4, True)
+	}
+	If param = x
+		Return left
+	Else
+		Return top
+}
+
+
+
+
+

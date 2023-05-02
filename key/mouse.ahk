@@ -2,11 +2,17 @@
 
 
 
+
+
+
+
+
+
 ~LButton up::
 
-	initClickCount++
 
 return
+
 
 
 
@@ -15,20 +21,30 @@ return
 ~!LButton::
 
 
-
-	WinGet, cur_exe, ProcessName, A
 	MsgBox("------CLICK START------")
 	timeRecord("1-LBUTTON")
 	timeRecordCurrentProgram()
 
 
-	if(cur_exe = "WINWORD.EXE" OR cur_exe = "POWERPNT.EXE"){
-		searchingLateCaret(20)
+	if( isExeSearchingLateCaret() ){
+		searchingLateCaret(10)
 	} else {
 		initImgCaret()
 	}
 
+
+
 return
+
+
+
+
+
+
+
+
+
+
 
 
 

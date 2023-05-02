@@ -13,6 +13,7 @@ initKflag(){
 
 
 
+
 }
 
 
@@ -315,10 +316,8 @@ correntFlagAndCaretXY(loopCount:=5){
 		; MsgBox("loopindex " a_index)
 
 		if(fX != current_x OR fY != current_y ){
-
-			MsgBox("1 -----. not correcting.. coreecting new")
+			; MsgBox("1 -----. not correcting.. coreecting new")
 			SplashImageGUI()
-
 		}
 		sleep 15
 	}
@@ -458,6 +457,39 @@ detectingCaretYPosChange(){
 }
 
 
+
+
+
+
+isExeSearchingLateCaret(){
+
+	WinGet, cur_exe, ProcessName, A
+	arr := ["WINWORD.EXE","POWERPNT.EXE"]
+	; MsgBox("cur_exe : " cur_exe)
+
+	if( hasValue(arr, cur_exe) ) {
+		return true
+	}
+
+}
+
+
+
+
+detectPowerpointCaretW( exe ){
+
+
+	if( exe = "POWERPNT.EXE" ){
+		try{
+			ppt := ComObjActive("PowerPoint.application")
+			pptType := ppt.ActiveWindow.Selection.Type
+			if(pptType != 3){
+				current_w := 0
+			}
+		}
+	}
+
+}
 
 
 

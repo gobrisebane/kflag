@@ -16,13 +16,7 @@ initImgCaret(){
 			; MsgBox("initImgCaret() :: X : " current_x " / Y : " current_y " / W : " current_w " / H " current_h)
 
 
-
-
-
 			if( keyTyping ) {
-
-
-
 				MsgBox("TYPING so break")
 				break
 			}
@@ -39,30 +33,14 @@ initImgCaret(){
 		}
 
 
-		/*
-		if(initClickCount > 0){
-			; MsgBox("::::::::::: REVIVE :::::::::::")
-			initImgCaret()
-		}
-		*/
+
+		; if(clickCount > 0){
+		; 	; MsgBox("::::::::::: REVIVE :::::::::::")
+		; 	initImgCaret()
+		; }
+
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -84,10 +62,12 @@ searchingLateCaret(loopCount){
 		initKey()
 
 
+		; MsgBox("1...clickCount : " clickCount)
 
 		; MsgBox("=== LOOP START ===")
 
 		loop, %loopCount% {
+
 
 
 
@@ -121,10 +101,18 @@ searchingLateCaret(loopCount){
 
 
 			Sleep 50
+
+			if GetKeyState("LButton", "P"){
+				clickCount++
+			}
+
+
 		}
 
 
-	if(initClickCount > 0){
+
+
+	if(clickCount > 0){
 		; MsgBox("::::::::::: REVIVE :::::::::::")
 		searchingLateCaret(loopCount)
 	}
@@ -183,7 +171,7 @@ initKey(){
 		크롬시동 -> url 클릭 -> www.naver.com 타이핑 -> 엔터클릭 = 네이버 검색창에 플래그 안뜸
 		*/
 
-		initClickCount := 0
+		clickCount := 0
 
 }
 
