@@ -770,21 +770,29 @@ Winset, region, 131-296 841-296 841-741 131-741 131-296      168-342 316-342 316
 	; MsgBox("--spalshworks--")
 
 
-
+/*
 
 	try{
 		ppt := ComObjActive("PowerPoint.application")
 		ppt.ActiveWindow.Selection.Type
 		; type 3
 	}
+ */
 
 
 
 
+ /*
+  ControlGet, ctrlHwnd, Hwnd,, %ctrlClass%, ahk_class Notepad
+		  DllCall("SendMessage","PTR",ctrlHwnd,"UInt",0xB0,"PTR*",start,"PTR*",end) ;EM_GETSEL
+		  MsgBox("start : " start)
+		  MsgBox("end : " end)
+*/
 
 
 
 
+Clipboard :=
 
 return
 
@@ -825,8 +833,8 @@ return
 
 
 
-	caret.detect()
-	MsgBox("X : " current_x " / Y : " current_y)
+	; caret.detect()
+	; MsgBox("X : " current_x " / Y : " current_y)
 
 
 	; GetCaretPos(x, y)
@@ -841,6 +849,15 @@ return
 	; MsgBox("h : " A_Caret("h"))
 
 
+  ControlGet, ctrlHwnd, Hwnd,, %ctrlClass%, ahk_class Notepad
+
+		  DllCall("SendMessage","PTR",ctrlHwnd,"UInt",0xB0,"PTR*",start,"PTR*",end) ;EM_GETSEL
+
+		  MsgBox("start : " start)
+		  MsgBox("end : " end)
+
+
+
 
 return
 
@@ -853,7 +870,7 @@ return
 debugWindow(){
 
 
-	static devWin,var,var2,var3,var4,var5
+	static devWin,var,var2,var3,var4,var5,var6,var7
 
 
 	if !devWin
@@ -866,7 +883,12 @@ debugWindow(){
 		Gui, dev:Add, Text, w500 vVar3
 		Gui, dev:Add, Text, w500 vVar4
 		Gui, dev:Add, Text, w500 vVar5
-		Gui, dev:Show, w500 x600 y0 NoActivate
+
+		Gui, dev:Add, Text, w500 vVar6
+		Gui, dev:Add, Text, w500 vVar7
+
+
+		Gui, dev:Show, w394 x600 y0 NoActivate
 	} else {
 
 		Gui, dev:Default
@@ -874,6 +896,11 @@ debugWindow(){
 		GuiControl,, Var2, spaceCount : %spaceCount%
 		GuiControl,, Var3, keyCount : %keyCount%
 		GuiControl,, Var4, prev_x : %prev_x%  /  prev_y : %prev_y%
+		GuiControl,, Var5, dumbCount : %dumbCount%
+
+		GuiControl,, Var6, current_x : %current_x% / current_y : %current_y%
+		GuiControl,, Var7, min_x : %min_x% / min_y : %min_y%
+
 
 	}
 

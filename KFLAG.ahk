@@ -42,7 +42,23 @@ if not A_IsAdmin {
 
 
 
+
+; test
+
+global min_x
+global min_y
+
 global keyCount
+global dumbCount :=0
+
+
+global fix_X
+global fix_Y
+
+
+
+
+
 
 
 ; caret
@@ -56,7 +72,7 @@ global prev_y
 
 
 global current_lang
-global caretChangeDelay := 25
+global caretChangeDelay := 70
 
 
 
@@ -83,7 +99,6 @@ global enterCount := 0
 
 
 
-
 ; late caret
 global keyTyping := False
 global prev_enter_x
@@ -99,22 +114,24 @@ global typingIdleSec := 5
 
 
 
-;img
+;img / 순서변경금지
+global folderpath := A_AppData . "\TWEPO\kflag"
 global imgpath_flag_eng_up := folderpath . "\flag_eng_up.png"
 global imgpath_flag_eng_lo := folderpath . "\flag_eng_lo.png"
 global imgpath_flag_kor := folderpath . "\flag_kor.png"
-global folderpath := A_AppData . "\TWEPO\kflag"
 
 
 
 global UIA := UIA_Interface()
 
 
-global fix_X
-global fix_Y
+
+
 
 
 initKflag()
+
+
 
 
 
@@ -380,6 +397,7 @@ return
 
 
 	KeyTyping := False
+	clearMinXY()
 
 
 
@@ -450,7 +468,7 @@ return
 
 
 
-
+clearMinXY()
 
 
 	if( isBrowser() ){

@@ -106,24 +106,7 @@ ImmGetDefaultIMEWnd(hWnd)
 
 
 
-WriteFile(file,data)
-{
-   Handle :=  DllCall("CreateFile","str",file,"Uint",0x40000000
-                  ,"Uint",0,"UInt",0,"UInt",4,"Uint",0,"UInt",0)
-   Loop
-   {
-     if strlen(data) = 0
-        break
-     StringLeft, Hex, data, 2
-     StringTrimLeft, data, data, 2
-     Hex = 0x%Hex%
-     DllCall("WriteFile","UInt", Handle,"UChar *", Hex
-     ,"UInt",1,"UInt *",UnusedVariable,"UInt",0)
-    }
 
-   DllCall("CloseHandle", "Uint", Handle)
-   return
-}
 
 
 

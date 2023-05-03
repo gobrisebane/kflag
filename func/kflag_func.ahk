@@ -6,12 +6,10 @@ initKflag(){
 
 	timeRecord("=====START KFLAG=====")
 
-
+	initImg()
 	caret := new Caret()
 
-
 	SetTimer, debugWindow, 200
-
 
 
 }
@@ -19,8 +17,8 @@ initKflag(){
 
 
 
+initImg(){
 
-initImg:
 
 	if !FileExist(folderpath){
 		FileCreateDir, %folderpath%
@@ -37,9 +35,10 @@ initImg:
 	GoSub, LoadImgFlagKor
 	WriteFile(imgpath_flag_kor, picture)
 
-return
 
 
+
+}
 
 
 
@@ -467,7 +466,6 @@ removeSelectingAndCompareFlagForTyping(){
 
 
 
-
 detectRightOrBottomFlagAndCorrect(){
 
 	if(flagId){
@@ -576,6 +574,23 @@ RemoveToolTip:
 ToolTip
 return
 
+
+
+
+
+
+clearMinXY(){
+
+
+		; MsgBox("CLEAR AND UPDATE..")
+		min_x := ""
+		min_y := ""
+
+		; MsgBox("clear current_x : " current_x)
+		; MsgBox("clear current_y : " current_y)
+		; min_x := current_x
+		; min_y := current_y
+}
 
 
 

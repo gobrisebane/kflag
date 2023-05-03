@@ -14,6 +14,8 @@ initImgCaret(){
 
 
 
+
+
 			caret.detect()
 			MsgBox("initImgCaret() :: X : " current_x " / Y : " current_y " / W : " current_w " / H " current_h)
 
@@ -24,15 +26,30 @@ initImgCaret(){
 			}
 
 
+
+
+
 			if( current_w > 0 ){
+
 				SplashImageGUI()
+
 			} else if( current_w = 0 ){
+
 				hideSplashGUI()
+
 			}
 
 
-			sleep 50
+
+
+
+
+
+
+
+			sleep 100
 		}
+
 
 
 
@@ -81,7 +98,8 @@ searchingLateCaret(loopCount){
 
 
 			; MsgBox("INDEX : " A_Index)
-			MsgBox("LateCaret INDEX : " A_Index " X : " current_x " / Y : " current_y " / W : " current_w " / H " current_h)
+			; MsgBox("LateCaret INDEX : " A_Index " X : " current_x " / Y : " current_y " / W : " current_w " / H " current_h)
+
 
 
 
@@ -130,8 +148,9 @@ searchingLateCaret(loopCount){
 
 initInstantCaret(){
 
-		keyCount := 0
-
+	clearMinXY()
+	dumbCount := 0
+	keyCount := 0
 	; initKey()
 	; keyTyping := False
 
@@ -171,7 +190,13 @@ initInstantCaret(){
 
 initKey(){
 
-		keyTyping := False
+
+	clearMinXY()
+	dumbCount := 0
+
+
+
+	keyTyping := False
 		/*
 		이것 누락시
 		크롬시동 -> url 클릭 -> www.naver.com 타이핑 -> 엔터클릭 = 네이버 검색창에 플래그 안뜸

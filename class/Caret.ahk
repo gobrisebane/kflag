@@ -33,7 +33,6 @@ class Caret{
 		prev_y := current_y
 
 
-
 		; MsgBox("this.cur_winid : " this.cur_winid)
 		; MsgBox("this.pre_winid : " this.pre_winid)
 		; MsgBox("this.type : " this.type)
@@ -64,7 +63,7 @@ class Caret{
 					eleFocus := UIA.GetFocusedElement()
 					this.focusedH := eleFocus.BoundingRectangle.b-eleFocus.BoundingRectangle.t
 
-					; MsgBox("5.WORKS : this.focusedH : " this.focusedH)
+					MsgBox("5.WORKS : this.focusedH : " this.focusedH)
 
 				} catch e{
 						timeRecord("!! === CRITICAL ERROR : getFocuisedELement ")

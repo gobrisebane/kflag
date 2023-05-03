@@ -10,7 +10,9 @@
 
 ~LButton up::
 
+		;플래그가 활성 된 창을 드래그 후 놓았을 때 이게 있어야 따라간다.
 		initInstantCaret()
+
 
 return
 
@@ -18,8 +20,17 @@ return
 
 
 
+
+
+
+
+
+
 ~LButton::
 ~!LButton::
+
+
+
 
 
 	MsgBox("------CLICK START------")
@@ -32,6 +43,16 @@ return
 	} else {
 		initImgCaret()
 	}
+
+
+
+
+	; WinGet, cur_exe, ProcessName, A
+	; MsgBox("cur_exe : " cur_exe)
+
+
+
+
 
 
 

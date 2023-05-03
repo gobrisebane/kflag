@@ -3,30 +3,86 @@
 	This library implements Microsoft's UI Automation framework. More information is here: https://docs.microsoft.com/en-us/windows/win32/winauto/entry-uiauto-win32
 
 
+	tejktjkesjfdkjfkdjfjdsfljsdfds
+	dsjdksjdksj
+	testsetereremmm
+
+	dkfjdkfjkdfjkdvmkvkfk
+
+	dpspdj
+fsfdfdfdfsdf
+dsfsdfsdfsfdfdsfsdfsdf
+sadsadsadasdsdas
+sdasdsad
+sdsds
+dsdsdsds
+cascascsaca
+
+sdsdsd
+sdsdsv
+cscscscs
+dss
+sdsd
+cscs
+ddsdsdwr
+t
+
+
+sdsdsd
+dffdfdc
+dfdfdfdfd
+csdcdscsdcsdc
+vdvdvd
+sdsdsds
+dfdfdsfdsfsddfdfdfdfdfdfdfdfdfsssxvvvcvcvcvcvcvcvvvcvc
+v
+vgod bless americal
+djnvjfier
+sdsssdsdsdsd
+sds
+sdsd
+vl,lvf
+dfdf;dsfkdlsfk
+dwodkwodkwo
+dkflsdsdsdsd
+mmm
+v
+s
+sdsdsdsckvmkfsvmkf
+sdsdsldklsdsdsdsdsdsdsjdksajdkasdjkasdjkasdjasd
+
+
+t
+k
+s
+c
+vdvdv
+sdsds
+dsdsds
+csc
+
+sdsdsdsd
+
+dfdfdf
+
+sdsdsdsd
+sfsfsfsf
+vdvdvd
+sdsds
+sdsdsds
 
 
 
- 	Questions:
-	- if method returns a SafeArray, should we sdsdqersd sdsd a tterers SafeArray, Raw SafeArray, or AHK Array. Currently we qwqresadasd korerekskdss AHK arrays for SafeArrays. Although SafeArrays are more convenient to loop over, this causes more confusion in users who are not familiar with SafeArrays (questjlksdfgenerated (eg Microsoft Teams, when a meeting is started then the toolbar buttons (eg Mute, react) aren't visible to UIA, but hovering over them with the cursor or calling ElementFromPoint causes Teams to generate and make them visible to UIA.
-	- better way of supporting differing versions of IUIAutomation (version 2, 3, 4)
 
 
 
 
 
- 	Questions:
-	- if method returns a SafeArray, should we sdsdqersd sdsd a tterers SafeArray, Raw SafeArray, or AHK Array. Currently we qwqresadasd korerekskdss AHK arrays for SafeArrays. Although SafeArrays are more convenient to loop over, this causes more confusion in users who are not familiar with SafeArrays (questjlksdfgenerated (eg Microsoft Teams, when a meeting is started then the toolbar buttons (eg Mute, react) aren't visible to UIA, but hovering over them with the cursor or calling ElementFromPoint causes Teams to generate and make them visible to UIA.
-	- better way of supporting differing versions of IUIAutomation (version 2, 3, 4) 	Questions:
-	- if method returns a SafeArray, should we sdsdqersd sdsd a tterers SafeArray, Raw SafeArray, or AHK Array. Currently we qwqresadasd korerekskdss AHK arrays for SafeArrays. Although SafeArrays are more convenient to loop over, this causes more confusion in users who are not familiar with SafeArrays (questjlksdfgenerated (eg Microsoft Teams, when a meeting is started then the toolbar buttons (eg Mute, react) aren't visible to UIA, but hovering over them with the cursor or calling ElementFromPoint causes Teams to generate and make them visible to UIA.
-	- better way of supporting differing versions of IUIAutomation (version 2, 3, 4)
-ww
 
-	sds
-	d
-	d
-
-
-*/
+sdsdsdsdsdsd
+sdsdsdsdsdsdsd
+sdsdsdsdsdsdsd
+sdsdsdsdsdsvvvdvdv
 
 
 
@@ -34,100 +90,255 @@ ww
 
 
 
-/*
-
-
-
- 	Questions:
-	- if method returns a SafeArray, should we sdsdqersd sdsd a tterers SafeArray, Raw SafeArray, or AHK Array. Currently we qwqresadasd korerekskdss AHK arrays for SafeArrays. Although SafeArrays are more convenient to loop over, this causes more confusion in users who are not familiar with SafeArrays (questjlksdfgenerated (eg Microsoft Teams, when a meeting is started then the toolbar buttons (eg Mute, react) aren't visible to UIA, but hovering over them with the cursor or calling ElementFromPoint causes Teams to generate and make them visible to UIA.
-	- better way of supporting differing versions of IUIAutomation (version 2, 3, 4)
-*/
 
 
 
 
-; Base class for all UIA objects (UIA_Interface, UIA_Element etc), that is also used to get constants and enumerations from UIA_Enum.
-class UIA_Base {
-	__New(p:="", flag:=0, version:="") {
-		ObjRawSet(this,"__Type","IUIAutomation" SubStr(this.__Class,5))
-		,ObjRawSet(this,"__Value",p)
-		,ObjRawSet(this,"__Flag",flag)
-		,ObjRawSet(this,"__Version",version)
-	}
-	__Get(members*) {
-		local
-		global UIA_Enum
-		member := members[1]
-		if member not in base,__UIA,TreeWalkerTrue,TrueCondition ; These should act as normal
-		{
-			if (!InStr(member, "Current")) {
-				baseKey := this
-				While (ObjGetBase(baseKey)) {
-					if baseKey.HasKey("Current" member)
-						try{
-							return this["Current" member]
-						}
-					baseKey := ObjGetBase(baseKey)
-				}
-			}
-			if ObjHasKey(UIA_Enum, member) {
-				return UIA_Enum[member]
-			} else if RegexMatch(member, "i)PatternId|EventId|PropertyId|AttributeId|ControlTypeId|AnnotationType|StyleId|LandmarkTypeId|HeadingLevel|ChangeId|MetadataId", match) {
-				return UIA_Enum["UIA_" match](member)
-			} else if InStr(this.__Class, "UIA_Element") {
 
-				try{
-					if (prop := UIA_Enum.UIA_PropertyId(member))
-						return this.GetCurrentPropertyValue(prop)
-					else if (RegExMatch(member, "i)=|\.|^[+-]?\d+$") || (RegexMatch(member, "^([A-Za-z]+)\d*$", match) && UIA_Enum.UIA_ControlTypeId(match1))) {
-						for _, member in members
-							this := InStr(member, "=") ? this.FindFirstBy(member, 2) : this.FindByPath(member)
-						return this
-					} else if ((SubStr(member, 1, 6) = "Cached") && (prop := UIA_Enum.UIA_PropertyId(SubStr(member, 7))))
-						return this.GetCachedPropertyValue(prop)
-					else if (member ~= "i)Pattern\d?") {
-						if UIA_Enum.UIA_PatternId(member)
-							return this.GetCurrentPatternAs(member)
-						else if ((SubStr(member, 1, 6) = "Cached") && UIA_Enum.UIA_PatternId(pattern := SubStr(member, 7)))
-							return this.GetCachedPatternAs(pattern)
-					}
-				}
+sd
+sdsd
+sdsds
+sd
+sdsd
+sdsds
+dsd
+sd
 
-			}
-			throw Exception("Property not supported by the " this.__Class " Class.",-1,member)
-		}
-	}
-	__Set(member, value) {
-		if (member != "base") {
-			if !InStr(member, "Current")
-				try return this["Current" member] := value
-			throw Exception("Assigning values not supported by the " this.__Class " Class.",-1,member)
-		}
-	}
-	__Call(member, params*) {
-		local
-		global UIA_Base, UIA_Enum
-		if member not in base,HasKey
-		{
-			if RegexMatch(member, "i)^(?:UIA_)?(PatternId|EventId|PropertyId|AttributeId|ControlTypeId|AnnotationType|StyleId|LandmarkTypeId|HeadingLevel|ChangeId|MetadataId)$", match) {
-				return UIA_Enum["UIA_" match1](params*)
-			} else if !ObjHasKey(UIA_Base,member)&&!ObjHasKey(this,member)&&!(member = "_NewEnum") {
-				throw Exception("Method Call not supported by the " this.__Class " Class.",-1,member)
-			}
-		}
-	}
-	__Delete() {
-		this.__Flag ? ((this.__Flag == 2) ? DllCall("GlobalFree", "Ptr", this.__Value) : ObjRelease(this.__Value)):
-	}
-	__Vt(n) {
-		return NumGet(NumGet(this.__Value+0,"ptr")+n*A_PtrSize,"ptr")
-	}
-}
+vdddvdv
+dvdd
+sdsdsd
 
-/*
-	Exposes methods that enable to discover, access, and filter UI Automation elements. UI Automation exposes every element of the UI Automation as an object represented by the IUIAutomation interface. The members of this interface are not specific to a particular element.
+
+sdjskd
+sdksjdksjdksjdksj
+sdjskdjskdjskdjskjdnfosdkosdkosdoks
+t
+sdsd
+sdssd
+
+
+
+classfied
+
+sosors
+dsdsd
+dsds
+disterss
+worldpwra
+dsdscmksd sdklsdklsdlkmdksmdosdoksodk
+dskdslkdslwoerko
+sdsdjksdj
+stress woasosdowahtwakjkaksjdiwdiwjidwjidwknknckscns
+sdjskdjskdksjd
+sdjskdsd
+
+dsds
+cscscs
+vvvsvdvs
+dds
+
+s
+sd
+teste
+asdsdasd
+sdsd
+sdsds
+o
+okkiji
+opopop
+oioioioi
+mmkmkmk
+mmmm
+llll
+ooooo
+pppp
+pkokok
+fjl;kasd
+asdfnlk
+asfdjlkn
+
+
+
+cscsc
+sdsdsd
+sdsdsd
+sdsdsds
+cscs
+sdsdsd
+sdsdsd
+plsdpsleji
+
+tietnnseif
+
+
+sdsdsd
+tjtkrsdjgdfks
+dfkjsdafljsadklfjasdf
+trjsktjfdkgdj
+fdskjfdkasl
+testere
+testesrsesdjkdjskdj ksadjaskldaskldjaslkdjaslkdjaddddddddddddddddddddddddddddddddddddddddddddddddddsdsdddddddddddddddddddwdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddtkdjskdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddcsddddddx
+sdfjksdlkfjdslkfjdsl
+daslkdjaslkdjlkasdjas
+asdfjlkdsddsddsdsddfkdlfksddfkdlfk
+sjksdjksdljk'dsddsddsdsddfkdlfk
+adlsjk dsddsddsdsdrjekdsdsdsdssddfkdlfk
+sjksdjksdljk'dsddsddsdsddfkdlfk
+adlsjk dsddsddsdsdrjekdfdfdfdsddfkdlfk
+sjksdjksdljk'dsddsdds
+adlsjk dsddsddsdsdrjekdffdfdsddfkdlf,"Del"k
+sjksdjksdljk'dsddsddsdsddfkdlfk
+adlsjk dsddsddsdsdrjekfdfdfdggggggfdgdfgdf
+sjksdjksdljk'dsddsddsdsddfkdlfksfk
+adlsjk dsddsddsdsdrjekdfdfdfdsddfkdlfk
+sjksdjksdljk'dsddsdds
+adlsjk dsddsddsdsdrjekdffdfdsddfkdlf,"Del"k
+sjksdjksdljk'dsddsddsdsddfkdlfk
+adlsjk dsddsddsdsdrjekfdfdfdggggggfdgdfgdf
+sjksdjksdljk'dsddsddsdsddfkdlfkdsdsdsfk
+adlsjk dsddsddsdsdrjekdfdfdfdsddfkdlfk
+sjksdjksdljk'dsddsdds
+adlsjk dsddsddsdsdrjekdffdfdsddfkdlf,"Del"k
+sjksdjksdljk'dsddsddsdsddfkdlfk
+adlsjk dsddsddsdsdrjekfdfdfdggggggfdgdfgdfrererere
+sjksdjksdljk'dsddsddsdsddfkdlfkfkwewewewdsfdsfsdf
+adlsjk dsddsddsdsdrjekdfdfdfddjdsdsds
+uiautomationclientsdsdscscscsdsfsdfdsf
+dskjdksdsjksdjksdljk'dsddsddsdsddfkdlfkdsdsds
+adlsjk dsddsddsdsdrjekfdfdfdgggdskjdterercdv
+adlsjk dsddsddsdsdrjekrjke dsddsddsdsddfkdlfkvv
+ads;k'dsddsddsdsduiautomationclientddfdsfdsf
+	Questions:wefinQrocdjkhttps://dcumentation: https://docs.microsoft.com/en-us/windows/win32/api/tetst/nn-uiautomationclient-iuiautomation
+sdsdsddsdsdsdsdsdfdsfsdfsdsadsadsadasdasdasdas
+hi hitlersdsdssdsdsdsdsdddsdsdsdcsdsdsscscssdfsdfsasdsadsad
+sdsdsdsdsdsdddsssdfdsfsddsdsdssdsdssvdsvsdvsdtseterdasdasdasdas
+sdsdddsdsdtsddsmkelsdsdsdssdfsdfsddsdsdsdcscsssdsdsscscs
+sdsdsdccssdsvstsdsdsnewowkewsfdsdfdfscssdsdsdasdadsdasads
+sdsdsdcsdsdsdsssdcsdnewjjtvvdvsdvsdsdssdsadasdqewqweqewqeweqw
+sdsdsdsdsdsdssdsdsdssdsdsdsdsasdsdssdsdssdsdsdsdsdsdsds
+dsdsdcctesdsdsadsdasdasdasssleeperqweqweqqeqweeqwqeweqw
+qewqweqewqeweqweqwasdadasdadsqweqweqwe
+sdsdsqweqweqweqwasddasdasadssdasdsadsaweqweqweqwewq
+asdadsdasasdqwqeweqweqweqwewqeqwewq
+ 	Questions:wefinQrocdjkhttps://docs.microsoft.com/en-us/windows/win32/api/uiautomationclient/nn-uiautomationclient-iuiautomation
+	 	Questions:wefinQrockdjkymodusnfd,lfdhe UI Automation as an object represented by the IUIAutomation interface. The members of thisdsdsdsdsswer
 	Microsoft documentation: https://docs.microsoft.com/en-us/windows/win32/api/uiautomationclient/nn-uiautomationclient-iuiautomation
-*/
+sdjkASDASDSAD
+teostjeosdssuyite
+ㄴㅇㄴㅇdsdscscsutidjsiSADASDAS
+ㄴㅇㄴㅇsdsdsdSDSDSSDSADSAD
+afsjkdsdsdprojscscscCSCSCXZCZXCZXC
+jlkafd	; Compares two integcscser so inc2 need to be RuntimeId arrays (returned by GetRuntimeId()), where array.base.__Value contains the corresponding safearray.
+corojksdsdsdASDSADAS
+SDSDSdsdskdnsCCCSWEWEWXZCXZCZXC
+setenceSSSDDSDSDSDSQW
+setencesdsdssadasdasdasdsad
+SDSDSDSdsadsadsadsadsadsaCSCSCSS
+SDSDSDSsdsdsdvdffdvdfvdfvASDASDASDAS
+VXCVXCVXCVsdsdsvdvfdvdadsdasdasdX
+scscssdsdssdsdsdDFDFDFDASDASDASDA
+SDSDsdsdsdfdfdfsdsdsCSCSCS
+dsddfdfdfcscscsadfdsfdsfdsfsdczxczxczxSADSADASDA
+dASDcscscstetstsasdasdasdSDSDS
+sdsdsdstoastkttetewqwqwqSDDSDSCSCSC
+qweqweqwetetektjSADASDASDAS
+qwewqewqeqwetoastCVCVCSCSCSC
+asdasdastVCVCVSADASDASDASDASDSDSDSDS
+asdasdasdttetasdasdasdas
+asdasdasdDVDVDVDTETETSDSDSSDSDSD
+vxacvxcvxcSDSD
+sdfdsfdsfsddsdsdasDSADSADTET
+fsdfdsfdsfSDSDSDSDSDS
+qwesdsdXCXCXCXC
+sdsdssdstetseeqqqwecscscXCXCXC
+asdasdassdsdsdssdQXCXCXCXCSDSDS
+dsadasdassdsdSDSDSS
+dsddseerercscscssadasdasdcscscQQWW
+xczxcdsdgbgbgbvffbf
+helloccdcdvfsdsdSDSDS
+thisSDSDS
+thisZXCX
+questSDSDSCSCSC
+wqwqwqquweasrtZXCX
+SDSDS
+fefeZXCZXC
+fellowZXC
+sdsds
+asdasdasdas
+SFDSFSDF
+vdsvdsvsdv
+sdsdsdsad
+FDSFDSF
+bgbgfbggwe
+ADFDFDS
+dasdsadasdvc
+DASDASDASD
+asdasdasdas
+SADFASDASDSA
+FDGFDGDFG
+asdasdFGSDSDS
+SDSDSDS
+CSCSDSD
+SDSDSD
+SDSDS
+DSDS
+SDSDS
+ASDASDSAD
+SDSDSD
+SCSCSC
+SDSADS
+SADSADSA
+SCSCSC
+SCSCS
+afasdfasf
+BBFBFB
+SDSDSD
+asdasd
+DFDSFDS
+DSFDSFS
+FDSFSDSDS
+SDSDSZXC
+SDSDSDS
+SDSDSD
+SDSDS
+CSCSCS
+CSCSCS
+SDSDSSDSDS
+SCCSCSC
+SDSDSD
+VFVFXVCX
+SCSCS
+DFDFD
+ZXC
+SCSCS
+CSCS
+SDSDSD
+DSFSDF
+SDSD
+D
+SDFSDFSD
+CZXCXZC
+CXZCZXCZXC
+TSETSET
+ZCZXCZXC
+stringsdsdsdsdsadsasdsds
+raskd sdkskdjrtkjsd skjdks
+dumboass 4 aiscscsc
+ourttesfdngng fdfbdfbd
+asdasdsadsdsd
+sadsadasdcscsdbvb
+ 	Questions:wefinQrockdjkymodusnfd,lfdhe UI Automation as an object represented by the IUIAutomation interface. The members of thisdsdsdsdsswer
+	Microsoft documentation: https://docs.microsoft.com/en-us/windows/win32/api/uiautomationclient/nn-uiautomationclient-iuiautomationsdsds
+*/sdsds
+sdsdsdsd
+
+SDSDSD
+SDKSLD
+ DSDSKDJSK DSJ DSKJ S
+ SDSDS
+ SDSD
+
+
 class UIA_Interface extends UIA_Base {
 	static __IID := "{30cbe57d-d9d0-452a-ab13-7ac5ac4825ee}"
 
