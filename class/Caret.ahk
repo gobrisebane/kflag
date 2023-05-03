@@ -118,11 +118,10 @@ class Caret{
 		switch this.type
 		{
 			case "WINDOW_CARET": this.checkWindowCaret()
-
 			case "ACC_CARET": this.checkAccCaret()
 			case "UIA_CARET": this.checkUIACaret()
 
-			case "OFFICE_CARET": this.checkOfficeCaret()
+			; case "OFFICE_CARET": this.checkOfficeCaret()
 
 		}
 	}
