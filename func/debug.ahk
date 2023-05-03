@@ -866,7 +866,6 @@ debugWindow(){
 		Gui, dev:Add, Text, w500 vVar3
 		Gui, dev:Add, Text, w500 vVar4
 		Gui, dev:Add, Text, w500 vVar5
-		Gui +LastFound
 		Gui, dev:Show, w500 x600 y0 NoActivate
 	} else {
 

@@ -133,8 +133,6 @@ initKflag()
 
 
 
-
-
 	refinedThisHotkey := RegExReplace(A_ThisHotkey, "\W", "")
 	refinedPriorHotkey := RegExReplace(A_PriorHotkey, "\W", "")
 
@@ -161,11 +159,11 @@ initKflag()
 			spaceCount++
 		}
 
-		correctFlagAfterSelectionRemove()
-
-
+		correctFlagAfterSelectionRemove2()
+		; correctFlagAfterSelectionRemove()
 
 	}
+
 
 return
 

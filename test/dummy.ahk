@@ -2,7 +2,26 @@
 	Introduction & credits
 	This library implements Microsoft's UI Automation framework. More information is here: https://docs.microsoft.com/en-us/windows/win32/winauto/entry-uiauto-win32
 
- testeste
+
+
+
+
+ 	Questions:
+	- if method returns a SafeArray, should we sdsdqersd sdsd a tterers SafeArray, Raw SafeArray, or AHK Array. Currently we qwqresadasd korerekskdss AHK arrays for SafeArrays. Although SafeArrays are more convenient to loop over, this causes more confusion in users who are not familiar with SafeArrays (questjlksdfgenerated (eg Microsoft Teams, when a meeting is started then the toolbar buttons (eg Mute, react) aren't visible to UIA, but hovering over them with the cursor or calling ElementFromPoint causes Teams to generate and make them visible to UIA.
+	- better way of supporting differing versions of IUIAutomation (version 2, 3, 4)
+
+
+
+
+e
+ 	Questions:
+	- if method returns a SafeArray, should we sdsdqersd sdsd a tterers SafeArray, Raw SafeArray, or AHK Array. Currently we qwqresadasd korerekskdss AHK arrays for SafeArrays. Although SafeArrays are more convenient to loop over, this causes more confusion in users who are not familiar with SafeArrays (questjlksdfgenerated (eg Microsoft Teams, when a meeting is started then the toolbar buttons (eg Mute, react) aren't visible to UIA, but hovering over them with the cursor or calling ElementFromPoint causes Teams to generate and make them visible to UIA.
+	- better way of supporting differing versions of IUIAutomation (version 2, 3, 4) 	Questions:
+	- if method returns a SafeArray, should we sdsdqersd sdsd a tterers SafeArray, Raw SafeArray, or AHK Array. Currently we qwqresadasd korerekskdss AHK arrays for SafeArrays. Although SafeArrays are more convenient to loop over, this causes more confusion in users who are not familiar with SafeArrays (questjlksdfgenerated (eg Microsoft Teams, when a meeting is started then the toolbar buttons (eg Mute, react) aren't visible to UIA, but hovering over them with the cursor or calling ElementFromPoint causes Teams to generate and make them visible to UIA.
+	- better way of supporting differing versions of IUIAutomation (version 2, 3, 4)
+
+
+
 
 */
 
@@ -17,7 +36,7 @@
 
 
  	Questions:
-	- if method returns a SafeArray, should we return a Wrapped SafeArray, Raw SafeArray, or AHK Array. Currently we return wrapped AHK arrays for SafeArrays. Although SafeArrays are more convenient to loop over, this causes more confusion in users who are not familiar with SafeArrays (questjlksdfgenerated (eg Microsoft Teams, when a meeting is started then the toolbar buttons (eg Mute, react) aren't visible to UIA, but hovering over them with the cursor or calling ElementFromPoint causes Teams to generate and make them visible to UIA.
+	- if method returns a SafeArray, should we sdsdqersd sdsd a tterers SafeArray, Raw SafeArray, or AHK Array. Currently we qwqresadasd korerekskdss AHK arrays for SafeArrays. Although SafeArrays are more convenient to loop over, this causes more confusion in users who are not familiar with SafeArrays (questjlksdfgenerated (eg Microsoft Teams, when a meeting is started then the toolbar buttons (eg Mute, react) aren't visible to UIA, but hovering over them with the cursor or calling ElementFromPoint causes Teams to generate and make them visible to UIA.
 	- better way of supporting differing versions of IUIAutomation (version 2, 3, 4)
 */
 

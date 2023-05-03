@@ -15,7 +15,7 @@ class Caret{
 
 
 	__new(){
-		; this.detect()
+		this.detect()
 	}
 
 

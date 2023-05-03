@@ -15,7 +15,7 @@ initImgCaret(){
 
 
 			caret.detect()
-			; MsgBox("initImgCaret() :: X : " current_x " / Y : " current_y " / W : " current_w " / H " current_h)
+			MsgBox("initImgCaret() :: X : " current_x " / Y : " current_y " / W : " current_w " / H " current_h)
 
 
 			if( keyTyping ) {
@@ -81,7 +81,7 @@ searchingLateCaret(loopCount){
 
 
 			; MsgBox("INDEX : " A_Index)
-			; MsgBox("LateCaret INDEX : " A_Index " X : " current_x " / Y : " current_y " / W : " current_w " / H " current_h)
+			MsgBox("LateCaret INDEX : " A_Index " X : " current_x " / Y : " current_y " / W : " current_w " / H " current_h)
 
 
 
