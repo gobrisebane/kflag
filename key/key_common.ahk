@@ -42,12 +42,16 @@ return
 ~^y up::
 ~^+z up::
 
+
 		KeyTyping := False
+		dumbCount := 0
 
 
 
 		sleep caretChangeDelay
+
 		initInstantCaret()
+
 
 return
 
@@ -237,7 +241,6 @@ return
 ~+.::
 ~+/::
 
-	keyTyping := True
 
 
 	spaceCount := 0
@@ -248,43 +251,154 @@ return
 
 	; removeSelectingAndCompareFlagForTyping()
 
-	; dumbass3()
-
-	; removeSelctionForKey()
 
 
 
-	dumbass4()
+
+
+
+
+	; correctFlagAfterDelete()
+
+
+
+
+	detectEngine1()
+
+	keyTyping := True
+
+
 
 return
 
 
 
+detectEngine1(){
+
+	sleep 85
+
+	if( !keyTyping ){
+
+		MsgBox("insert")
+		caret.detect()
+		initInstantCaret()
+
+	}
+
+
+
+	; Loop 10{
+	; 	caret.detect()
+	; 	MsgBox("X : " current_x " / Y : " current_y)
+	; 	sleep 10
+	; }
+
+
+}
+
+
+
+
+
+dumbass5(){
+
+	; sleep caretChangeDelay
+
+	; MsgBox("DUMBCOUNT START")
+
+	dumbCount++
+	sleep 80
+
+
+	caret.detect()
+
+	if(dumbCount = 1){
+
+
+			initInstantCaret()
+
+
+		; MsgBox("okay im done")
+
+		; if( isCurrentYandPrevYDiffer2() ){
+		; 	MsgBox("WORK?")
+		; 	initInstantCaret()
+		; }
+	}
+
+
+}
 
 
 
 
 
 
-dumbass4(){
+
+
+
+
+
+
+
+
+
+
+
+correctFlagAfterDelete(){
 
 	; sleep caretChangeDelay
 
 	dumbCount++
-	sleep 50
+	sleep 80
 	caret.detect()
 
 
-	; MsgBox("DUMBCOUNT START")
+	MsgBox("DB START")
 	; MsgBox("A_PriorHotKey : " A_PriorHotKey)
 
+	MsgBox("A_ThisHotKey : " A_ThisHotKey)
 
-	if(dumbCount=1){
+	if( A_ThisHotKey = "~q" OR A_ThisHotKey = "~w"){
+		;1. q나 w일때만 옮기고 ->
+			MsgBox("1-1. if this key q or w")
+
+
+		/*
+			2.. 플래그가 카렛데비 너무 앞에 있을때만 옮겨라.. 만약 앞에 있으면 옮기지 마라
+		*/
+
+		if(flagId){
+				GuiGetPos( fX,fY,fW,fH, flagId )
+				fx := fx + caret_flag_margin
+
+				if(fX > current_x OR fy > current_y){
+						MsgBox("1-2. 오른쪽으로 떨어져있다. :: 선택상태 - 삭제")
+						SplashImageGUI()
+					} else if (fX <= current_x){
+						MsgBox("2. 현재 flag가 왼쪽에 있거나 같다. :: 일반상태 - 무시")
+					}
+		}
+	}
+
+
+
+
+
+	/*
+
+
+	if(dumbCount = 1){
+
+		MsgBox("A_PriorHotKey : " A_PriorHotKey)
 
 
 		arr := ["Enter","Space","BackSpace","Del","^","button"]
 		if( !isStringInArray(A_PriorHotKey, arr) ){
+			;얘네 목적은, 위에 애들과 충돌하지 않기 위해
 
+
+			MsgBox("1. NOT CONTAIN ABOVE KEYS")
 			; MsgBox("!!! MUST ONLY ONE WORKS !!!")
 
 
@@ -307,10 +421,10 @@ dumbass4(){
 					if(fX > current_x OR fy > current_y){
 						; MsgBox("1. 현재 flag 가 오른쪽으로 떨어져있다. :: 선택상태 - 삭제")
 
-						/*
-						initInstantCaret을 사용할 경우 내부에 keyTyping := False가있어서
-						피하기 위해 splash를 사용함
-						*/
+
+						;initInstantCaret을 사용할 경우 내부에 keyTyping := False가있어서
+						;피하기 위해 splash를 사용함
+
 						caret.detect()
 						SplashImageGUI()
 
@@ -318,10 +432,85 @@ dumbass4(){
 						; MsgBox("2. 현재 flag가 왼쪽에 있거나 같다. :: 일반상태 - 무시")
 					}
 			}
+
+		} else {
+			MsgBox("2. ABOVE KEY CONTAIN")
 		}
+
 	}
+	*/
 
 
+
+
+
+	; if( isCurrentYandPrevYDiffer() ){
+	; 	initInstantCaret()
+	; }
+
+
+}
+
+
+
+dumbass4(){
+
+	; sleep caretChangeDelay
+
+	MsgBox("DUMBCOUNT START")
+
+	dumbCount++
+	sleep 80
+	caret.detect()
+
+	; MsgBox("A_PriorHotKey : " A_PriorHotKey)
+
+	; if(dumbCount = 1){
+	; 	MsgBox("A_PriorHotKey : " A_PriorHotKey)
+	; 	arr := ["Enter","Space","BackSpace","Del","^","button"]
+	; 	if( !isStringInArray(A_PriorHotKey, arr) ){
+	; 		;얘네 목적은, 위에 애들과 충돌하지 않기 위해
+
+
+	; 		MsgBox("1. NOT CONTAIN ABOVE KEYS")
+	; 		; MsgBox("!!! MUST ONLY ONE WORKS !!!")
+
+
+	; 		if(flagId){
+
+	; 			GuiGetPos( fX,fY,fW,fH, flagId )
+
+	; 			; MsgBox("caret_flag_margin : " caret_flag_margin)
+
+	; 			fx := fx + caret_flag_margin
+	; 			; fx := fx + 5
+	; 			; fx := fx
+	; 			; MsgBox("current_x : " current_x)
+	; 			; MsgBox("fx : " fx)
+
+
+
+	; 				; caret.detect()
+
+	; 				if(fX > current_x OR fy > current_y){
+	; 					; MsgBox("1. 현재 flag 가 오른쪽으로 떨어져있다. :: 선택상태 - 삭제")
+
+	; 					/*
+	; 					initInstantCaret을 사용할 경우 내부에 keyTyping := False가있어서
+	; 					피하기 위해 splash를 사용함
+	; 					*/
+	; 					caret.detect()
+	; 					SplashImageGUI()
+
+	; 				} else if (fX <= current_x){
+	; 					; MsgBox("2. 현재 flag가 왼쪽에 있거나 같다. :: 일반상태 - 무시")
+	; 				}
+	; 		}
+
+	; 	} else {
+	; 		MsgBox("2. ABOVE KEY CONTAIN")
+	; 	}
+	; }
 
 
 	if( isCurrentYandPrevYDiffer() ){

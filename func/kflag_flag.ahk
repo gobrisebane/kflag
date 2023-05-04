@@ -9,7 +9,7 @@ SplashImageGUI(){
 	drawFlag()
 
 
-	MsgBox("!SPLASH CALLED")
+	; MsgBox("!SPLASH CALLED")
 
 
 	Try {

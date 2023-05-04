@@ -516,21 +516,25 @@ detectingCaretYPosChange(){
 }
 
 
+
+
+
+
 isCurrentYandPrevYDiffer(){
 
-	res := current_y-prev_y
+	res := current_y - prev_y
 
-	; MsgBox("res : " res)
-	; MsgBox("res/abs : " Abs(res) )
+	MsgBox("res : " res)
+	MsgBox("res/abs : " Abs(res) )
+
 	if( Abs(res) > 1 ){
 		; MsgBox("1. 오차 1보다 크다..")
 		return True
-
 	}
-
-
-
 }
+
+
+
 
 
 
@@ -574,6 +578,23 @@ RemoveToolTip:
 ToolTip
 return
 
+
+
+
+
+
+
+
+captureStartingPointOfDrag(){
+
+	/*
+	이 함수가 있어야 첫번째 드래그할 때 빠른속도로 내려도 시작점을 잡아준다.
+	*/
+	sleep 25
+	caret.detect()
+	; MsgBox("current_x : " current_x)
+	; MsgBox("current_y : " current_y)
+}
 
 
 

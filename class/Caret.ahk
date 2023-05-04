@@ -29,9 +29,14 @@ class Caret{
 
 		this.cur_exe := cur_exe
 		this.cur_winid := cur_winid
+
+
 		prev_x := current_x
 		prev_y := current_y
 
+		; MsgBox("--prevwors--")
+		; MsgBox("prev_x : " prev_x)
+		; MsgBox("prev_y : " prev_y)
 
 		; MsgBox("this.cur_winid : " this.cur_winid)
 		; MsgBox("this.pre_winid : " this.pre_winid)

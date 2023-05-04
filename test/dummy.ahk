@@ -2,20 +2,23 @@
 	Introduction & credits
 	This library implements Microsoft's UI Automation framework. More information is here: https://docs.microsoft.com/en-us/windows/win32/winauto/entry-uiauto-win32
 
-
+freely
 	tejktjkesjfdkjfkdjfjdsfljsdfds
 	dsjdksjdksj
-	testsetereremmm
-
+	testsetereremmmhammer
+jasonasdasdas
+jasonsdner jillsdfsdf
+jason mcaboyasdasdasd
+asdasdsa
 	dkfjdkfjkdfjkdvmkvkfk
-
-	dpspdj
+jsafsfsdf
+	dpspdjdsddsffsdf
 fsfdfdfdfsdf
 dsfsdfsdfsfdfdsfsdfsdf
 sadsadsadasdsdas
-sdasdsad
-sdsds
-dsdsdsds
+sdasdsadttrt
+sdsds t
+dsdsdsds tretse
 cascascsaca
 
 sdsdsd
@@ -27,318 +30,25 @@ cscs
 ddsdsdwr
 t
 
-
+freehong
 sdsdsd
 dffdfdc
 dfdfdfdfd
 csdcdscsdcsdc
 vdvdvd
-sdsdsds
-dfdfdsfdsfsddfdfdfdfdfdfdfdfdfsssxvvvcvcvcvcvcvcvvvcvc
-v
-vgod bless americal
-djnvjfier
-sdsssdsdsdsd
-sds
-sdsd
-vl,lvf
-dfdf;dsfkdlsfk
-dwodkwodkwo
-dkflsdsdsdsd
-mmm
-v
-s
-sdsdsdsckvmkfsvmkf
-sdsdsldklsdsdsdsdsdsdsjdksajdkasdjkasdjkasdjasd
-
+sdsdsdsplasinder
 
 t
 k
 s
 c
-vdvdv
-sdsds
-dsdsds
-csc
-
-sdsdsdsd
-
-dfdfdf
-
-sdsdsdsd
-sfsfsfsf
-vdvdvd
-sdsds
-sdsdsds
+vdvdvbesitese dsdkjaskdjiwNECAKALACHISOKNEDdkf
 
 
 
 
-
-
-
-
-
-sdsdsdsdsdsd
-sdsdsdsdsdsdsd
-sdsdsdsdsdsdsd
-sdsdsdsdsdsvvvdvdv
-
-
-
-
-
-
-
-
-
-
-
-
-sd
-sdsd
-sdsds
-sd
-sdsd
-sdsds
-dsd
-sd
-
-vdddvdv
-dvdd
-sdsdsd
-
-
-sdjskd
-sdksjdksjdksjdksj
-sdjskdjskdjskdjskjdnfosdkosdkosdoks
-t
-sdsd
-sdssd
-
-
-
-classfied
-
-sosors
-dsdsd
-dsds
-disterss
-worldpwra
-dsdscmksd sdklsdklsdlkmdksmdosdoksodk
-dskdslkdslwoerko
-sdsdjksdj
-stress woasosdowahtwakjkaksjdiwdiwjidwjidwknknckscns
-sdjskdjskdksjd
-sdjskdsd
-
-dsds
-cscscs
-vvvsvdvs
-dds
-
-s
-sd
-teste
-asdsdasd
-sdsd
-sdsds
-o
-okkiji
-opopop
-oioioioi
-mmkmkmk
-mmmm
-llll
-ooooo
-pppp
-pkokok
-fjl;kasd
-asdfnlk
-asfdjlkn
-
-
-
-cscsc
-sdsdsd
-sdsdsd
-sdsdsds
-cscs
-sdsdsd
-sdsdsd
-plsdpsleji
-
-tietnnseif
-
-
-sdsdsd
-tjtkrsdjgdfks
-dfkjsdafljsadklfjasdf
-trjsktjfdkgdj
-fdskjfdkasl
-testere
-testesrsesdjkdjskdj ksadjaskldaskldjaslkdjaslkdjaddddddddddddddddddddddddddddddddddddddddddddddddddsdsdddddddddddddddddddwdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddtkdjskdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddcsddddddx
-sdfjksdlkfjdslkfjdsl
-daslkdjaslkdjlkasdjas
-asdfjlkdsddsddsdsddfkdlfksddfkdlfk
-sjksdjksdljk'dsddsddsdsddfkdlfk
-adlsjk dsddsddsdsdrjekdsdsdsdssddfkdlfk
-sjksdjksdljk'dsddsddsdsddfkdlfk
-adlsjk dsddsddsdsdrjekdfdfdfdsddfkdlfk
-sjksdjksdljk'dsddsdds
-adlsjk dsddsddsdsdrjekdffdfdsddfkdlf,"Del"k
-sjksdjksdljk'dsddsddsdsddfkdlfk
-adlsjk dsddsddsdsdrjekfdfdfdggggggfdgdfgdf
-sjksdjksdljk'dsddsddsdsddfkdlfksfk
-adlsjk dsddsddsdsdrjekdfdfdfdsddfkdlfk
-sjksdjksdljk'dsddsdds
-adlsjk dsddsddsdsdrjekdffdfdsddfkdlf,"Del"k
-sjksdjksdljk'dsddsddsdsddfkdlfk
-adlsjk dsddsddsdsdrjekfdfdfdggggggfdgdfgdf
-sjksdjksdljk'dsddsddsdsddfkdlfkdsdsdsfk
-adlsjk dsddsddsdsdrjekdfdfdfdsddfkdlfk
-sjksdjksdljk'dsddsdds
-adlsjk dsddsddsdsdrjekdffdfdsddfkdlf,"Del"k
-sjksdjksdljk'dsddsddsdsddfkdlfk
-adlsjk dsddsddsdsdrjekfdfdfdggggggfdgdfgdfrererere
-sjksdjksdljk'dsddsddsdsddfkdlfkfkwewewewdsfdsfsdf
-adlsjk dsddsddsdsdrjekdfdfdfddjdsdsds
-uiautomationclientsdsdscscscsdsfsdfdsf
-dskjdksdsjksdjksdljk'dsddsddsdsddfkdlfkdsdsds
-adlsjk dsddsddsdsdrjekfdfdfdgggdskjdterercdv
-adlsjk dsddsddsdsdrjekrjke dsddsddsdsddfkdlfkvv
-ads;k'dsddsddsdsduiautomationclientddfdsfdsf
-	Questions:wefinQrocdjkhttps://dcumentation: https://docs.microsoft.com/en-us/windows/win32/api/tetst/nn-uiautomationclient-iuiautomation
-sdsdsddsdsdsdsdsdfdsfsdfsdsadsadsadasdasdasdas
-hi hitlersdsdssdsdsdsdsdddsdsdsdcsdsdsscscssdfsdfsasdsadsad
-sdsdsdsdsdsdddsssdfdsfsddsdsdssdsdssvdsvsdvsdtseterdasdasdasdas
-sdsdddsdsdtsddsmkelsdsdsdssdfsdfsddsdsdsdcscsssdsdsscscs
-sdsdsdccssdsvstsdsdsnewowkewsfdsdfdfscssdsdsdasdadsdasads
-sdsdsdcsdsdsdsssdcsdnewjjtvvdvsdvsdsdssdsadasdqewqweqewqeweqw
-sdsdsdsdsdsdssdsdsdssdsdsdsdsasdsdssdsdssdsdsdsdsdsdsds
-dsdsdcctesdsdsadsdasdasdasssleeperqweqweqqeqweeqwqeweqw
-qewqweqewqeweqweqwasdadasdadsqweqweqwe
-sdsdsqweqweqweqwasddasdasadssdasdsadsaweqweqweqwewq
-asdadsdasasdqwqeweqweqweqwewqeqwewq
- 	Questions:wefinQrocdjkhttps://docs.microsoft.com/en-us/windows/win32/api/uiautomationclient/nn-uiautomationclient-iuiautomation
-	 	Questions:wefinQrockdjkymodusnfd,lfdhe UI Automation as an object represented by the IUIAutomation interface. The members of thisdsdsdsdsswer
-	Microsoft documentation: https://docs.microsoft.com/en-us/windows/win32/api/uiautomationclient/nn-uiautomationclient-iuiautomation
-sdjkASDASDSAD
-teostjeosdssuyite
-ㄴㅇㄴㅇdsdscscsutidjsiSADASDAS
-ㄴㅇㄴㅇsdsdsdSDSDSSDSADSAD
-afsjkdsdsdprojscscscCSCSCXZCZXCZXC
-jlkafd	; Compares two integcscser so inc2 need to be RuntimeId arrays (returned by GetRuntimeId()), where array.base.__Value contains the corresponding safearray.
-corojksdsdsdASDSADAS
-SDSDSdsdskdnsCCCSWEWEWXZCXZCZXC
-setenceSSSDDSDSDSDSQW
-setencesdsdssadasdasdasdsad
-SDSDSDSdsadsadsadsadsadsaCSCSCSS
-SDSDSDSsdsdsdvdffdvdfvdfvASDASDASDAS
-VXCVXCVXCVsdsdsvdvfdvdadsdasdasdX
-scscssdsdssdsdsdDFDFDFDASDASDASDA
-SDSDsdsdsdfdfdfsdsdsCSCSCS
-dsddfdfdfcscscsadfdsfdsfdsfsdczxczxczxSADSADASDA
-dASDcscscstetstsasdasdasdSDSDS
-sdsdsdstoastkttetewqwqwqSDDSDSCSCSC
-qweqweqwetetektjSADASDASDAS
-qwewqewqeqwetoastCVCVCSCSCSC
-asdasdastVCVCVSADASDASDASDASDSDSDSDS
-asdasdasdttetasdasdasdas
-asdasdasdDVDVDVDTETETSDSDSSDSDSD
-vxacvxcvxcSDSD
-sdfdsfdsfsddsdsdasDSADSADTET
-fsdfdsfdsfSDSDSDSDSDS
-qwesdsdXCXCXCXC
-sdsdssdstetseeqqqwecscscXCXCXC
-asdasdassdsdsdssdQXCXCXCXCSDSDS
-dsadasdassdsdSDSDSS
-dsddseerercscscssadasdasdcscscQQWW
-xczxcdsdgbgbgbvffbf
-helloccdcdvfsdsdSDSDS
-thisSDSDS
-thisZXCX
-questSDSDSCSCSC
-wqwqwqquweasrtZXCX
-SDSDS
-fefeZXCZXC
-fellowZXC
-sdsds
-asdasdasdas
-SFDSFSDF
-vdsvdsvsdv
-sdsdsdsad
-FDSFDSF
-bgbgfbggwe
-ADFDFDS
-dasdsadasdvc
-DASDASDASD
-asdasdasdas
-SADFASDASDSA
-FDGFDGDFG
-asdasdFGSDSDS
-SDSDSDS
-CSCSDSD
-SDSDSD
-SDSDS
-DSDS
-SDSDS
-ASDASDSAD
-SDSDSD
-SCSCSC
-SDSADS
-SADSADSA
-SCSCSC
-SCSCS
-afasdfasf
-BBFBFB
-SDSDSD
-asdasd
-DFDSFDS
-DSFDSFS
-FDSFSDSDS
-SDSDSZXC
-SDSDSDS
-SDSDSD
-SDSDS
-CSCSCS
-CSCSCS
-SDSDSSDSDS
-SCCSCSC
-SDSDSD
-VFVFXVCX
-SCSCS
-DFDFD
-ZXC
-SCSCS
-CSCS
-SDSDSD
-DSFSDF
-SDSD
-D
-SDFSDFSD
-CZXCXZC
-CXZCZXCZXC
-TSETSET
-ZCZXCZXC
-stringsdsdsdsdsadsasdsds
-raskd sdkskdjrtkjsd skjdks
-dumboass 4 aiscscsc
-ourttesfdngng fdfbdfbd
-asdasdsadsdsd
-sadsadasdcscsdbvb
- 	Questions:wefinQrockdjkymodusnfd,lfdhe UI Automation as an object represented by the IUIAutomation interface. The members of thisdsdsdsdsswer
-	Microsoft documentation: https://docs.microsoft.com/en-us/windows/win32/api/uiautomationclient/nn-uiautomationclient-iuiautomationsdsds
-*/sdsds
-sdsdsdsd
-
-SDSDSD
-SDKSLD
- DSDSKDJSK DSJ DSKJ S
- SDSDS
- SDSD
-
-
+sdsdsstsetesrienrseitisidfiejfbhelperefuckoyoksfod
+adsdas
 class UIA_Interface extends UIA_Base {
 	static __IID := "{30cbe57d-d9d0-452a-ab13-7ac5ac4825ee}"
 
@@ -365,19 +75,7 @@ class UIA_Interface extends UIA_Base {
 	RawViewCondition[] {
 		get {
 			local out
-			return UIA_Hr(DllCall(this.__Vt(17), "ptr",this.__Value, "ptr*",out:=""))?new UIA_Condition(out):
-		}
-	}
-	ControlViewCondition[] {
-		get {
-			local out
-			return UIA_Hr(DllCall(this.__Vt(18), "ptr",this.__Value, "ptr*",out:=""))?new UIA_Condition(out):
-		}
-	}
-	ContentViewCondition[] {
-		get {
-			local out
-			return UIA_Hr(DllCall(this.__Vt(19), "ptr",this.__Value, "ptr*",out:=""))?new UIA_Condition(out):
+			return UIA_Hr(DllCall(this.__Vt(17), "ptr",this.__Value, "ptr*",out:=""))?new UIA_Condition(out):JUST
 		}
 	}
 	ProxyFactoryMapping[] {
@@ -734,11 +432,9 @@ class UIA_Interface extends UIA_Base {
 	CreateCondition(propertyOrExpr, valueOrFlags:="", flags:=0) {
 		local
 		global UIA_Enum
-		if InStr(propertyOrExpr, "=") { ; Expression
-			match := "", match3 := "", match5 := "", currentCondition := "", fullCondition := "", operator := "",valueOrFlags := (valueOrFlags == "") ? 0 : valueOrFlags, counter := 1, conditions := [], currentExpr := "(" propertyOrExpr ")"
-			; First create all single conditions (not applying AND, OR, NOT)
-			while RegexMatch(currentExpr, "i) *(NOT|!)? *(\w+?(?<!UIA_CONDITION)) *=(?: *(\d+|'.*?(?<=[^\\]|[^\\]\\\\)')|([^()]*?)) *(?: FLAGS=(\d))? *?( AND | OR |&&|\|\||[()]|$) *", match) {
-				/*
+		if InStr(propetriucks sis everythi
+			so i want to tricl
+
 					matchRegex:
 						group1 : NOT
 						group2 : propertyId
@@ -878,7 +574,7 @@ class UIA_Interface extends UIA_Base {
 		}
 		return cEl
 	}
-	; In some setups Chromium-based renderers don't react to UIA calls by enabling accessibility, so we need to send the WM_GETOBJECT message to the renderer control to enable accessibility. Thanks to users malcev and rommmcek for this tip. Explanation why this works: https://www.chromium.org/developers/design-documents/accessibility/#TOC-How-Chrome-detects-the-presence-of-Assistive-Technology
+	; In some setups sdsddssotyping sdcc on.. it is ..simple renderers don't react to UIA calls by enabling accessibility, so we need to send the WM_GETOBJECT message to the renderer control to enable accessibility. Thanks to users malcev and rommmcek for this tip. Explanation why this works: https://www.chromium.org/developers/design-documents/accessibility/#TOC-How-Chrome-detects-the-presence-of-Assistive-Technology
 	ActivateChromiumAccessibility(hwnd:="A", cacheRequest:=0, timeOut:=500) {
 		static activatedHwnds := {}
 		if hwnd is not integer
@@ -906,7 +602,7 @@ class UIA_Interface2 extends UIA_Interface {
 			return UIA_Hr(DllCall(this.__Vt(59), "ptr",this.__Value, "int", value))
 		}
 	}
-	; Specifies the length of time that UI Automation will wait for a provider to respond to a client request for an automation element. Default is 20000ms (20 seconds), minimum seems to be 50ms.
+	; Specifies the length of time that UI Automation will wait for a provider to respond to a client request for an automation element. Default is 20000ms (20 seconds), minimum seems to be 50ms.dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
 	ConnectionTimeout[]
 	{
 		get {
@@ -917,7 +613,7 @@ class UIA_Interface2 extends UIA_Interface {
 			return UIA_Hr(DllCall(this.__Vt(61), "ptr",this.__Value, "int", value)) ; Minimum seems to be 50 (ms?)
 		}
 	}
-	; Specifies the length of time that UI Automation will wait for a provider to respond to a client request for information about an automation element. Default is 2000ms (2 seconds), minimum seems to be 50ms.
+	; Specifies the length of time that UI Automation will wait for a provider to respond to a client request for information about an [automation] element. Default is 2000ms (2 seconds), minimum seems to be 50ms.
 	TransactionTimeout[]
 	{
 		get {
@@ -1125,73 +821,38 @@ class UIA_Element extends UIA_Base {
 			local
 			return UIA_Hr(DllCall(this.__Vt(36), "ptr",this.__Value, "ptr*",out:=""))?out:
 		}
-	}
-	CurrentItemType[] {
+	}erers
+	CurrentItemType[] {testse
+		get {
+			localdsdsd
+			return UIA_Hr(DllCall(this.__Vt(37), "ptr",this.__Value, "ptr*",out:=""))?UIA_GetBSTRValue(out):sdsds
+		}sdsddfdfd
+	}SDSDSSDSDSSDSDSDSbdfbstjktjskdfsjf
+	CurrentIsOJUSTINOENSECTONSD 1ASDASDASOF edForForm[] {dfdfd 1455
+			local
+			return UIA_Hr(DllCall(this.__Vt(44), "ptr",this.__Value, "ptr*",out:=""))?UIA_Element(out):asdsadsad
+		}FLASDL
+	}FFKELKFLEFDSFDSADSFASDFSD
+	CurrentAriaRole[] {adasdsad
+		get {DSAgreat idea.. thnaks
+
+			EWRValidFor Form[] { 1528
+banmlk
+tstesjkperfefjefctly works..thanksdasdas
 		get {
 			local
-			return UIA_Hr(DllCall(this.__Vt(37), "ptr",this.__Value, "ptr*",out:=""))?UIA_GetBSTRValue(out):
+			return UIA_Hr(DllCall(this.__Vt(47), "ptr",this.__Value, "ptr*",out:=""))?out: 1698
 		}
-	}
-	CurrentIsOffscreen[] {
-		get {
-			local
-			return UIA_Hr(DllCall(this.__Vt(38), "ptr",this.__Value, "ptr*",out:=""))?out:
-		}
-	}
-	CurrentOrientation[] {
-		get {
-			local
-			return UIA_Hr(DllCall(this.__Vt(39), "ptr",this.__Value, "ptr*",out:=""))?out:
-		}
-	}
-	CurrentFrameworkId[] {
-		get {
-			local
-			return UIA_Hr(DllCall(this.__Vt(40), "ptr",this.__Value, "ptr*",out:=""))?UIA_GetBSTRValue(out):
-		}
-	}
-	CurrentIsRequiredForForm[] {
-		get {
-			local
-			return UIA_Hr(DllCall(this.__Vt(41), "ptr",this.__Value, "ptr*",out:=""))?out:
-		}
-	}
-	CurrentItemStatus[] {
-		get {
-			local
-			return UIA_Hr(DllCall(this.__Vt(42), "ptr",this.__Value, "ptr*",out:=""))?UIA_GetBSTRValue(out):
-		}
-	}
-	CurrentBoundingRectangle[] {
-		get {
-			local
-			return UIA_Hr(DllCall(this.__Vt(43), "ptr",this.__Value, "ptr",&(rect,VarSetCapacity(rect,16))))?UIA_RectToObject(rect):
-		}
-	}
-	CurrentLabeledBy[] {
-		get {
-			local
-			return UIA_Hr(DllCall(this.__Vt(44), "ptr",this.__Value, "ptr*",out:=""))?UIA_Element(out):
-		}
-	}
-	CurrentAriaRole[] {
-		get {
-			local
-			return UIA_Hr(DllCall(this.__Vt(45), "ptr",this.__Value, "ptr*",out:=""))?UIA_GetBSTRValue(out):
-		}
-	}
-	CurrentAriaProperties[] {
-		get {
-			local
-			return UIA_Hr(DllCall(this.__Vt(46), "ptr",this.__Value, "ptr*",out:=""))?UIA_GetBSTRValue(out):
-		}
-	}
-	CurrentIsDataValidForForm[] {
-		get {
-			local
-			return UIA_Hr(DllCall(this.__Vt(47), "ptr",this.__Value, "ptr*",out:=""))?out:
-		}
-	}
+	}wewe
+sdsdssdsde
+stillstil lot of
+setetes
+there is lot
+
+sdsdsdtyping os borea
+
+
+
 	CurrentControllerFor[] {
 		get {
 			local

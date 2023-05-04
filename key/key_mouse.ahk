@@ -10,12 +10,21 @@
 
 ~LButton up::
 
+
+
+
+
 		;플래그가 활성 된 창을 드래그 후 놓았을 때 이게 있어야 따라간다.
 		initInstantCaret()
 
 
-return
 
+
+
+
+
+
+return
 
 
 
@@ -33,15 +42,21 @@ return
 
 
 
+
+
 	MsgBox("------CLICK START------")
 	timeRecord("1-LBUTTON")
 	timeRecordCurrentProgram()
 
 
+
+
+
 	if( isExeSearchingLateCaret() ){
 		searchingLateCaret(10)
 	} else {
-		initImgCaret()
+		; initImgCaret()
+		initInstantCaret()
 	}
 
 
@@ -51,6 +66,13 @@ return
 	; MsgBox("cur_exe : " cur_exe)
 
 
+
+
+
+
+
+
+	captureStartingPointOfDrag()
 
 
 

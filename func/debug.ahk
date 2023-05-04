@@ -833,8 +833,6 @@ return
 
 
 
-	; caret.detect()
-	; MsgBox("X : " current_x " / Y : " current_y)
 
 
 	; GetCaretPos(x, y)
@@ -849,14 +847,18 @@ return
 	; MsgBox("h : " A_Caret("h"))
 
 
-  ControlGet, ctrlHwnd, Hwnd,, %ctrlClass%, ahk_class Notepad
+;   ControlGet, ctrlHwnd, Hwnd,, %ctrlClass%, ahk_class Notepad
 
-		  DllCall("SendMessage","PTR",ctrlHwnd,"UInt",0xB0,"PTR*",start,"PTR*",end) ;EM_GETSEL
+; 		  DllCall("SendMessage","PTR",ctrlHwnd,"UInt",0xB0,"PTR*",start,"PTR*",end) ;EM_GETSEL
 
-		  MsgBox("start : " start)
-		  MsgBox("end : " end)
+; 		  MsgBox("start : " start)
+; 		  MsgBox("end : " end)
 
 
+
+
+	caret.detect()
+	MsgBox("X : " current_x " / Y : " current_y)
 
 
 return

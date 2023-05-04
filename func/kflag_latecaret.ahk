@@ -14,10 +14,12 @@ initImgCaret(){
 
 
 
-
-
-			caret.detect()
 			MsgBox("initImgCaret() :: X : " current_x " / Y : " current_y " / W : " current_w " / H " current_h)
+
+
+
+				caret.detect()
+
 
 
 			if( keyTyping ) {
@@ -25,29 +27,29 @@ initImgCaret(){
 				break
 			}
 
+			; if( dumbCount > 0 ) {
+			; 	MsgBox("dumbcount > 0")
+			; 	break
+			; }
 
 
 
+			/*
+			 A_ThisHotKey는 처음시작할때 등록되면 계속 같은 값을 가진다.
+			 최소한 A_thishotkey가 qwerty 가 아닐때만 작동하게 할 수 있다.
+			*/
 
-			if( current_w > 0 ){
 
+			if( current_w > 0  ){
 				SplashImageGUI()
-
 			} else if( current_w = 0 ){
-
 				hideSplashGUI()
-
 			}
 
 
 
+			sleep 150
 
-
-
-
-
-
-			sleep 100
 		}
 
 
@@ -148,23 +150,29 @@ searchingLateCaret(loopCount){
 
 initInstantCaret(){
 
-	clearMinXY()
-	dumbCount := 0
-	keyCount := 0
+
+	; dumbCount := 0
+
+
+	; clearMinXY()
+	; keyCount := 0
 	; initKey()
 	; keyTyping := False
 
 
 
 	; MsgBox("*************** CALLING INITIMGINSTANT *****************")
-	timeRecord("initInstantCaret()-1 START")
+	; timeRecord("initInstantCaret()-1 START")
+
+
+
 
 
 	caret.detect()
 
 
 
-	if(current_w > 0){
+	if(current_w > 0 ){
 		timeRecord("initInstantCaret()-1-1 (W>0) / SplashImageGUI() w : " w)
 		; MsgBox("INSTANT-1-WORKS")
 		SplashImageGUI()
