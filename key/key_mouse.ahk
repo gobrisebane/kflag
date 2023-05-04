@@ -70,14 +70,6 @@ return
 
 
 
-
-
-	captureStartingPointOfDrag()
-
-
-
-
-
 return
 
 

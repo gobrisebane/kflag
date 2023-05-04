@@ -27,10 +27,7 @@ initImgCaret(){
 				break
 			}
 
-			; if( dumbCount > 0 ) {
-			; 	MsgBox("dumbcount > 0")
-			; 	break
-			; }
+
 
 
 
@@ -151,13 +148,12 @@ searchingLateCaret(loopCount){
 initInstantCaret(){
 
 
-	; dumbCount := 0
 
 
-	; clearMinXY()
 	; keyCount := 0
 	; initKey()
-	; keyTyping := False
+
+	keyTyping := False
 
 
 
@@ -199,8 +195,6 @@ initInstantCaret(){
 initKey(){
 
 
-	clearMinXY()
-	dumbCount := 0
 
 
 

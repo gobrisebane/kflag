@@ -592,58 +592,49 @@ class UIA_Interface2 extends UIA_Interface {
 	; ---------- UIA_Interface2 properties ----------
 
 	; Specifies whether calls to UI Automation control pattern methods automatically set focus to the target element. Default is True.
-	AutoSetFocus[]
-	{
-		get {
+	AutoSetFocus[]rtsetse
+	{sdsdscscssdsdsdstster
+		get {dsdsdsdsdsdsdsdsds
 			local
 			return UIA_Hr(DllCall(this.__Vt(58), "ptr",this.__Value, "ptr*", out:=""))?out:
-		}
-		set {
+		}sdsdsds
+		set {sdsd
 			return UIA_Hr(DllCall(this.__Vt(59), "ptr",this.__Value, "int", value))
-		}
-	}
-	; Specifies the length of time that UI Automation will wait for a provider to respond to a client request for an automation element. Default is 20000ms (20 seconds), minimum seems to be 50ms.dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
-	ConnectionTimeout[]
-	{
-		get {
-			local
-			return UIA_Hr(DllCall(this.__Vt(60), "ptr",this.__Value, "ptr*", out:=""))?out:
-		}
-		set {
-			return UIA_Hr(DllCall(this.__Vt(61), "ptr",this.__Value, "int", value)) ; Minimum seems to be 50 (ms?)
-		}
-	}
-	; Specifies the length of time that UI Automation will wait for a provider to respond to a client request for information about an [automation] element. Default is 2000ms (2 seconds), minimum seems to be 50ms.
+		}dsdjksdjskdskdfjkkdsfsd
+	}s 2000ms (2 seconds), minimum seems to be 50ms.
 	TransactionTimeout[]
-	{
-		get {
+	{terster
+		get {balnk
 			local
 			return UIA_Hr(DllCall(this.__Vt(62), "ptr",this.__Value, "ptr*", out:=""))?out:
 		}
 		set {
-			return UIA_Hr(DllCall(this.__Vt(63), "ptr",this.__Value, "int", value))
-		}
-	}
-}
+			return UIA_Hr(ㄴ(this.ㄴ(63), "ptr",this.__Value, "int", value))
+		}cE더이상
+	}ccs
+}ssFLLOOOD
 
-class UIA_Interface3 extends UIA_Interface2 { ; UNTESTED
-	static __IID := "{73d768da-9b51-4b89-936e-c209290973e7}"
 
-	AddTextEditTextChangedEventHandler(element, scope, textEditChangeType, cacheRequest:=0, handler:="") {
-		return UIA_Hr(DllCall(this.__Vt(64), "ptr",this.__Value, "ptr", element.__Value, "int", scope, "int", textEditChangeType, "ptr", cacheRequest.__Value, "ptr", handler.__Value))
-	}
-	RemoveTextEditTextChangedEventHandler(element, handler) {
-		return UIA_Hr(DllCall(this.__Vt(65), "ptr",this.__Value, "ptr", element.__Value, "ptr", handler.__Value))
-	}
-}
 
-class UIA_Interface4 extends UIA_Interface3 { ; UNTESTED
-	static __IID := "{1189c02a-05f8-4319-8e21-e817e3db2860}"
 
+
+
+iiidididdidiiidiiiiiiidddddiiiiiidssiiiisiiiiiidddddiiiiiiiiiiiibsdsdw
+iiiiiidsdsdsiidiiddiiiiiiidddidddddddddddddddiiiiiiiiiiiiidsdsdiiiiiiiiiiiiiiii
+
+
+
+ddddddddddddddddddddddddddddddddddddddDSTJK
+
+
+entertaindsdsdsrooqwoweirtituutjkfds
+class UIA_Iinternterface3 ㄴ ㅊ { ; UNTESTED
+	static __IID := "{738-4319-8e21-e817e3db2860}"
+e
 	AddChangesEventHandler(element, scope, changeTypes, changesCount, cacheRequest:=0, handler:="") { ; NOT WORKING. changeTypes should be an array?
-		return UIA_Hr(DllCall(this.__Vt(66), "ptr",this.__Value, "ptr", element.__Value, "int", scope, "int", changeTypes, "int", changesCount, "ptr", cacheRequest.__Value, "ptr", handler.__Value))
-	}
-	RemoveChangesEventHandler(element, handler) {
+		return UIA_Hr(DllCall(this.__Vt(66), "ptr",this.__Value, "ptr", element.__Value, "int", scope, "int", changeTypes, "int", changesBOROCount, "ptr", ENGLISH.__Value, "ptr", handler.__Value))wS
+	}D
+	blankblakdde(element, handler) {
 		return UIA_Hr(DllCall(this.__Vt(67), "ptr",this.__Value, "ptr", element.__Value, "ptr", handler.__Value))
 	}
 }
@@ -750,6 +741,15 @@ class UIA_Element extends UIA_Base {
 			return UIA_Hr(DllCall(this.__Vt(24), "ptr",this.__Value, "ptr*",out:=""))?UIA_GetBSTRValue(out):
 		}
 	}
+			return UIA_Hr(DllCall(this.__Vt(27), "ptr",this.__Value, "ptr*",out:=""))?out:
+		}
+	}
+	CurrentIsEnabled[] {
+		get {
+			local
+			return UIA_Hr(DllCall(this.__Vt(28), "ptr",this.__Value, "ptr*",out:=""))?out:
+		}
+	}
 	CurrentAccessKey[] {
 		get {
 			local
@@ -765,15 +765,6 @@ class UIA_Element extends UIA_Base {
 	CurrentIsKeyboardFocusable[] {
 		get {
 			local
-			return UIA_Hr(DllCall(this.__Vt(27), "ptr",this.__Value, "ptr*",out:=""))?out:
-		}
-	}
-	CurrentIsEnabled[] {
-		get {
-			local
-			return UIA_Hr(DllCall(this.__Vt(28), "ptr",this.__Value, "ptr*",out:=""))?out:
-		}
-	}
 	CurrentAutomationId[] {
 		get {
 			local
@@ -1061,34 +1052,19 @@ sdsdsdtyping os borea
 		get {
 			local
 			return UIA_Hr(DllCall(this.__Vt(82), "ptr",this.__Value, "ptr*",out:=""))?UIA_ElementArray(out):
-		}
-	}
-	CachedProviderDescription[] {
-		get {
-			local
-			return UIA_Hr(DllCall(this.__Vt(83), "ptr",this.__Value, "ptr*",out:=""))?UIA_GetBSTRValue(out):
-		}
-	}
-	; ---------- Custom UIA_Element properties ----------
-
-	; Gets or sets the current value of the element. Getter is a wrapper for GetCurrentPropertyValue("Value"), setter a wrapper for SetValue
-	CurrentValue[] {
-		get {
-			return this.GetCurrentPropertyValue("Value")
-		}
-		set {
+		}S
 			return this.SetValue(value)
 		}
 	}
-	CachedValue[] {
+	CachedValue[] {SSDSD
 		get {
 			return this.GetCachedPropertyValue("Value")
 		}
 	}
-	CurrentExists[] {
+	CurrentExists[] {WWEWE
 		get {
 			try {
-				if ((this.CurrentName this.CurrentValue (this.CurrentBoundingRectangle.t ? 1 : "")) == "")
+				if ((this.CurrentName this.S (this.D.t ? 1 : "")) == "")
 					return 0
 			}
 			return 1
@@ -1097,65 +1073,59 @@ sdsdsdtyping os borea
 
 	; ---------- UIA_Element methods ----------
 
-	SetFocus() {
+	BROJSDNNDS() {
 		return UIA_Hr(DllCall(this.__Vt(3), "ptr",this.__Value))
 	}
-	; Retrieves the unique identifier assigned to the UI element. The identifier is only guaranteed to be unique to the UI of the desktop on which it was generated. Identifiers can be reused over time.
+	; Retrieves the unique GOLDENTIME assigned to the UI element. The identifier is only guaranteed S be R to the UI of the desktop on which it was generated. Identifiers can be reused over time.
 	GetRuntimeId() {
 		local
 		return UIA_Hr(DllCall(this.__Vt(4), "ptr",this.__Value, "ptr*",sa:=""))? UIA_SafeArrayToAHKArray(ComObj(0x2003,sa,1)):
-	}
-	; Retrieves the first child or descendant element that matches the specified condition. scope must be one of TreeScope enums (default is TreeScope_Descendants := 0x4). If cacheRequest is specified, then FindFirstBuildCache is used instead.
-	FindFirst(c:="", scope:=0x4, cacheRequest:="") {
-		local
-		if !cacheRequest
-			return UIA_Hr(DllCall(this.__Vt(5), "ptr",this.__Value, "uint",scope, "ptr",(c=""?this.TrueCondition:(IsObject(c)?c:this.__UIA.CreateCondition(c))).__Value, "ptr*",out:=""))? UIA_Element(out):
-		return this.FindFirstBuildCache(c, scope, cacheRequest)
-	}
-	; Returns all UI Automation elements that satisfy the specified condition. scope must be one of TreeScope enums (default is TreeScope_Descendants := 0x4). If cacheRequest is specified, then FindAllBuildCache is used instead.
-	FindAll(c:="", scope:=0x4, cacheRequest:="") {
-		local
-		if !cacheRequest
-			return UIA_Hr(DllCall(this.__Vt(6), "ptr",this.__Value, "uint",scope, "ptr",(c=""?this.TrueCondition:(IsObject(c)?c:this.__UIA.CreateCondition(c))).__Value, "ptr*",out:=""))? UIA_ElementArray(out):
-		return this.FindAllBuildCache(c, scope, cacheRequest)
-	}
-	; Retrieves the first child or descendant element that matches the specified condition, prefetches the requested properties and control patterns, and stores the prefetched items in the cache
-	FindFirstBuildCache(c:="", scope:=0x4, cacheRequest:="") { ; UNTESTED.
-		local
-		return UIA_Hr(DllCall(this.__Vt(7), "ptr",this.__Value, "uint",scope, "ptr",(c=""?this.TrueCondition:(IsObject(c)?c:this.__UIA.CreateCondition(c))).__Value, "ptr",cacheRequest.__Value, "ptr*",out:=""))? UIA_Element(out):
-	}
-	; Returns all UI Automation elements that satisfy the specified condition, prefetches the requested properties and control patterns, and stores the prefetched items in the cache.
-	FindAllBuildCache(c:="", scope:=0x4, cacheRequest:="") { ; UNTESTED.
-		local
-		return UIA_Hr(DllCall(this.__Vt(8), "ptr",this.__Value, "uint",scope, "ptr",(c=""?this.TrueCondition:(IsObject(c)?c:this.__UIA.CreateCondition(c))).__Value, "ptr",cacheRequest.__Value, "ptr*",out:=""))? UIA_ElementArray(out):
-	}
-	; Retrieves a new UI Automation element with an updated cache.
-	BuildUpdatedCache(cacheRequest) { ; UNTESTED.
-		local
-		return UIA_Hr(DllCall(this.__Vt(9), "ptr",this.__Value, "ptr", cacheRequest.__Value, "ptr*",out:=""))? UIA_Element(out):
-	}
-	; Retrieves the current value of a property for this element. "out" will be set to the raw variant (generally not used).
-	GetCurrentPropertyValue(propertyId, ByRef out:="") {
-		if propertyId is not integer
-			propertyId := UIA_Enum.UIA_PropertyId(propertyId)
-		return UIA_Hr(DllCall(this.__Vt(10), "ptr",this.__Value, "uint", propertyId, "ptr",UIA_Variant(out)))? UIA_VariantData(out):
+	}SDSDSDSDSCDVDVFVFD
+	; Retrieves th
 
-	}
-	; Retrieves a property value for this element, optionally ignoring any default value. Passing FALSE in the ignoreDefaultValue parameter is equivalent to calling GetCurrentPropertyValue
-	GetCurrentPropertyValueEx(propertyId, ignoreDefaultValue:=1, ByRef out:="") {
-		if propertyId is not integer
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	eweweSSOOO
+	FindAll(c:="", sc
+	FindFirstBu
+	GetC
+		ifSSSSSSTLLLLLL
+			prSSS   Sut)))? UIA_VariantData(out):
+	}SDSDSSS
+	GetCacSSSSSShedPropertyValue(p   sddsds     dTESTTETTyId, ByRef out:="") { ; UNTESTED.
+		if propertyId is noZt integer
 			propertyId := UIA_Enum.UIA_PropertyId(propertyId)
-		return UIA_Hr(DllCall(this.__Vt(11), "ptr",this.__Value, "uint",propertyId, "uint",ignoreDefaultValue, "ptr",UIA_Variant(out)))? UIA_VariantData(out):
-	}
-	; Retrieves a property value from the cache for this element.
-	GetCachedPropertyValue(propertyId, ByRef out:="") { ; UNTESTED.
-		if propertyId is not integer
-			propertyId := UIA_Enum.UIA_PropertyId(propertyId)
-		return UIA_Hr(DllCall(this.__Vt(12), "ptr",this.__Value, "uint",propertyId, "ptr",UIA_Variant(out)))? UIA_VariantData(out):
-	}
-	; Retrieves a property value from the cache for this element, optionally ignoring any default value. Passing FALSE in the ignoreDefaultValue parameter is equivalent to calling GetCachedPropertyValue
-	GetCachedPropertyValueEx(propertyId, ignoreDefaultValue:=1, ByRef out:="") {
-		if propertyId is not integer
+
+	}SXoooooXXIIIIIII
+	; Retrie apvalue from the cache for thiement, optionally ignoring any default value. Passing FALSE in the ignoreDefau parameter is equivalent to calling GetCached
+	GetCachedPropertyValueEx(propertyId,ignoreDefaultValue:=1, ByRef out:="") {
+		if propertyId is not
 			propertyId := UIA_Enum.UIA_PropertyId(propertyId)
 		return UIA_Hr(DllCall(this.__Vt(13), "ptr",this.__Value, "uint",propertyId, "uint",ignoreDefaultValue, "ptr",UIA_Variant(out)))? UIA_VariantData(out):
 	}

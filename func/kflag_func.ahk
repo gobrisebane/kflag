@@ -307,7 +307,70 @@ hasPriorHotKeySelectingArrow(){
 
 
 
+
+
+
+identifyBackspaceCaret(){
+
+	; sleep caretChangeDelay
+	sleep 100
+	;이쪽에 딜레이가 있어야 아래에서 업데이트된 current_ 값을 받는다.
+
+
+	caret.detect()
+
+	if(current_w > 0){
+
+		; MsgBox("1 . w > 0 ")
+		detectRightOrBottomFlagAndCorrect()
+
+	} else if(current_w = 0) {
+		; MsgBox("1 . w = 0 ")
+		initImgCaret()
+		; 크롬에서 백스페이스 했을 때 작동한다.
+	}
+
+}
+
+
+detectRightOrBottomFlagAndCorrect(){
+	if(flagId){
+			GuiGetPos( fX,fY,fW,fH, flagId )
+			; fx := fx + caret_flag_margin
+			fx := fx - 6 ; 6-7-8 이 이상적임
+			; fx := fx + 8 ;
+			; fx := fx ;
+
+			if(fX > current_x OR fy > current_y){
+
+				MsgBox("1. BACKSPACE / 현재 flag 가 오른쪽으로 떨어져있다.")
+				SplashImageGUI()
+				; initInstantCaret()
+
+			} else if (fX <= current_x){
+				MsgBox("2. BACKSPACE / 현재 flag가 왼쪽에 있거나 같다.")
+
+			}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 correntFlagAndCaretXY(loopCount:=5){
+
 
 	GuiGetPos( fX,fY,fW,fH, flagId )
 	sleep 50
@@ -315,7 +378,7 @@ correntFlagAndCaretXY(loopCount:=5){
 	loop %loopCount%{
 		caret.detect()
 
-		; MsgBox("loopindex " a_index)
+		MsgBox("loopindex " a_index)
 
 		if(fX != current_x OR fY != current_y ){
 			; MsgBox("1 -----. not correcting.. coreecting new")
@@ -330,24 +393,6 @@ correntFlagAndCaretXY(loopCount:=5){
 
 
 
-identifyBackspaceCaret(){
-
-	; sleep caretChangeDelay
-
-
-
-	caret.detect()
-
-	if(current_w > 0){
-		; MsgBox("1 . w > 0 ")
-		detectRightOrBottomFlagAndCorrect()
-
-	} else if(current_w = 0) {
-		; MsgBox("1 . w = 0 ")
-		initImgCaret()
-	}
-
-}
 
 
 
@@ -355,104 +400,28 @@ identifyBackspaceCaret(){
 
 
 
-
-
-
-correctFlagAfterSelectionRemove2(){
-
-	; 해당 함수는, block 지정 후 삭제시 딜레이가 있기때문에 한번더 correct를 해준다
-	if(!keyTyping){
-		MsgBox("CORRECT WORKS from space etc")
-		; 현재 타이핑이 아닐경우에만 자리를 잡아준다.
-		; > 만약 하지 않으면 스페이스나 엔터 후 타이핑시 트레일링 된다.
-
-		correntFlagAndCaretXY(1)
-
-
-	}
-}
-
-
-correctFlagAfterSelectionRemove(){
-
-	MsgBox("NEWSWORLS")
+correctFlagAfterSelectRemove(){
 	sleep caretChangeDelay
-	if(flagId){
+	if( !keyTyping ){
+		if(flagId){
 			GuiGetPos( fX,fY,fW,fH, flagId )
-			fx := fx + caret_flag_margin
+			fx := fx + 1
+			;엔터의 경우 마진(1)을 붙여야 같은자리에서 인식하고 이동한다.
 
-			; MsgBox("current_x : " current_x)
-			; MsgBox("fx : " fx)
-
-
-			/*
-			 keyCount로 할경우 1이 건너뛰어지는 현상이 있어서
-			 keyTyping 으로 처리했으며, keyTyping := True를 다음에 주어서 딱한번만 반응하게 함
-			*/
-			if(!keyTyping){
-				; MsgBox("SUCCEED")
+			caret.detect()
 				if(fX > current_x OR fy > current_y){
 					; MsgBox("1. 현재 flag 가 오른쪽으로 떨어져있다. :: 선택상태 - 삭제")
-
 					/*
-					initInstantCaret을 사용할 경우 내부에 keyTyping := False가있어서
-					피하기 위해 splash를 사용함
+					1. 엔터의 경우 여기서 init로 새로 값을 받아줘야 계속 엔터를 쳐도 업데이트된다.
 					*/
-					caret.detect()
+					; caret.detect()
+					; initInstantCaret()
 					SplashImageGUI()
 
-
 				} else if (fX <= current_x){
-					; MsgBox("2. 현재 flag가 왼쪽에 있거나 같다. :: 일반상태 - 무시")
+					MsgBox("2. 현재 flag가 왼쪽에 있거나 같다. :: 일반상태 - 무시")
 				}
-
-			} else {
-				; MsgBox("FAIL BUT OKAY")
-			}
-
-	}
-
-}
-
-
-
-removeSelectingAndCompareFlagForTyping(){
-
-	sleep caretChangeDelay
-
-	if(flagId){
-			GuiGetPos( fX,fY,fW,fH, flagId )
-			fx := fx + caret_flag_margin
-
-			; MsgBox("current_x : " current_x)
-			; MsgBox("fx : " fx)
-
-
-			/*
-			 keyCount로 할경우 1이 건너뛰어지는 현상이 있어서
-			 keyTyping 으로 처리했으며, keyTyping := True를 다음에 주어서 딱한번만 반응하게 함
-			*/
-			if(!keyTyping){
-				; MsgBox("SUCCEED")
-				if(fX > current_x OR fy > current_y){
-					; MsgBox("1. 현재 flag 가 오른쪽으로 떨어져있다. :: 선택상태 - 삭제")
-
-					/*
-					initInstantCaret을 사용할 경우 내부에 keyTyping := False가있어서
-					피하기 위해 splash를 사용함
-					*/
-					caret.detect()
-					SplashImageGUI()
-
-
-				} else if (fX <= current_x){
-					; MsgBox("2. 현재 flag가 왼쪽에 있거나 같다. :: 일반상태 - 무시")
-				}
-
-			} else {
-				; MsgBox("FAIL BUT OKAY")
-			}
-
+		}
 	}
 }
 
@@ -460,33 +429,6 @@ removeSelectingAndCompareFlagForTyping(){
 
 
 
-
-
-
-
-
-
-detectRightOrBottomFlagAndCorrect(){
-
-	if(flagId){
-			GuiGetPos( fX,fY,fW,fH, flagId )
-			fx := fx + caret_flag_margin
-
-			; MsgBox("flag_x : " fx)
-			; MsgBox("current_x : " current_x)
-			; MsgBox("flag_y : " fy)
-			; MsgBox("current_y : " current_y)
-
-
-			if(fX > current_x OR fy > current_y){
-				; MsgBox("1. BACKSPACE / 현재 flag 가 오른쪽으로 떨어져있다.")
-				SplashImageGUI()
-			} else if (fX <= current_x){
-				; MsgBox("2. BACKSPACE / 현재 flag가 왼쪽에 있거나 같다.")
-			}
-	}
-
-}
 
 
 
@@ -524,8 +466,8 @@ isCurrentYandPrevYDiffer(){
 
 	res := current_y - prev_y
 
-	MsgBox("res : " res)
-	MsgBox("res/abs : " Abs(res) )
+	; MsgBox("res : " res)
+	; MsgBox("res/abs : " Abs(res) )
 
 	if( Abs(res) > 1 ){
 		; MsgBox("1. 오차 1보다 크다..")
@@ -584,34 +526,6 @@ return
 
 
 
-
-captureStartingPointOfDrag(){
-
-	/*
-	이 함수가 있어야 첫번째 드래그할 때 빠른속도로 내려도 시작점을 잡아준다.
-	*/
-	sleep 25
-	caret.detect()
-	; MsgBox("current_x : " current_x)
-	; MsgBox("current_y : " current_y)
-}
-
-
-
-
-
-clearMinXY(){
-
-
-		; MsgBox("CLEAR AND UPDATE..")
-		min_x := ""
-		min_y := ""
-
-		; MsgBox("clear current_x : " current_x)
-		; MsgBox("clear current_y : " current_y)
-		; min_x := current_x
-		; min_y := current_y
-}
 
 
 

@@ -884,10 +884,8 @@ debugWindow(){
 		Gui, dev:Add, Text, w500 vVar2
 		Gui, dev:Add, Text, w500 vVar3
 		Gui, dev:Add, Text, w500 vVar4
-		Gui, dev:Add, Text, w500 vVar5
-
+		; Gui, dev:Add, Text, w500 vVar5
 		Gui, dev:Add, Text, w500 vVar6
-		Gui, dev:Add, Text, w500 vVar7
 
 
 		Gui, dev:Show, w394 x600 y0 NoActivate
@@ -898,10 +896,9 @@ debugWindow(){
 		GuiControl,, Var2, spaceCount : %spaceCount%
 		GuiControl,, Var3, keyCount : %keyCount%
 		GuiControl,, Var4, prev_x : %prev_x%  /  prev_y : %prev_y%
-		GuiControl,, Var5, dumbCount : %dumbCount%
+		; GuiControl,, Var5, dumbCount : %dumbCount%
 
 		GuiControl,, Var6, current_x : %current_x% / current_y : %current_y%
-		GuiControl,, Var7, min_x : %min_x% / min_y : %min_y%
 
 
 	}

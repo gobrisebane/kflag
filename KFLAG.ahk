@@ -45,11 +45,7 @@ if not A_IsAdmin {
 
 ; test
 
-global min_x
-global min_y
-
 global keyCount
-global dumbCount :=0
 
 
 global fix_X
@@ -72,7 +68,7 @@ global prev_y
 
 
 global current_lang
-global caretChangeDelay := 70
+global caretChangeDelay := 80
 
 
 
@@ -176,8 +172,8 @@ initKflag()
 			spaceCount++
 		}
 
-		correctFlagAfterSelectionRemove2()
-		; correctFlagAfterSelectionRemove()
+
+		correctFlagAfterSelectRemove()
 
 	}
 
@@ -234,11 +230,12 @@ return
 		identifyBackspaceCaret()
 
 
-
-
-		correctFlagAfterSelectionRemove()
+		correctFlagAfterSelectRemove()
 
 	}
+
+
+
 
 return
 
@@ -397,7 +394,6 @@ return
 
 
 	KeyTyping := False
-	clearMinXY()
 
 
 
@@ -442,6 +438,9 @@ return
 
 
 	initInstantCaret()
+	; 이쪽이 실제 엔터를 칠 때 반응해주는 곳
+
+
 
 	if(holdingEnter = True){
 		correntFlagAndCaretXY()
@@ -468,7 +467,6 @@ return
 
 
 
-clearMinXY()
 
 
 	if( isBrowser() ){
@@ -500,8 +498,18 @@ clearMinXY()
 		; MsgBox("1. you are holindg")
 		holdingEnter := True
 	} else {
+
+
+
+
 		; MsgBox("2. you are not hold")
-		correctFlagAfterSelectionRemove()
+
+		; 이쪽은 선택 후 삭제할 때 반응하는 곳이다.
+		correctFlagAfterSelectRemove()
+
+
+
+
 	}
 
 
