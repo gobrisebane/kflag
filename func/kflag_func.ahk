@@ -8,6 +8,7 @@ initKflag(){
 
 	initImg()
 	caret := new Caret()
+	type := new Type()
 
 
 
@@ -229,6 +230,17 @@ swapLang(){
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 excelActivator(){
 	;sleep 70
 	try {
@@ -359,8 +371,6 @@ detectRightOrBottomFlagAndCorrect(){
 
 
 
-
-
 isFlagRight(){
 	if(flagId){
 		GuiGetPos( fX,fY,fW,fH, flagId )
@@ -378,49 +388,32 @@ isFlagRight(){
 	}
 }
 
+getFlagDirection(){
+	if(flagId){
+		GuiGetPos( fX,fY,fW,fH, flagId )
+		fx := fx + 1
+		;엔터의 경우 마진(1)을 붙여야 같은자리에서 인식하고 이동한다.
 
+			; caret.detect()
+			if(fX > current_x OR fy > current_y){
 
+				return "right"
 
+			} else if (fX < current_x){
+				; MsgBox("2. 현재 flag가 왼쪽에 있거나 같다. :: 일반상태 - 무시")
+				return "left"
 
-newSplash3(){
+			} else if(fX = current_x and fy = current_y){
 
-	sleep 10
-	caret.detect()
-	SplashImageGUI()
+				return "center"
 
-
-	MsgBox("1.X : " current_x " / Y : " current_y)
-
-
-	sleep 350
-	caret.detect()
-
-
-	MsgBox("a_thishotkey : " a_thishotkey)
-
-	arr := ["Up","Down","Left","Right"]
-	if( isStringInArray(A_PriorHotKey, arr) ){
-
-		MsgBox("1. arrow key")
-		SplashImageGUI()
-
-	} else {
-
-		if( isFlagRight() ){
-			MsgBox("1. flag is right")
-			SplashImageGUI()
-
-		} else {
-
-			MsgBox("2. flag is left or same")
-			SplashImageGUI("only_y")
-		}
-
+			}
 	}
-
-
-
 }
+
+
+
+
 
 
 

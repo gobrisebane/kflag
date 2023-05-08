@@ -320,7 +320,7 @@ return
 
 
 
-
+global arrowCount := 0
 
 
 
@@ -348,11 +348,21 @@ return
 	; 이게 있어야 단번으로 여러번 클릭 때 미아현상을 방지 할 수 있다.
 
 
+	; arrowCount++
+	; MsgBox("arrowCount : " arrowCount)
+
+
+
+
+
+
 
 	if(holdingArrow = True){
 
 
-		; MsgBox("!!! HOLDING STOP ")
+
+
+		MsgBox("!!! HOLDING STOP ")
 		; sleep 200
 		; correctFlagAndCaretXY3(15)
 		; correctFlagAndCaretXY(15)
@@ -367,8 +377,8 @@ return
 		; correctFlagAndCaretXYSplash4()
 
 
-		DllCall("QueryPerformanceFrequency", "Int64*", freq)
-		DllCall("QueryPerformanceCounter", "Int64*", CounterBefore)
+		; DllCall("QueryPerformanceFrequency", "Int64*", freq)
+		; DllCall("QueryPerformanceCounter", "Int64*", CounterBefore)
 
 
 
@@ -380,13 +390,17 @@ return
 		; newSplash1()
 		; newSplash12()
 		; newSplash2()
-
-		newSplash3()
-
+		; newSplash3()
 
 
-		DllCall("QueryPerformanceCounter", "Int64*", CounterAfter)
-		MsgBox("Elapsed QPC time is "(CounterAfter - CounterBefore) / freq * 1000 " ms")
+
+		type.newSplash()
+
+
+
+
+		; DllCall("QueryPerformanceCounter", "Int64*", CounterAfter)
+		; MsgBox("Elapsed QPC time is "(CounterAfter - CounterBefore) / freq * 1000 " ms")
 
 
 		holdingArrow := False
@@ -418,54 +432,50 @@ return
 ~^+Right::
 
 
+
+
+
 	KeyTyping := False
 
 	refinedThisHotkey := RegExReplace(A_ThisHotkey, "\W", "")
 	refinedPriorHotkey := RegExReplace(A_PriorHotkey, "\W", "")
 
+	MsgBox("refinedThisHotkey : " refinedThisHotkey)
+	MsgBox("refinedPriorHotkey : " refinedPriorHotkey)
+
 	if( refinedThisHotkey = refinedPriorHotkey ){
 
 		holdingArrow := True
-		; MsgBox("1. you are holindg")
+		MsgBox("1. you are holindg")
 
 	} else {
 
+		MsgBox("2. you are not hold")
+
+
 
 		; tempoff
-		; loopCorrectFlag()
-		; MsgBox("2. you are not hold")
+		; loopCorrectFlag2()
+
+
+; DllCall("QueryPerformanceFrequency", "Int64*", freq)
+; DllCall("QueryPerformanceCounter", "Int64*", CounterBefore)
+
+
+
+
+		type.loopCorrectFlag()
+
+
+; DllCall("QueryPerformanceCounter", "Int64*", CounterAfter)
+; MsgBox("Elapsed QPC time is "(CounterAfter - CounterBefore) / freq * 1000 " ms")
+
+
 
 	}
 
 
 return
-
-
-
-loopCorrectFlag(){
-	; MsgBox("--start--")
-
-	loopSleep := 1
-
-	Loop 20{
-
-		caret.detect()
-		; MsgBox("pX : " prev_x " / Y : " prev_y)
-		; MsgBox("cX : " current_x " / Y : " current_y)
-		; MsgBox("3-loopSleep : " loopSleep)
-
-		if(prev_x != current_x OR prev_y != current_y){
-
-			SplashImageGUI()
-			; MsgBox("IT CHANGED..")
-			break
-		}
-
-		loopSleep := 3 * A_index
-
-		sleep loopSleep
-	}
-}
 
 
 
@@ -707,6 +717,7 @@ return
 
 
 #include %A_ScriptDir%/class/Caret.ahk
+#include %A_ScriptDir%/class/Type.ahk
 #include %A_ScriptDir%/class/Flag.ahk
 
 

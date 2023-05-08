@@ -3,117 +3,29 @@
 
 
 
-
-
-
-
 SplashImageGUI(mode:="default"){
-
-
 	;현재 가장 안정적인 모델
 	CoordMode, ToolTip
+
 	drawFlag()
 
 	; MsgBox("!SPLASH CALLED")
 
 	Try {
 
-		timeRecord("SplashImageGUI - 3 / cx : " current_x  " cy : " current_y )
+		; timeRecord("SplashImageGUI - 3 / cx : " current_x  " cy : " current_y )
 		; MsgBox("SplashImageGUI - 3 / cx : " current_x  " cy : " current_y )
 
 
 		if(current_x AND current_y){
 
 			if(mode="only_y"){
-
-				MsgBox("only y works??????")
-				MsgBox(" >> a_thishotkey : " a_thishotkey)
 				Gui, XPT10:Show, y%current_y% NoActivate
-
-
 			} else {
-
-				; MsgBox("3----normal SPLASH WORKS")
 				Gui, XPT10:Show, x%current_x% y%current_y% NoActivate
-
 			}
 
 
-
-
-		} else {
-			timeRecord("!! === CRITICAL ERROR-4 : current_X,current_Y LOST === !!")
-			MsgBox("!! === CRITICAL ERROR-4 : current_X,current_Y LOST === !!")
-		}
-
-	} catch e {
-
-
-		timeRecord("!! === CRITICAL ERROR-3 : Lost X Y value ")
-		timeRecord("!! === e.what : " e.what " / e.message : " e.message " / e.extra : " e.extra)
-		MsgBox("e.what : " e.what)
-		MsgBox("e.message : " e.message)
-		MsgBox("e.extra : " e.extra)
-		throw e
-
-	}
-
-	prev_exe := current_exe
-
-}
-
-
-
-SplashImageGUI_currentbk(mode:="normal"){
-
-
-	;현재 가장 안정적인 모델
-	CoordMode, ToolTip
-	drawFlag()
-
-	; MsgBox("!SPLASH CALLED")
-
-	Try {
-
-		timeRecord("SplashImageGUI - 3 / cx : " current_x  " cy : " current_y )
-		; MsgBox("SplashImageGUI - 3 / cx : " current_x  " cy : " current_y )
-
-
-		if(current_x AND current_y){
-
-			if(mode="arrow"){
-
-				MsgBox(" >> a_thishotkey : " a_thishotkey)
-
-
-
-				if(a_thishotkey = "~Up up"
-					OR a_thishotkey = "~Down up"
-					OR a_thishotkey = "~Down"
-					OR a_thishotkey = "~Up"){
-
-						; MsgBox("1----IT IS UP AND DOWN.. SO here")
-
-						Gui, XPT10:Show, x%current_x% y%current_y% NoActivate
-
-
-					} else {
-
-						; MsgBox("2---killed")
-
-					}
-
-
-			} else {
-
-				; MsgBox("3----normal SPLASH WORKS")
-				Gui, XPT10:Show, x%current_x% y%current_y% NoActivate
-
-			}
-
-
-
-
 		} else {
 			timeRecord("!! === CRITICAL ERROR-4 : current_X,current_Y LOST === !!")
 			MsgBox("!! === CRITICAL ERROR-4 : current_X,current_Y LOST === !!")
@@ -138,44 +50,6 @@ SplashImageGUI_currentbk(mode:="normal"){
 
 
 
-
-SplashImageGUIBK(){
-
-	;맨 처음 모델
-
-	CoordMode, ToolTip
-	drawFlag()
-
-	; MsgBox("!SPLASH CALLED")
-
-	Try {
-
-		timeRecord("SplashImageGUI - 3 / cx : " current_x  " cy : " current_y )
-		; MsgBox("SplashImageGUI - 3 / cx : " current_x  " cy : " current_y )
-
-
-		if(current_x AND current_y){
-			Gui, XPT10:Show, x%current_x% y%current_y% NoActivate
-		} else {
-			timeRecord("!! === CRITICAL ERROR-4 : current_X,current_Y LOST === !!")
-			MsgBox("!! === CRITICAL ERROR-4 : current_X,current_Y LOST === !!")
-		}
-
-	} catch e {
-
-
-		timeRecord("!! === CRITICAL ERROR-3 : Lost X Y value ")
-		timeRecord("!! === e.what : " e.what " / e.message : " e.message " / e.extra : " e.extra)
-		MsgBox("e.what : " e.what)
-		MsgBox("e.message : " e.message)
-		MsgBox("e.extra : " e.extra)
-		throw e
-
-	}
-
-	prev_exe := current_exe
-
-}
 
 
 
