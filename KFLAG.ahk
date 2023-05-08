@@ -43,13 +43,23 @@ if not A_IsAdmin {
 
 
 
-; test
 
+; TEST
 global keyCount
-
-
 global fix_X
 global fix_Y
+
+
+
+
+global current_key
+global prev_key
+
+global first_typing_x
+global first_typing_y
+global first_typing_prev_x
+global first_typing_prev_y
+
 
 
 
@@ -189,7 +199,7 @@ return
 	if(holdingSpace = True){
 		initInstantCaret()
 
-		correntFlagAndCaretXY()
+		correctFlagAndCaretXY()
 
 		holdingSpace := False
 	}
@@ -255,7 +265,7 @@ return
 	if(holdingBackSpace = True){
 		initInstantCaret()
 
-		correntFlagAndCaretXY()
+		correctFlagAndCaretXY()
 
 		holdingBackSpace := False
 
@@ -346,29 +356,57 @@ return
 ~^+Right up::
 
 
-	;2중으로 체크
-	initInstantCaret()
+	;tempoff
+	; initInstantCaret()
+	; 이게 있어야 단번으로 여러번 클릭 때 미아현상을 방지 할 수 있다.
 
 
 
 	if(holdingArrow = True){
 
-		sleep 50
-		initInstantCaret()
 
-		correntFlagAndCaretXY(10)
+		; MsgBox("!!! HOLDING STOP ")
+		; sleep 200
+		; correctFlagAndCaretXY3(15)
+		; correctFlagAndCaretXY(15)
+		; loopCorrectFlag()
+		; correctFlagAndCaretXYNeo2()
+		; correctFlagAndCaretXYSplash2()
+
+
+
+		; correctFlagAndCaretXYSplash()
+
+		; correctFlagAndCaretXYSplash4()
+
+
+		DllCall("QueryPerformanceFrequency", "Int64*", freq)
+		DllCall("QueryPerformanceCounter", "Int64*", CounterBefore)
+
+
+
+		; splash1()
+		; splash2()
+		; splash3()
+		; best
+		; splash4()
+		; newSplash1()
+		; newSplash12()
+		; newSplash2()
+
+		newSplash3()
+
+
+
+		DllCall("QueryPerformanceCounter", "Int64*", CounterAfter)
+		MsgBox("Elapsed QPC time is "(CounterAfter - CounterBefore) / freq * 1000 " ms")
+
 
 		holdingArrow := False
 
 	}
 
-
-
 return
-
-
-
-
 
 
 
@@ -395,8 +433,6 @@ return
 
 	KeyTyping := False
 
-
-
 	refinedThisHotkey := RegExReplace(A_ThisHotkey, "\W", "")
 	refinedPriorHotkey := RegExReplace(A_PriorHotkey, "\W", "")
 
@@ -407,15 +443,42 @@ return
 
 	} else {
 
-		sleep caretChangeDelay
-		initInstantCaret()
 
+		; tempoff
+		; loopCorrectFlag()
 		; MsgBox("2. you are not hold")
+
 	}
 
 
 return
 
+
+
+loopCorrectFlag(){
+	; MsgBox("--start--")
+
+	loopSleep := 1
+
+	Loop 20{
+
+		caret.detect()
+		; MsgBox("pX : " prev_x " / Y : " prev_y)
+		; MsgBox("cX : " current_x " / Y : " current_y)
+		; MsgBox("3-loopSleep : " loopSleep)
+
+		if(prev_x != current_x OR prev_y != current_y){
+
+			SplashImageGUI()
+			; MsgBox("IT CHANGED..")
+			break
+		}
+
+		loopSleep := 3 * A_index
+
+		sleep loopSleep
+	}
+}
 
 
 
@@ -443,7 +506,7 @@ return
 
 
 	if(holdingEnter = True){
-		correntFlagAndCaretXY()
+		correctFlagAndCaretXY()
 		holdingEnter := False
 	}
 

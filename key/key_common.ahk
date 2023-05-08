@@ -245,17 +245,22 @@ return
 
 
 
-
-	correctFlagAfterSelectRemove()
+	; tempoff
+	; correctFlagAfterSelectRemove()
 
 	keyTyping := True
 
-	detectingCaretYPosChange()
+
+	; tempoff
+	; detectingCaretYPosChange()
+
+
+
+
+
 
 
 return
-
-
 
 
 

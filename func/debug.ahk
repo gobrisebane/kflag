@@ -92,16 +92,6 @@ return
 
 
 
-^!1::
-	searchingLateCaret(20)
-	MsgBox("B1 / searchingLateCaret()")
-return
-
-
-^!2::
-
-
-return
 
 
 

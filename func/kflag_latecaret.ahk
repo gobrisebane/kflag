@@ -14,7 +14,7 @@ initImgCaret(){
 
 
 
-			MsgBox("initImgCaret() :: X : " current_x " / Y : " current_y " / W : " current_w " / H " current_h)
+			; MsgBox("initImgCaret() :: X : " current_x " / Y : " current_y " / W : " current_w " / H " current_h)
 
 
 
@@ -23,7 +23,7 @@ initImgCaret(){
 
 
 			if( keyTyping ) {
-				MsgBox("TYPING so break")
+				; MsgBox("TYPING so break")
 				break
 			}
 
@@ -204,6 +204,10 @@ initKey(){
 		크롬시동 -> url 클릭 -> www.naver.com 타이핑 -> 엔터클릭 = 네이버 검색창에 플래그 안뜸
 		*/
 		clickCount := 0
+
+
+
+
 }
 
 

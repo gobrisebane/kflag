@@ -55,8 +55,14 @@ return
 	if( isExeSearchingLateCaret() ){
 		searchingLateCaret(10)
 	} else {
+
+		; 클릭때 loop이 필요한이유는, gcal의 팝업같은 경우 필요하기 때문이다.
+
+		; tempoff
 		; initImgCaret()
-		initInstantCaret()
+
+
+		; initInstantCaret()
 	}
 
 

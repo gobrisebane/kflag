@@ -1010,21 +1010,22 @@ sdsdsdtyping os borea
 		get {
 			local
 			return UIA_Hr(DllCall(this.__Vt(75), "ptr",this.__Value, "ptr",&(rect,VarSetCapacity(rect,16))))?UIA_RectToObject(rect):
-		}
-	}
+		}테슽
+	}testal fucjk
 	CachedLabeledBy[] {
 		get {
-			local
+			localnostesdl
 			return UIA_Hr(DllCall(this.__Vt(76), "ptr",this.__Value, "ptr*",out:=""))?UIA_Element(out):
 		}
-	}
-	CachedAriaRole[] {
+	}areyou teslsdsdssd
+	CachedAriaRole[] {adsadasvv
 		get {
-			local
+			localcascasc
 			return UIA_Hr(DllCall(this.__Vt(77), "ptr",this.__Value, "ptr*",out:=""))?UIA_GetBSTRValue(out):
 		}
 	}
-	CachedAriaProperties[] {
+	ERN
+	CachedAriaProperties[] {DEEWE KNOW WEKNOW
 		get {
 			local
 			return UIA_Hr(DllCall(this.__Vt(78), "ptr",this.__Value, "ptr*",out:=""))?UIA_GetBSTRValue(out):
@@ -1036,6 +1037,16 @@ sdsdsdtyping os borea
 			return UIA_Hr(DllCall(this.__Vt(79), "ptr",this.__Value, "ptr*",out:=""))?out:
 		}
 	}
+
+
+
+
+sdsddsdweeeeeeeeeeeeeeeeeeee
+
+
+
+
+
 	CachedControllerFor[] {
 		get {
 			local

@@ -9,6 +9,9 @@ initKflag(){
 	initImg()
 	caret := new Caret()
 
+
+
+	sleep 500
 	SetTimer, debugWindow, 200
 
 
@@ -358,36 +361,503 @@ detectRightOrBottomFlagAndCorrect(){
 
 
 
+isFlagRight(){
+	if(flagId){
+		GuiGetPos( fX,fY,fW,fH, flagId )
+		fx := fx + 1
+		;엔터의 경우 마진(1)을 붙여야 같은자리에서 인식하고 이동한다.
+
+			; caret.detect()
+			if(fX > current_x OR fy > current_y){
+
+				return True
+
+			} else if (fX <= current_x){
+				; MsgBox("2. 현재 flag가 왼쪽에 있거나 같다. :: 일반상태 - 무시")
+			}
+	}
+}
 
 
 
 
 
+newSplash3(){
+
+	sleep 10
+	caret.detect()
+	SplashImageGUI()
+	MsgBox("1.X : " current_x " / Y : " current_y)
 
 
+	sleep 350
+	caret.detect()
+
+	MsgBox("a_thishotkey : " a_thishotkey)
 
 
+	if(a_thishotkey = "~Up up"
+	OR a_thishotkey = "~Down up"
+	OR a_thishotkey = "~Down"
+	OR a_thishotkey = "~Up"){
+
+		MsgBox("1. arrow key")
+		SplashImageGUI()
+
+	} else {
 
 
-correntFlagAndCaretXY(loopCount:=5){
+		if( isFlagRight() ){
 
+			MsgBox("1. flag is right")
 
-	GuiGetPos( fX,fY,fW,fH, flagId )
-	sleep 50
-
-	loop %loopCount%{
-		caret.detect()
-
-		MsgBox("loopindex " a_index)
-
-		if(fX != current_x OR fY != current_y ){
-			; MsgBox("1 -----. not correcting.. coreecting new")
 			SplashImageGUI()
+
+		} else {
+
+			MsgBox("2. flag is left or same")
+			Gui, XPT10:Show, y%current_y% NoActivate
 		}
-		sleep 15
+
+
+
+		; MsgBox("2. typing.. do not set..")
+		; Gui, XPT10:Show, y%current_y% NoActivate
+
+
+
+
+	}
+
+
+
+
+
+}
+
+
+
+newSplash2(){
+
+	sleep 10
+	caret.detect()
+	SplashImageGUI()
+	MsgBox("1.X : " current_x " / Y : " current_y)
+
+
+	sleep 350
+	caret.detect()
+
+	MsgBox("a_thishotkey : " a_thishotkey)
+
+
+	if(a_thishotkey = "~Up up"
+	OR a_thishotkey = "~Down up"
+	OR a_thishotkey = "~Down"
+	OR a_thishotkey = "~Up"){
+
+		MsgBox("1. arrow key")
+		SplashImageGUI()
+
+	} else {
+
+		MsgBox("2. typing.. do not set..")
+		Gui, XPT10:Show, y%current_y% NoActivate
+		; Gui, XPT10:Show, x%current_x% y%current_y% NoActivate
+		; SplashImageGUI()
 	}
 
 }
+
+
+
+newSplash12(){
+
+	sleep 10
+	caret.detect()
+	SplashImageGUI()
+	MsgBox("1.X : " current_x " / Y : " current_y)
+
+	sleep 350
+
+	caret.detect()
+	MsgBox("2.X : " current_x " / Y : " current_y)
+
+	if(current_x != prev_x or current_y != prev_y){
+		MsgBox("2-1.value diff")
+		SplashImageGUI()
+	} else {
+		MsgBox("2-2.same value do nothing")
+	}
+
+}
+
+
+newSplash1(){
+
+	sleep 10
+	caret.detect()
+	SplashImageGUI()
+	MsgBox("1.X : " current_x " / Y : " current_y)
+
+	sleep 350
+
+	caret.detect()
+	MsgBox("2.X : " current_x " / Y : " current_y)
+	SplashImageGUI()
+
+}
+
+
+
+
+
+
+
+
+
+
+splash4(){
+
+	; gGOOD
+
+	Loop 10{
+
+		if(a_thishotkey = "~Up up"
+		OR a_thishotkey = "~Down up"
+		OR a_thishotkey = "~Down"
+		OR a_thishotkey = "~Up"){
+			MsgBox("caret detect only.. up down")
+			caret.detect()
+		}
+
+		SplashImageGUI()
+
+		sleep 10
+
+	}
+}
+
+
+
+
+
+
+
+splash3(){
+
+	MsgBox(">>>>>>>>>>>>>>>>>>>>>START>>>>>>>>>>>>>..")
+	Loop 10{
+
+		caret.detect()
+
+		SplashImageGUI("arrow")
+
+	}
+
+
+}
+
+
+
+
+
+splash2(){
+
+	MsgBox(">>>>>>>>>>>>>>>>>>>>>START>>>>>>>>>>>>>..")
+	loopSleep := 10
+
+	sleep 150
+
+	Loop 20{
+
+		caret.detect()
+		MsgBox("pX : " prev_x " / Y : " prev_y)
+		MsgBox("cX : " current_x " / Y : " current_y)
+		MsgBox("3-loopSleep : " loopSleep)
+
+		if(prev_x != current_x OR prev_y != current_y){
+
+			SplashImageGUI("arrow")
+			MsgBox("====SAME=====")
+			; break
+		}
+
+		loopSleep := 3 * A_index
+
+		sleep loopSleep
+	}
+}
+
+
+
+
+
+
+
+splash1(){
+	loop 20{
+
+		MsgBox("L2OOP WORKS")
+
+
+		if(a_thishotkey = "~Up up"
+			OR a_thishotkey = "~Down up"
+			OR a_thishotkey = "~Down"
+			OR a_thishotkey = "~Up"){
+
+			caret.detect()
+			SplashImageGUI()
+
+		}
+
+		sleep 20
+
+	}
+}
+
+
+correctFlagAndCaretXYNeo2(){
+	sleep 300
+	; MsgBox("A_thishotkey : " A_thishotkey)
+	if( A_thishotkey = "~Up up" OR A_thishotkey = "~Down up"){
+		caret.detect()
+		SplashImageGUI()
+	}
+	; MsgBox("CORRECT")
+}
+
+
+
+correctFlagAndCaretXYNeo1(){
+
+	MsgBox(">>>>>>>>>>>>>>>>>>>>>START>>>>>>>>>>>>>..")
+	loopSleep := 10
+
+	sleep 150
+
+	Loop 20{
+
+		caret.detect()
+		MsgBox("pX : " prev_x " / Y : " prev_y)
+		MsgBox("cX : " current_x " / Y : " current_y)
+		MsgBox("3-loopSleep : " loopSleep)
+
+		if(prev_x != current_x OR prev_y != current_y){
+
+			SplashImageGUI()
+			MsgBox("====SAME=====")
+			; break
+		}
+
+		loopSleep := 3 * A_index
+
+		sleep loopSleep
+	}
+}
+
+
+
+correctFlagAndCaretXY3(loopCount:=5){
+
+
+	/*
+	1) 만약 현재 키가 qwe 가 아니라면
+
+	2) 플래그를 이동하라
+	*/
+
+
+	sleep 50
+	; sleep 100
+
+	loop %loopCount%{
+
+		caret.detect()
+		GuiGetPos( fX,fY,fW,fH, flagId )
+
+
+
+		MsgBox("A_Thishotkey : " A_Thishotkey)
+
+		if(A_Thishotkey = "~Down"
+			OR A_Thishotkey = "~Down Up"
+		   OR A_Thishotkey = "~Up"
+			OR A_Thishotkey = "~Up up"){
+
+				MsgBox("1. move only arrow..")
+				arrow_x := Current_x
+				arrow_y := Current_y
+				SplashImageGUI()
+
+		} else {
+
+				Current_x := arrow_x
+				Current_y := arrow_y
+
+				SplashImageGUI()
+				MsgBox("2. typingkey right?")
+				break
+		}
+
+
+
+
+
+		MsgBox("arrow_x : " arrow_x)
+		MsgBox("arrow_y : " arrow_y)
+
+
+		; MsgBox("loopindex " a_index)
+		; MsgBox("A_Thishotkey : " A_Thishotkey)
+
+		; MsgBox("Current_x : " Current_x " / Current_y : " Current_y)
+		; MsgBox("fX : " fX " / fY : " fY)
+
+
+
+		; if(current_x = fX AND current_y = fY){
+		; 	MsgBox("THEY MATCH..")
+		; 	break
+		; }
+
+		; if(keyTyping){
+		; 	MsgBox("break")
+		; 	break
+		; }
+
+
+		; if( (fX != current_x OR fY != current_y) AND A_Thishotkey = "~Down up") {
+		; 	MsgBox("1 -----. not correcting.. coreecting new")
+		; 	SplashImageGUI()
+		; }
+
+
+		sleep 15
+
+	}
+}
+
+
+
+
+
+
+correctFlagAndCaretXY2(loopCount:=5){
+
+
+	/*
+	1) 만약 현재 키가 qwe 가 아니라면
+
+	2) 플래그를 이동하라
+	*/
+
+
+	sleep 50
+	; sleep 100
+
+	loop %loopCount%{
+		caret.detect()
+		GuiGetPos( fX,fY,fW,fH, flagId )
+
+
+
+		if(A_Thishotkey = "~Down"
+			OR A_Thishotkey = "~Down Up"
+		   OR A_Thishotkey = "~Up"
+			OR A_Thishotkey = "~Up up"){
+
+				MsgBox("move only arrow..")
+
+			SplashImageGUI()
+		}
+
+
+		; MsgBox("loopindex " a_index)
+		; MsgBox("A_Thishotkey : " A_Thishotkey)
+
+		MsgBox("Current_x : " Current_x " / Current_y : " Current_y)
+		MsgBox("fX : " fX " / fY : " fY)
+
+		if(current_x = fX AND current_y = fY){
+			MsgBox("THEY MATCH..")
+			break
+		}
+
+		; if(keyTyping){
+		; 	MsgBox("break")
+		; 	break
+		; }
+
+
+		; if( (fX != current_x OR fY != current_y) AND A_Thishotkey = "~Down up") {
+		; 	MsgBox("1 -----. not correcting.. coreecting new")
+		; 	SplashImageGUI()
+		; }
+
+
+		sleep 15
+
+	}
+}
+
+
+
+
+correctFlagAndCaretXY(loopCount:=5){
+	if( !keyTyping ){
+
+		; sleep 50
+
+		loop %loopCount%{
+			GuiGetPos( fX,fY,fW,fH, flagId )
+			caret.detect()
+
+
+			if(fX != current_x OR fY != current_y ){
+				; MsgBox("1 -----. not correcting.. coreecting new")
+				SplashImageGUI()
+
+			}
+			sleep 15
+		}
+	}
+}
+
+
+
+
+correctFlagAndCaretXYBK(loopCount:=5){
+	if( !keyTyping ){
+
+		GuiGetPos( fX,fY,fW,fH, flagId )
+		sleep 50
+
+		loop %loopCount%{
+			caret.detect()
+
+
+			if(fX != current_x OR fY != current_y ){
+				; MsgBox("1 -----. not correcting.. coreecting new")
+				SplashImageGUI()
+
+			}
+			sleep 15
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -419,7 +889,7 @@ correctFlagAfterSelectRemove(){
 					SplashImageGUI()
 
 				} else if (fX <= current_x){
-					MsgBox("2. 현재 flag가 왼쪽에 있거나 같다. :: 일반상태 - 무시")
+					; MsgBox("2. 현재 flag가 왼쪽에 있거나 같다. :: 일반상태 - 무시")
 				}
 		}
 	}

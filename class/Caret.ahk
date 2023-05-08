@@ -11,7 +11,11 @@ class Caret{
 	type := ""
 
 	X_margin := 3
- 	Y_margin := 20
+ 	; Y_margin := 20
+
+ 	Y_margin := 19
+ 	; Y_margin := 18
+ 	; Y_margin := 17
 
 
 	__new(){
@@ -30,7 +34,6 @@ class Caret{
 		this.cur_exe := cur_exe
 		this.cur_winid := cur_winid
 
-
 		prev_x := current_x
 		prev_y := current_y
 
@@ -46,14 +49,106 @@ class Caret{
 		if( this.cur_winid = this.pre_winid AND this.type){
 			; MsgBox("MODE : 1. USING / WINID")
 			this.usingCaretType()
-
 		} else {
-
 			; MsgBox("MODE : 2. DETECT")
 			this.detectCaretType()
 		}
 
+
 		this.setFocusedHeight()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		; MsgBox("a_thishotkey : " a_thishotkey)
+		; MsgBox("X : " current_x " / Y : " current_y)
+
+
+
+
+
+		; prev_key := current_key
+		; current_key := A_ThisHotKey
+
+		; if(prev_key = "~Up"
+		; 	OR prev_key = "~Up up "
+		; 	OR prev_key = "~Down"
+		; 	OR prev_key = "~Down up"){
+
+
+		; 	if(current_key != "~Up"
+		; 		AND current_key != "~Up up"
+		; 		AND current_key != "~Down"
+		; 		AND current_key != "~Down up"){
+
+		; 		; MsgBox("!!!! keychange happened !!!!")
+		; 		first_typing_x := current_x
+		; 		first_typing_y := current_y
+		; 		first_typing_prev_x := prev_x
+		; 		first_typing_prev_y := prev_y
+
+		; 	}
+		; }
+
+		; MsgBox("prev_key : " prev_key)
+		; MsgBox("current_key : " current_key)
+
+
+
+
+		; if(a_priorhotkey = "~Up"
+		; 	OR a_priorhotkey = "~Up up "
+		; 	OR a_priorhotkey = "~Down"
+		; 	OR a_priorhotkey = "~Down up"){
+
+
+		; 	if(a_thishotkey != "~Up"
+		; 		AND a_thishotkey != "~Up up"
+		; 		AND a_thishotkey != "~Down"
+		; 		AND a_thishotkey != "~Down up"){
+
+		; 		MsgBox("!!!! keychange happened !!!!")
+		; 		first_typing_x := current_x
+		; 		first_typing_y := current_y
+		; 		first_typing_prev_x := prev_x
+		; 		first_typing_prev_y := prev_y
+
+		; 	}
+		; }
+
+		; MsgBox("--->")
+		; MsgBox("a_priorhotkey : " a_priorhotkey)
+		; MsgBox("a_thishotkey : " a_thishotkey)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 		this.pre_exe := this.cur_exe
 		this.pre_winid := this.cur_winid
@@ -67,9 +162,7 @@ class Caret{
 				try {
 					eleFocus := UIA.GetFocusedElement()
 					this.focusedH := eleFocus.BoundingRectangle.b-eleFocus.BoundingRectangle.t
-
-					MsgBox("5.WORKS : this.focusedH : " this.focusedH)
-
+					; MsgBox("5.WORKS : this.focusedH : " this.focusedH)
 				} catch e{
 						timeRecord("!! === CRITICAL ERROR : getFocuisedELement ")
 						timeRecord("!! === e.what : " e.what " / e.message : " e.message " / e.extra : " e.extra)
