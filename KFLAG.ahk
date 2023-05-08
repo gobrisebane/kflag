@@ -52,19 +52,6 @@ global fix_Y
 
 
 
-global current_key
-global prev_key
-
-global first_typing_x
-global first_typing_y
-global first_typing_prev_x
-global first_typing_prev_y
-
-
-
-
-
-
 
 
 ; caret

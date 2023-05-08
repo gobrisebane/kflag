@@ -387,49 +387,36 @@ newSplash3(){
 	sleep 10
 	caret.detect()
 	SplashImageGUI()
+
+
 	MsgBox("1.X : " current_x " / Y : " current_y)
 
 
 	sleep 350
 	caret.detect()
 
+
 	MsgBox("a_thishotkey : " a_thishotkey)
 
-
-	if(a_thishotkey = "~Up up"
-	OR a_thishotkey = "~Down up"
-	OR a_thishotkey = "~Down"
-	OR a_thishotkey = "~Up"){
+	arr := ["Up","Down","Left","Right"]
+	if( isStringInArray(A_PriorHotKey, arr) ){
 
 		MsgBox("1. arrow key")
 		SplashImageGUI()
 
 	} else {
 
-
 		if( isFlagRight() ){
-
 			MsgBox("1. flag is right")
-
 			SplashImageGUI()
 
 		} else {
 
 			MsgBox("2. flag is left or same")
-			Gui, XPT10:Show, y%current_y% NoActivate
+			SplashImageGUI("only_y")
 		}
 
-
-
-		; MsgBox("2. typing.. do not set..")
-		; Gui, XPT10:Show, y%current_y% NoActivate
-
-
-
-
 	}
-
-
 
 
 
