@@ -285,9 +285,12 @@ return
 	아래는 변환이고 위는 따라오게 하는 것임
 	*/
 
-	; initInstantCaret()
 
-	swapLangImage()
+	initInstantCaret()
+
+
+	; v2
+	; swapLangImage()
 
 return
 
@@ -348,11 +351,6 @@ global arrowCount := 0
 	; 이게 있어야 단번으로 여러번 클릭 때 미아현상을 방지 할 수 있다.
 
 
-	; arrowCount++
-	; MsgBox("arrowCount : " arrowCount)
-
-
-
 
 
 
@@ -360,47 +358,9 @@ global arrowCount := 0
 	if(holdingArrow = True){
 
 
-
-
 		MsgBox("!!! HOLDING STOP ")
-		; sleep 200
-		; correctFlagAndCaretXY3(15)
-		; correctFlagAndCaretXY(15)
-		; loopCorrectFlag()
-		; correctFlagAndCaretXYNeo2()
-		; correctFlagAndCaretXYSplash2()
-
-
-
-		; correctFlagAndCaretXYSplash()
-
-		; correctFlagAndCaretXYSplash4()
-
-
-		; DllCall("QueryPerformanceFrequency", "Int64*", freq)
-		; DllCall("QueryPerformanceCounter", "Int64*", CounterBefore)
-
-
-
-		; splash1()
-		; splash2()
-		; splash3()
-		; best
-		; splash4()
-		; newSplash1()
-		; newSplash12()
-		; newSplash2()
-		; newSplash3()
-
-
 
 		type.newSplash()
-
-
-
-
-		; DllCall("QueryPerformanceCounter", "Int64*", CounterAfter)
-		; MsgBox("Elapsed QPC time is "(CounterAfter - CounterBefore) / freq * 1000 " ms")
 
 
 		holdingArrow := False
@@ -440,36 +400,19 @@ return
 	refinedThisHotkey := RegExReplace(A_ThisHotkey, "\W", "")
 	refinedPriorHotkey := RegExReplace(A_PriorHotkey, "\W", "")
 
-	MsgBox("refinedThisHotkey : " refinedThisHotkey)
-	MsgBox("refinedPriorHotkey : " refinedPriorHotkey)
+	; MsgBox("refinedThisHotkey : " refinedThisHotkey)
+	; MsgBox("refinedPriorHotkey : " refinedPriorHotkey)
 
 	if( refinedThisHotkey = refinedPriorHotkey ){
 
 		holdingArrow := True
-		MsgBox("1. you are holindg")
+		; MsgBox("1. you are holindg")
 
 	} else {
 
-		MsgBox("2. you are not hold")
 
-
-
-		; tempoff
-		; loopCorrectFlag2()
-
-
-; DllCall("QueryPerformanceFrequency", "Int64*", freq)
-; DllCall("QueryPerformanceCounter", "Int64*", CounterBefore)
-
-
-
-
+		; MsgBox("2. you are not hold")
 		type.loopCorrectFlag()
-
-
-; DllCall("QueryPerformanceCounter", "Int64*", CounterAfter)
-; MsgBox("Elapsed QPC time is "(CounterAfter - CounterBefore) / freq * 1000 " ms")
-
 
 
 	}
@@ -546,8 +489,6 @@ return
 
 
 
-
-
 	refinedThisHotkey := RegExReplace(A_ThisHotkey, "\W", "")
 	refinedPriorHotkey := RegExReplace(A_PriorHotkey, "\W", "")
 
@@ -561,14 +502,9 @@ return
 
 
 
-
 		; MsgBox("2. you are not hold")
-
 		; 이쪽은 선택 후 삭제할 때 반응하는 곳이다.
 		correctFlagAfterSelectRemove()
-
-
-
 
 	}
 

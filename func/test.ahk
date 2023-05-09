@@ -757,3 +757,101 @@ compareFlagXYandCorrecting(){
 return
 
 */
+
+
+
+
+
+
+
+
+
+
+
+splash4(){
+
+	; gGOOD
+
+	Loop 10{
+
+		if(a_thishotkey = "~Up up"
+		OR a_thishotkey = "~Down up"
+		OR a_thishotkey = "~Down"
+		OR a_thishotkey = "~Up"){
+			MsgBox("caret detect only.. up down")
+			caret.detect()
+		}
+
+		SplashImageGUI()
+
+		sleep 10
+
+	}
+}
+
+
+correctFlagAndCaretXYNeo2(){
+	sleep 300
+	; MsgBox("A_thishotkey : " A_thishotkey)
+	if( A_thishotkey = "~Up up" OR A_thishotkey = "~Down up"){
+		caret.detect()
+		SplashImageGUI()
+	}
+	; MsgBox("CORRECT")
+}
+
+
+
+correctFlagAndCaretXYNeo1(){
+
+	MsgBox(">>>>>>>>>>>>>>>>>>>>>START>>>>>>>>>>>>>..")
+	loopSleep := 10
+
+	sleep 150
+
+	Loop 20{
+
+		caret.detect()
+		MsgBox("pX : " prev_x " / Y : " prev_y)
+		MsgBox("cX : " current_x " / Y : " current_y)
+		MsgBox("3-loopSleep : " loopSleep)
+
+		if(prev_x != current_x OR prev_y != current_y){
+
+			SplashImageGUI()
+			MsgBox("====SAME=====")
+			; break
+		}
+
+		loopSleep := 3 * A_index
+
+		sleep loopSleep
+	}
+}
+
+
+
+
+
+
+correctFlagAndCaretXYBK(loopCount:=5){
+	if( !keyTyping ){
+
+		GuiGetPos( fX,fY,fW,fH, flagId )
+		sleep 50
+
+		loop %loopCount%{
+			caret.detect()
+
+
+			if(fX != current_x OR fY != current_y ){
+				; MsgBox("1 -----. not correcting.. coreecting new")
+				SplashImageGUI()
+
+			}
+			sleep 15
+		}
+	}
+}
+
+

@@ -165,6 +165,7 @@ initInstantCaret(){
 
 
 	caret.detect()
+	MsgBox("X : " current_x " / Y : " current_y)
 
 
 

@@ -11,11 +11,10 @@ class Caret{
 	type := ""
 
 	X_margin := 3
- 	; Y_margin := 20
+	Y_margin := 20
 
- 	Y_margin := 19
- 	; Y_margin := 18
- 	; Y_margin := 17
+ 	; Y_margin := 19
+
 
 
 	__new(){

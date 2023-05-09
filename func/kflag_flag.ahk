@@ -19,6 +19,7 @@ SplashImageGUI(mode:="default"){
 
 		if(current_x AND current_y){
 
+
 			if(mode="only_y"){
 				Gui, XPT10:Show, y%current_y% NoActivate
 			} else {

@@ -22,6 +22,8 @@ class Type{
 
 
 	}
+
+
 	setFlagArrow(){
 
 		arr := ["Up","Down","Left","Right"]
@@ -58,7 +60,9 @@ class Type{
 
 	loopCorrectFlag(){
 
-		MsgBox("CLASS : --loopCorrectFlag--")
+		; MsgBox("CLASS : --loopCorrectFlag--")
+
+
 		sleep 10
 		; 위에 sleep 10을 해줘야 이전x,y값을 잡는 걸 방지할 수 있음.
 
@@ -68,22 +72,29 @@ class Type{
 		; this.setFlagArrowOld()
 
 
-
-
-
-
-
 		sleep 50
 		loopSleep := 30
 
 		loop 10{
 
+
+
 			caret.detect()
 			; MsgBox("3-loopSleep INDEX : " A_INDEX)
-			; MsgBox("A_ThisHotKey : " A_ThisHotKey)
 
 			this.setFlagArrow()
 			; this.setFlagArrowOld()
+
+
+
+
+			; arrow가 아니면 중지시킴
+			arr := ["Up","Down","Left","Right"]
+			if( !isStringInArray(A_ThisHotKey, arr) ){
+				; MsgBox("------ not that key so brewak")
+				arrowCount := 0
+				break
+			}
 
 
 			if (GetKeyState("Down", "P")
@@ -97,6 +108,9 @@ class Type{
 			loopSleep := 5 * A_index
 			sleep loopSleep
 		}
+
+
+
 
 
 		if(arrowCount > 0){
