@@ -81,7 +81,6 @@ searchingLateCaret(loopCount){
 
 		keyCount := 0
 
-		; MsgBox("1...clickCount : " clickCount)
 
 		; MsgBox("=== LOOP START ===")
 
@@ -89,11 +88,10 @@ searchingLateCaret(loopCount){
 
 
 
+		MsgBox("1...clickCount : " clickCount)
 
 
 			caret.detect()
-
-
 
 
 			; MsgBox("INDEX : " A_Index)
@@ -120,20 +118,27 @@ searchingLateCaret(loopCount){
 
 
 
-			Sleep 50
 
-			if GetKeyState("LButton", "P"){
-				clickCount++
+			if(A_index >= 3){
+				/*
+					처음과 두번째 LOOP 때 잡으면 버튼이 홀드로 잡혀있으므로 3번째부터 홀드인지 아닌지 감지
+					위와 같이 안하면 처음 시작하자마자 더블클릭으로 감지한다
+				*/
+				if GetKeyState("LButton", "P"){
+					clickCount++
+				}
 			}
+
+
+			Sleep 50
 
 
 		}
 
 
-
-
 	if(clickCount > 0){
 		; MsgBox("::::::::::: REVIVE :::::::::::")
+		clickCount := 0
 		searchingLateCaret(loopCount)
 	}
 
@@ -204,7 +209,6 @@ initKey(){
 		이것 누락시
 		크롬시동 -> url 클릭 -> www.naver.com 타이핑 -> 엔터클릭 = 네이버 검색창에 플래그 안뜸
 		*/
-		clickCount := 0
 
 
 

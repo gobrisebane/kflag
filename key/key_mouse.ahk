@@ -52,32 +52,24 @@ return
 
 	WinGet, cur_exe, ProcessName, A
 
-	if( isExeSearchingLateCaret(cur_exe) ){
+	if( isExeSearchingLateCaret(cur_exe) OR isBrowser() ){
 
-		MsgBox("1.")
+		; 클릭때 loop이 필요한이유는, gcal의 팝업같은 경우 필요하기 때문이다.
+
+		; MsgBox("1. WORD or POWERPOINT")
 		searchingLateCaret(10)
 
 	} else if( cur_exe = "Explorer.EXE" OR cur_exe = ""){
 
+		; MsgBox("2.current exe are explorer")
+		; cur_exe가 없는 경우는 taskbar에서 아이콘을 누를 때 발생한다.
 
-		MsgBox("2.current exe are explorer")
-		searchingLateCaret(10)
-
-
+		searchingLateCaret(15)
 
 	} else {
 
+		initInstantCaret()
 
-
-		MsgBox("3.")
-
-		; 클릭때 loop이 필요한이유는, gcal의 팝업같은 경우 필요하기 때문이다.
-
-		; tempoff
-		; initImgCaret()
-
-
-		; initInstantCaret()
 	}
 
 
