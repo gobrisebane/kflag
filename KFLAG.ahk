@@ -66,6 +66,9 @@ global prev_y
 global current_exe
 global prev_exe
 
+global current_winid
+global prev_winid
+
 
 
 
@@ -218,6 +221,12 @@ return
 
 
 
+
+
+		MsgBox("WORKS")
+
+
+
 	; 브라우저일 경우 백스페이스로 뒤로가기 가능하며, 검색창으로 뒤로가기했을 때 카렛이 활성화 될 수 있다.
 	refinedThisHotkey := RegExReplace(A_ThisHotkey, "\W", "")
 	refinedPriorHotkey := RegExReplace(A_PriorHotkey, "\W", "")
@@ -229,9 +238,8 @@ return
 		; MsgBox("2. not holding")
 
 
+
 		identifyBackspaceCaret()
-
-
 		correctFlagAfterSelectRemove()
 
 	}
@@ -303,6 +311,12 @@ return
 
 
 
+
+	if(current_exe = "Code.exe"){
+		swapLangImage()
+	} else {
+		initInstantCaret()
+	}
 
 
 

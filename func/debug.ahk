@@ -881,6 +881,12 @@ return
 
 
 
+		; eleFocus := UIA.GetFocusedElement()
+		; focusedH := eleFocus.BoundingRectangle.l
+		; ; focusedH := eleFocus.BoundingRectangle.b-eleFocus.BoundingRectangle.t
+		; MsgBox("focusedH : " focusedH)
+		; caret.detect()
+		; MsgBox("X : " current_x " / Y : " current_y)
 
 
 return

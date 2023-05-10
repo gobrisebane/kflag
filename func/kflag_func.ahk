@@ -271,6 +271,8 @@ checkIsExcel(){
 
 isBrowser(){
 
+
+
 	WinGet, a_exe, ProcessName, A
 	browser_arr := ["chrome.exe","firefox.exe","whale.exe","vivaldi.exe","opera.exe","msedge.exe","brave.exe"]
 
@@ -545,13 +547,13 @@ isCurrentYandPrevYDiffer(){
 
 
 
-isExeSearchingLateCaret(){
+isExeSearchingLateCaret(cur_exe){
 
-	WinGet, cur_exe, ProcessName, A
 	arr := ["WINWORD.EXE","POWERPNT.EXE"]
-	; MsgBox("cur_exe : " cur_exe)
+	MsgBox("cur_exe : " cur_exe)
 
 	if( hasValue(arr, cur_exe) ) {
+		MsgBox("THIS IS LATECARET")
 		return true
 	}
 
@@ -560,10 +562,11 @@ isExeSearchingLateCaret(){
 
 
 
-detectPowerpointCaretW( exe ){
+filterPowerpointCaretW(){
 
+	; MsgBox("powerpointworks")
 
-	if( exe = "POWERPNT.EXE" ){
+	if( current_exe = "POWERPNT.EXE" ){
 		try{
 			ppt := ComObjActive("PowerPoint.application")
 			pptType := ppt.ActiveWindow.Selection.Type

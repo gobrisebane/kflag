@@ -3,17 +3,10 @@ class Caret{
 
 
 	focusedH := 0
-
-	cur_exe := ""
-	pre_exe := ""
-
-	cur_winid := ""
-	pre_winid := ""
 	type := ""
 
 	X_margin := 3
 	Y_margin := 20
-
  	; Y_margin := 19
 
 
@@ -28,15 +21,8 @@ class Caret{
 
 
 		CoordMode, Caret, Screen
-		WinGet, cur_exe, ProcessName, A
-		WinGet, cur_winid, ID, A
-
-
+		WinGet, current_winid, ID, A
 		WinGet, current_exe, ProcessName, A
-
-
-		this.cur_exe := cur_exe
-		this.cur_winid := cur_winid
 
 		prev_x := current_x
 		prev_y := current_y
@@ -44,13 +30,12 @@ class Caret{
 		; MsgBox("--prevwors--")
 		; MsgBox("prev_x : " prev_x)
 		; MsgBox("prev_y : " prev_y)
-
-		; MsgBox("this.cur_winid : " this.cur_winid)
-		; MsgBox("this.pre_winid : " this.pre_winid)
+		; MsgBox("current_winid : " current_winid)
+		; MsgBox("prev_winid : " prev_winid)
 		; MsgBox("this.type : " this.type)
 
 
-		if( this.cur_winid = this.pre_winid AND this.type){
+		if( current_winid = prev_winid AND this.type){
 			; MsgBox("MODE : 1. USING / WINID")
 			this.usingCaretType()
 		} else {
@@ -62,14 +47,16 @@ class Caret{
 		this.setFocusedHeight()
 
 
-		this.pre_exe := this.cur_exe
-		this.pre_winid := this.cur_winid
+
+		prev_exe := current_exe
+		prev_winid := current_winid
 
 	}
 
 
 	setFocusedHeight(){
-		if( current_w > 0 AND isBrowser() AND ( this.isXYMove() OR this.isWinidDiff())  ){
+		if( current_w > 0 AND isBrowser()
+			AND ( this.isXYMove() OR this.isWinidDiff())  ){
 			if( this.HasBrowserKey() ){
 				try {
 					eleFocus := UIA.GetFocusedElement()
@@ -97,11 +84,14 @@ class Caret{
 	}
 
 	isWinidDiff(){
-		if(this.cur_winid != this.pre_winid){
-			; MsgBox("2. winid 달라졌음")
-			return True
+		; MsgBox("current_winid : " current_winid)
+		; MsgBox("prev_winid : " prev_winid)
+		if(current_winid != prev_winid){
+			; MsgBox("2-1. winid 달라졌음")
+			; return True
 		} else {
-			return False
+			; MsgBox("2-2. winid 그대로임")
+			; return False
 		}
 	}
 
@@ -139,7 +129,8 @@ class Caret{
 	detectCaretType(){
 
 
-		if(this.cur_exe = "WINWORD.EXE"){
+		if( current_exe = "WINWORD.EXE" ){
+			MsgBox("detect winword works")
 			this.type := "UIA_CARET"
 			return
 		}
@@ -228,7 +219,7 @@ class Caret{
 			current_w := 1
 			current_h := 15
 
-			detectPowerpointCaretW(this.cur_exe)
+			filterPowerpointCaretW()
 			; MsgBox("--------- A-1. wincaret works")
 			return true
 
