@@ -358,12 +358,12 @@ detectRightOrBottomFlagAndCorrect(){
 
 			if(fX > current_x OR fy > current_y){
 
-				MsgBox("1. BACKSPACE / 현재 flag 가 오른쪽으로 떨어져있다.")
+				; MsgBox("1. BACKSPACE / 현재 flag 가 오른쪽으로 떨어져있다.")
 				SplashImageGUI()
 				; initInstantCaret()
 
 			} else if (fX <= current_x){
-				MsgBox("2. BACKSPACE / 현재 flag가 왼쪽에 있거나 같다.")
+				; MsgBox("2. BACKSPACE / 현재 flag가 왼쪽에 있거나 같다.")
 
 			}
 	}

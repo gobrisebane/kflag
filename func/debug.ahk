@@ -782,7 +782,9 @@ Winset, region, 131-296 841-296 841-741 131-741 131-296      168-342 316-342 316
 
 
 
-Clipboard :=
+
+GetCaretPosChrome()
+
 
 return
 
@@ -847,12 +849,41 @@ return
 
 
 
-	caret.detect()
-	MsgBox("X : " current_x " / Y : " current_y)
+	; caret.detect()
+	; MsgBox("X : " current_x " / Y : " current_y)
+	; initInstantCaret()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+; GetCaretPos(sx,sy)
+; MsgBox("sx : " sx)
+; MsgBox("sy : " sy)
+
+
+
+; Acc_Caret := Acc_ObjectFromWindow(WinExist("A"), OBJID_CARET := 0xFFFFFFF8)
+; Caret_Location := Acc_Location(Acc_Caret)
+; Acc_Caret := Acc_ObjectFromWindow(WinExist("A"), OBJID_CARET := 0xFFFFFFF8)
+; msgbox % Acc_State(Acc_Caret)
+; MsgBox("Caret_Location : " Acc_State(Acc_Caret))
+
+
+
 
 
 return
-
 
 
 

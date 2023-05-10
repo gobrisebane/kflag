@@ -260,6 +260,18 @@ return
 
 
 
+
+
+	; fortest
+	; caret.detect()
+	; initInstantCaret()
+	; MsgBox("X : " current_x " / Y : " current_y)
+
+
+
+
+
+
 return
 
 

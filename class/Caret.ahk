@@ -6,6 +6,7 @@ class Caret{
 
 	cur_exe := ""
 	pre_exe := ""
+
 	cur_winid := ""
 	pre_winid := ""
 	type := ""
@@ -29,6 +30,10 @@ class Caret{
 		CoordMode, Caret, Screen
 		WinGet, cur_exe, ProcessName, A
 		WinGet, cur_winid, ID, A
+
+
+		WinGet, current_exe, ProcessName, A
+
 
 		this.cur_exe := cur_exe
 		this.cur_winid := cur_winid
@@ -140,21 +145,21 @@ class Caret{
 		}
 
 		if( this.checkWindowCaret() ){
-			; MsgBox("windowCaret WORKS")
+			MsgBox("windowCaret WORKS")
 			this.type := "WINDOW_CARET"
 			return
 		}
 
 
 		if( this.checkAccCaret() ){
-			; MsgBox("accCaret WORKS")
+			MsgBox("accCaret WORKS")
 			this.type := "ACC_CARET"
 			return
 		}
 
 
 		if( this.checkUIACaret() ){
-			; MsgBox("UIACaret WORKS")
+			MsgBox("UIACaret WORKS")
 			this.type := "UIA_CARET"
 			return
 		}

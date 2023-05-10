@@ -68,9 +68,9 @@ return
 
 
 
-	; WinGet, cur_exe, ProcessName, A
-	; MsgBox("cur_exe : " cur_exe)
 
+
+MsgBox("current_exe : " current_exe)
 
 
 

@@ -63,6 +63,11 @@ global current_h
 global prev_x
 global prev_y
 
+global current_exe
+global prev_exe
+
+
+
 
 global current_lang
 global caretChangeDelay := 80
@@ -269,30 +274,54 @@ return
 
 
 
-
-
-
 ~VK15::
 ~^VK15::
 ~+VK15::
 ~^+VK15::
 
-
-	capsLockToLowCase()
-
-	/*
-	2가지 사용 결과 위치를 바꾸는 것도 좋은 것 같음
-	아래는 변환이고 위는 따라오게 하는 것임
-	*/
+; VK15::
+; ^VK15::
+; +VK15::
+; ^+VK15::
 
 
-	initInstantCaret()
+	; 원래있던것
+	; capsLockToLowCase()
+
+
+
+	; v1
+	; initInstantCaret()
 
 
 	; v2
 	; swapLangImage()
 
+
+
+
+
+
+
+
+
+
+
+
+
 return
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

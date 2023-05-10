@@ -138,6 +138,18 @@ hasValue(haystack, needle) {
 
 
 
+GetCaretPosChrome(){
+
+	caret2 := Acc_ObjectFromWindow(WinExist("A"), OBJID_CARET := 0xFFFFFFF8)
+	caretLocation := Acc_Location(caret2)
+	MsgBox("caretLocationX : " caretLocation.x)
+	MsgBox("caretLocationY : " caretLocation.y)
+
+}
+
+
+
+
 GetCaretPos(ByRef x, ByRef y)
 {
 	;https://www.autohotkey.com/boards/viewtopic.php?t=64101
