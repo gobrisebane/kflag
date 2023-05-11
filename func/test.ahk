@@ -855,3 +855,121 @@ correctFlagAndCaretXYBK(loopCount:=5){
 }
 
 
+checkUIACaretBK(){
+
+
+		;~ https://www.autoahk.com/archives/44158
+
+
+		static iUIAutomation, hOleacc, IID_IAccessible
+
+		try{
+			iUIAutomation := ComObjCreate("{E22AD333-B25F-460C-83D0-0581107395C9}", "{30CBE57D-D9D0-452A-AB13-7AC5AC4825EE}")
+			hOleacc := DllCall("LoadLibrary", "str", "Oleacc.dll", "ptr")
+			VarSetCapacity(IID_IAccessible, 16),
+			NumPut(0x11CF3C3D618736E0, IID_IAccessible, "int64"),
+			NumPut(0x719B3800AA000C81, IID_IAccessible, 8, "int64")
+			VarSetCapacity(guiThreadInfo, size := (A_PtrSize == 8 ? 72 : 48)), NumPut(size, guiThreadInfo, "uint")
+		}
+
+		DllCall(NumGet(NumGet(iUIAutomation + 0), 8 * A_PtrSize), "ptr", iUIAutomation, "ptr*", eleFocus)
+
+		if !hwndFocus
+			hwndFocus := WinExist()
+
+		if iUIAutomation && eleFocus {
+
+			if DllCall(NumGet(NumGet(eleFocus + 0), 16 * A_PtrSize), "ptr", eleFocus, "int", 10024, "ptr*", textPattern2, "int") || !textPattern2
+				|| DllCall(NumGet(NumGet(textPattern2 + 0), 10 * A_PtrSize), "ptr", textPattern2, "int*", isActive, "ptr*", caretTextRange)
+				|| !caretTextRange || !isActive || DllCall(NumGet(NumGet(caretTextRange + 0), 10 * A_PtrSize), "ptr", caretTextRange, "ptr*", rects)
+				|| !rects || (rects := ComObject(0x2005, rects, 1)).MaxIndex() < 3
+				Sleep 1
+				try{
+					current_x := Round(rects[0]) + this.X_margin,
+					current_y := Round(rects[1]) + this.Y_margin,
+					current_w := Round(rects[2]),
+					current_h := Round(rects[3]),
+					hwnd := hwndFocus
+				}
+
+
+				timeRecord("GetCaret - 3-3 : iUIAuto")
+				timeRecord("current_x : " current_x  " / current_y : " current_y " current_w : " current_w " current_h :" current_h)
+				; MsgBox("GetCaret - 3-3 / current_x : " current_x  " / current_y : " current_y " current_w : " current_w " current_h :" current_h)
+
+				MsgBox("cleaning start")
+				goto cleanCaret2
+
+
+				if(current_w > 0 AND current_h > 0){
+
+					; MsgBox("--------- C-1-1. UIA WORKS")
+					return True
+
+				}
+
+				; 크롬에서 셀렉팅한 텍스트를 인식함
+
+				/*
+				else if (current_w < 1 AND current_h < 1){
+					; use IUIAutomationTextPattern::GetSelection
+					if DllCall(NumGet(NumGet(eleFocus + 0), 16 * A_PtrSize), "ptr", eleFocus, "int", 10014, "ptr*", textPattern) || !textPattern
+					|| DllCall(NumGet(NumGet(textPattern + 0), 5 * A_PtrSize), "ptr", textPattern, "ptr*", selectionRangeArray) || !selectionRangeArray
+					|| DllCall(NumGet(NumGet(selectionRangeArray + 0), 3 * A_PtrSize), "ptr", selectionRangeArray, "int*", length) || !length
+					|| DllCall(NumGet(NumGet(selectionRangeArray + 0), 4 * A_PtrSize), "ptr", selectionRangeArray, "int", 0, "ptr*", selectionRange) || !selectionRange
+					|| DllCall(NumGet(NumGet(selectionRange + 0), 10 * A_PtrSize), "ptr", selectionRange, "ptr*", rects) || !rects
+					Sleep 1
+					;~ rects := ComObject(0x2005, rects, 1)
+
+					;~ if rects.MaxIndex() < 3 && DllCall(NumGet(NumGet(selectionRange + 0), 6 * A_PtrSize), "ptr", selectionRange, "int", 0)
+					|| DllCall(NumGet(NumGet(selectionRange + 0), 10 * A_PtrSize), "ptr", selectionRange, "ptr*", rects) || !rects || (rects := ComObject(0x2005, rects, 1)).MaxIndex() < 3
+						DllCall(NumGet(NumGet(selectionRange + 0), 6 * A_PtrSize), "ptr", selectionRange, "int", 0)
+						DllCall(NumGet(NumGet(selectionRange + 0), 10 * A_PtrSize), "ptr", selectionRange, "ptr*", rects)
+						rects := ComObject(0x2005, rects, 1)
+						Sleep 1
+						try{
+							current_x := Round(rects[0]) + this.X_margin,
+							current_y := Round(rects[1]) + this.Y_margin,
+							current_w := Round(rects[2]),
+							current_h := Round(rects[3]),
+							hwnd := hwndFocus
+						}
+						if(current_w > 0 AND current_h > 0){
+							MsgBox("--------- C-1-2. UIA WORKS")
+							return True
+						} else {
+
+							MsgBox("--------- C-2. UIA fail..")
+							; this.type := ""
+							; return False
+
+						}
+
+						timeRecord("GetCaret - 3-4 : usergetselection")
+						timeRecord("CaretX : " current_x  " / CaretY : " current_y " CaretW : " current_w " CaretH :" current_h)
+						; MsgBox("GetCaret - 3-4 / CaretX : " current_x  " / CaretY : " current_y " CaretW : " current_w " CaretH :" current_h)
+						goto cleanCaret2
+				}
+				*/
+
+				else {
+
+					; MsgBox("--------- C-1-2. UIA FAIL..")
+					return false
+
+
+				}
+
+
+		}
+
+		cleanCaret2:
+		for _, p in [eleFocus, valuePattern, textPattern2, caretTextRange, textPattern, selectionRangeArray, selectionRange, accCaret]
+			(p && ObjRelease(p))
+		; return hwnd
+
+
+
+
+
+	}

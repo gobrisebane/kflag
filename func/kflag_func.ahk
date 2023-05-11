@@ -59,7 +59,7 @@ caretWatcher(){
 
 	if(keyTyping = True){
 
-		;~ MsgBox("1-KEYTYPING MODE / DO NOT MOVE CARET")
+		; MsgBox("1-KEYTYPING MODE / DO NOT MOVE CARET")
 
 		lastKeyTypingSec++
 		;~ MsgBox("lastKeyTypingSec : " lastKeyTypingSec)
@@ -72,8 +72,22 @@ caretWatcher(){
 
 
 	} else if(keyTyping = False){
-		;~ MsgBox("2-NOT KEYTYPING MODE / MOVE CARET")
+
+		; MsgBox("2-NOT KEYTYPING MODE / MOVE CARET")
 		initInstantCaret()
+
+
+
+		initInstantCaret()
+		initInstantCaret()
+		initInstantCaret()
+		initInstantCaret()
+		initInstantCaret()
+		initInstantCaret()
+		initInstantCaret()
+		initInstantCaret()
+		initInstantCaret()
+
 
 	}
 }
@@ -550,10 +564,9 @@ isCurrentYandPrevYDiffer(){
 isExeSearchingLateCaret(cur_exe){
 
 	arr := ["WINWORD.EXE","POWERPNT.EXE"]
-	MsgBox("cur_exe : " cur_exe)
+	; MsgBox("cur_exe : " cur_exe)
 
 	if( hasValue(arr, cur_exe) ) {
-		MsgBox("THIS IS LATECARET")
 		return true
 	}
 

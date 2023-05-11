@@ -8,7 +8,11 @@
 
 
 
+
+; SetTimer, caretWatcher, 0
 ; SetTimer, caretWatcher, 10
+; SetTimer, caretWatcher, 600
+
 
 
 
@@ -687,7 +691,6 @@ return
 
 
 #include %A_ScriptDir%/func/kflag_latecaret.ahk
-#include %A_ScriptDir%/func/kflag_caret.ahk
 #include %A_ScriptDir%/func/kflag_flag.ahk
 #include %A_ScriptDir%/func/kflag_lib.ahk
 #include %A_ScriptDir%/func/kflag_func.ahk

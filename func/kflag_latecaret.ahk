@@ -18,9 +18,7 @@ initImgCaret(){
 
 
 
-				caret.detect()
-
-
+			caret.detect()
 
 			if( keyTyping ) {
 				; MsgBox("TYPING so break")
@@ -88,7 +86,6 @@ searchingLateCaret(loopCount){
 
 
 
-		MsgBox("1...clickCount : " clickCount)
 
 
 			caret.detect()
@@ -101,11 +98,22 @@ searchingLateCaret(loopCount){
 
 
 
+
+
+
+
+			arr := ["Button"]
+			if( !isStringInArray(A_ThisHotKey, arr) ){
+				break
+			}
+
 			if(keyTyping = True){
 				; MsgBox("===DETECT KEYTYPING SO STOP LOOP===")
 				keyTyping := False
 				break
 			}
+
+
 
 
 			if( current_w != 0 ){

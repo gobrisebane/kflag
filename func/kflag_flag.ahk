@@ -11,6 +11,10 @@ SplashImageGUI(mode:="default"){
 
 	; MsgBox("!SPLASH CALLED")
 
+
+
+
+
 	Try {
 
 		; timeRecord("SplashImageGUI - 3 / cx : " current_x  " cy : " current_y )
@@ -45,6 +49,8 @@ SplashImageGUI(mode:="default"){
 	}
 
 	prev_exe := current_exe
+
+
 
 }
 

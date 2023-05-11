@@ -889,6 +889,13 @@ return
 		; MsgBox("X : " current_x " / Y : " current_y)
 
 
+
+
+
+	MsgBox("run..")
+	Run, C:\Windows\System32\notepad.exe
+
+
 return
 
 
