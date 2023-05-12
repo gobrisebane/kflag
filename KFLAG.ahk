@@ -10,7 +10,7 @@
 
 
 ; SetTimer, caretWatcher, 0
-; SetTimer, caretWatcher, 10
+SetTimer, caretWatcher, 100
 ; SetTimer, caretWatcher, 600
 
 

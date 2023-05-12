@@ -316,7 +316,8 @@ class Caret{
 				timeRecord("current_x : " current_x  " / current_y : " current_y " current_w : " current_w " current_h :" current_h)
 				; MsgBox("GetCaret - 3-3 / current_x : " current_x  " / current_y : " current_y " current_w : " current_w " current_h :" current_h)
 
-				MsgBox("cleaning start")
+
+
 				goto cleanCaret
 
 

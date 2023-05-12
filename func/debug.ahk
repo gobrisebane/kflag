@@ -1133,7 +1133,9 @@ MsgBox(vOutput,color:="")
 timeRecord(sentence){
 	try{
 
+		/*
 	FileAppend, [%A_Mon%-%A_Mday%-%A_Hour%:%A_Min%:%A_Sec%:%A_MSec%][%sentence%] `n, log\%A_Year%-%A_Mon%-%A_Mday%.js
+	*/
 	}
 
 }

@@ -12,8 +12,9 @@ initKflag(){
 
 
 
-	sleep 500
-	SetTimer, debugWindow, 200
+
+	; sleep 500
+	; SetTimer, debugWindow, 200
 
 
 }
@@ -74,18 +75,6 @@ caretWatcher(){
 	} else if(keyTyping = False){
 
 		; MsgBox("2-NOT KEYTYPING MODE / MOVE CARET")
-		initInstantCaret()
-
-
-
-		initInstantCaret()
-		initInstantCaret()
-		initInstantCaret()
-		initInstantCaret()
-		initInstantCaret()
-		initInstantCaret()
-		initInstantCaret()
-		initInstantCaret()
 		initInstantCaret()
 
 
