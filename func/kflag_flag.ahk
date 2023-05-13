@@ -48,12 +48,9 @@ SplashImageGUI(mode:="default"){
 
 	}
 
+
+
 	prev_exe := current_exe
-
-
-
-
-
 
 }
 
@@ -69,6 +66,7 @@ SplashImageGUI(mode:="default"){
 drawFlag(){
 
 	; MsgBox("-----------draw flag--------")
+
 
 
 	if(!SplashImage OR (current_exe != prev_exe) ){
@@ -119,26 +117,17 @@ drawFlag(){
 			} else {
 
 
-					; timeRecord("drawFlag() - 1-3 / Else : XPT10 exist'")
-					; MsgBox("drawFlag() - 1-3 / Else : XPT10 exist")
 
-					; 플리커현상이 없어지는지 체크를 위해 주석처리
-					; GuiControl,XPT10: -Redraw,     FlagApp
+				; MsgBox("PREV LANG : " prev_lang)
+				; MsgBox("CURRENT LANG : " current_lang)
 
-
+				if(prev_lang != current_lang){
+					; MsgBox("--LANG CHANGE!")
 					GuiControl,XPT10:, FlagApp, %SplashImage%
-					GuiControl,XPT10: +Redraw,    FlagApp
-					Gui, XPT10:+AlwaysOnTop
-
+				}
 
 
 			}
-
-		;~ 터미널을 이쪽에서 가동시키면 플리커현상이 일어남
-		;~ MsgBox("FLICKER TEST")
-
-
-
 
 
 	} Else {
@@ -234,8 +223,9 @@ destroySplashGUI(){
 
 updateSplashImage(){
 
-	; MsgBox("----------updateSplashImage works")
+	setPrevLang()
 
+	MsgBox("----------updateSplashImage works.. CHANGE - 1")
 	ime_status := % IME_CHECK("A")
 	GetKeyState, caps_state, CapsLock, T
 
@@ -271,10 +261,11 @@ updateSplashImage(){
 
 
 
-
-
 swapLangImage(){
 
+	setPrevLang()
+
+	MsgBox("----------updateSplashImage works.. CHANGE- 2")
 
 	if(current_lang){
 		if(current_lang = "kor"){
@@ -292,6 +283,13 @@ swapLangImage(){
 	}
 
 
+}
+
+
+
+setPrevLang(){
+	; 이전 언어를 기록해야 추후 변경할 때 체크가 가능하다.
+	prev_lang := current_lang
 }
 
 

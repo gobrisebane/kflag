@@ -1051,9 +1051,6 @@ checkUIACaretBK(){
 		ObjRelease(iUIAutomation)
 		DllCall("FreeLibrary", "Ptr", hOleacc)
 
-
-
-
 	}
 
 
@@ -1087,3 +1084,13 @@ checkAccCaretBK(){
 
 
 }
+
+
+
+/*
+	; 플리커현상이 없어지는지 체크를 위해 주석처리
+	; GuiControl,XPT10: -Redraw,     FlagApp
+	GuiControl,XPT10:, FlagApp, %SplashImage%
+	; GuiControl,XPT10: +Redraw,    FlagApp
+	Gui, XPT10:+AlwaysOnTop
+*/

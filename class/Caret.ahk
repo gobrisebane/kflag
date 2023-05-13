@@ -29,13 +29,9 @@ class Caret{
 		prev_x := current_x
 		prev_y := current_y
 
-		; MsgBox("--prevwors--")
 		; MsgBox("prev_x : " prev_x)
 		; MsgBox("prev_y : " prev_y)
-		; MsgBox("current_winid : " current_winid)
-		; MsgBox("prev_winid : " prev_winid)
 		; MsgBox("this.type : " this.type)
-
 
 		if( current_winid = prev_winid AND this.type){
 			; MsgBox("MODE : 1. USING / WINID")
@@ -45,12 +41,11 @@ class Caret{
 			this.detectCaretType()
 		}
 
-
-
+		; MsgBox("current_winid : " current_winid)
+		; MsgBox("prev_winid : " prev_winid)
 		this.setFocusedHeight()
 
 
-		prev_exe := current_exe
 		prev_winid := current_winid
 
 
@@ -90,7 +85,7 @@ class Caret{
 		; MsgBox("current_winid : " current_winid)
 		; MsgBox("prev_winid : " prev_winid)
 		if(current_winid != prev_winid){
-			; MsgBox("2-1. winid 달라졌음")
+			MsgBox("2-1. winid 달라졌음")
 			; return True
 		} else {
 			; MsgBox("2-2. winid 그대로임")
