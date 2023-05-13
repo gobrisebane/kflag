@@ -10,8 +10,12 @@
 
 
 ; SetTimer, caretWatcher, 0
-SetTimer, caretWatcher, 100
+; SetTimer, caretWatcher, 100
+SetTimer, caretWatcher, 300
 ; SetTimer, caretWatcher, 600
+
+
+SetTimer, clearRam, 10000
 
 
 

@@ -783,10 +783,21 @@ Winset, region, 131-296 841-296 841-741 131-741 131-296      168-342 316-342 316
 
 
 
-GetCaretPosChrome()
+; GetCaretPosChrome()
+
+
+
+
+
 
 
 return
+
+
+
+
+
+
 
 
 
@@ -892,8 +903,52 @@ return
 
 
 
-	MsgBox("run..")
-	Run, C:\Windows\System32\notepad.exe
+
+	; MsgBox("run..")
+	; Run, C:\Windows\System32\notepad.exe
+
+
+
+
+	; GetCaretPosChrome()
+
+
+
+
+
+
+
+
+
+
+
+	;  static IUIA := ComObjCreate("{ff48dba4-60ef-4201-aa87-54103eef594e}", "{30cbe57d-d9d0-452a-ab13-7ac5ac4825ee}")
+
+	;  ; GetFocusedElement
+   ;  DllCall(NumGet(NumGet(IUIA+0)+8*A_PtrSize), "ptr", IUIA, "ptr*", FocusedEl:=0)
+
+
+	;  ; GetCurrentPattern. TextPatternElement2 = 10024
+   ;  DllCall(NumGet(NumGet(FocusedEl+0)+16*A_PtrSize), "ptr", FocusedEl, "int", 10024, "ptr*", patternObject:=0),
+	;  ObjRelease(FocusedEl)
+
+	;  if patternObject {
+   ;      ; GetCaretRange
+   ;      DllCall(NumGet(NumGet(patternObject+0)+10*A_PtrSize), "ptr", patternObject, "int*", IsActive:=1, "ptr*", caretRange:=0), ObjRelease(patternObject)
+   ;      ; GetBoundingRectangles
+   ;      DllCall(NumGet(NumGet(caretRange+0)+10*A_PtrSize), "ptr", caretRange, "ptr*", boundingRects:=0), ObjRelease(caretRange)
+   ;      ; VT_ARRAY = 0x20000 | VT_R8 = 5 (64-bit floating-point number)
+   ;      Rect := ComObject(0x2005, boundingRects)
+   ;      if (Rect.MaxIndex() = 3) {
+   ;          X:=Round(Rect[0]), Y:=Round(Rect[1]), W:=Round(Rect[2]), H:=Round(Rect[3])
+   ;          return
+   ;      }
+   ;  }
+
+	;  MsgBox("X : " X)
+	;  MsgBox("Y : " Y)
+
+
 
 
 return
@@ -959,7 +1014,7 @@ debugWindow(){
 
 
 
-
+/*
 
 
 
@@ -995,20 +1050,18 @@ GetCaretPosEx3(byref x = 0, byref y = 0, byref w = 0, byref h = 0) {
             goto cleanUp2
     ; Plan A applies to windows that implement IAccessible, such as chrome
     useAccLocation2:
-	/*
 
-    if DllCall("GetGUIThreadInfo", "uint", DllCall("GetWindowThreadProcessId", "ptr", WinExist("A"), "ptr", 0, "uint"), "ptr", &guiThreadInfo)
-        hwndFocus := NumGet(guiThreadInfo, A_PtrSize == 8 ? 16 : 12, "ptr")
-    if !hwndFocus
-        hwndFocus := WinExist()
-    if hOleacc && !DllCall("Oleacc\AccessibleObjectFromWindow", "ptr", hwndFocus, "uint", 0xFFFFFFF8, "ptr", &IID_IAccessible, "ptr*", accCaret) && accCaret {
-        VarSetCapacity(id, 24, 0), NumPut(3, id, "ushort")
-        if !DllCall(NumGet(NumGet(accCaret + 0), 22 * A_PtrSize), "ptr", accCaret, "int*", x, "int*", y, "int*", w, "int*", h, "ptr", &id) {
-            hwnd := hwndFocus
-            goto cleanUp2
-        }
-    }
-	 */
+   ;  if DllCall("GetGUIThreadInfo", "uint", DllCall("GetWindowThreadProcessId", "ptr", WinExist("A"), "ptr", 0, "uint"), "ptr", &guiThreadInfo)
+   ;      hwndFocus := NumGet(guiThreadInfo, A_PtrSize == 8 ? 16 : 12, "ptr")
+   ;  if !hwndFocus
+   ;      hwndFocus := WinExist()
+   ;  if hOleacc && !DllCall("Oleacc\AccessibleObjectFromWindow", "ptr", hwndFocus, "uint", 0xFFFFFFF8, "ptr", &IID_IAccessible, "ptr*", accCaret) && accCaret {
+   ;      VarSetCapacity(id, 24, 0), NumPut(3, id, "ushort")
+   ;      if !DllCall(NumGet(NumGet(accCaret + 0), 22 * A_PtrSize), "ptr", accCaret, "int*", x, "int*", y, "int*", w, "int*", h, "ptr", &id) {
+   ;          hwnd := hwndFocus
+   ;          goto cleanUp2
+   ;      }
+   ;  }
 
 
     ;~ if iUIAutomation && eleFocus {
@@ -1065,8 +1118,7 @@ GetCaretPosEx3(byref x = 0, byref y = 0, byref w = 0, byref h = 0) {
 
 
 
-
-
+ */
 
 
 

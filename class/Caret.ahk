@@ -20,6 +20,8 @@ class Caret{
 	detect(){
 
 
+
+
 		CoordMode, Caret, Screen
 		WinGet, current_winid, ID, A
 		WinGet, current_exe, ProcessName, A
@@ -50,7 +52,6 @@ class Caret{
 
 		prev_exe := current_exe
 		prev_winid := current_winid
-
 
 
 	}
@@ -235,114 +236,83 @@ class Caret{
 	}
 
 
+
+
+
 	checkAccCaret(){
+			AccCaret := Acc_ObjectFromWindow(WinExist("A"), OBJID_CARET := 0xFFFFFFF8)
+			caretLocation := Acc_Location(AccCaret)
+			current_x := caretLocation.x + this.X_margin
+			current_y := caretLocation.y + this.Y_margin
+			current_w := caretLocation.w
+			current_h := caretLocation.h
 
-
-		static init
-		Try {
-
-			if (!init)
-					init:=DllCall("LoadLibrary","Str","oleacc","Ptr")
-				VarSetCapacity(IID,16), idObject:=OBJID_CARET:=0xFFFFFFF8
-				, NumPut(idObject==0xFFFFFFF0?0x0000000000020400:0x11CF3C3D618736E0, IID, "Int64")
-				, NumPut(idObject==0xFFFFFFF0?0x46000000000000C0:0x719B3800AA000C81, IID, 8, "Int64")
-			if DllCall("oleacc\AccessibleObjectFromWindow"
-				, "Ptr",WinExist("A"), "UInt",idObject, "Ptr",&IID, "Ptr*",pacc)=0
-			{
-				Acc:=ComObject(9,pacc,1), ObjAddRef(pacc)
-				, Acc.accLocation( ComObj(0x4003,&x:=0), ComObj(0x4003,&y:=0), ComObj(0x4003,&w:=0), ComObj(0x4003,&h:=0), ChildId:=0)
-				, current_x:=NumGet(x,0,"int") + this.X_margin
-				, current_y:=NumGet(y,0,"int") + this.Y_margin
-				, current_w:=NumGet(w,0,"int")
-				, current_h:=NumGet(h,0,"int")
+			if (current_w > 0 AND current_h > 0){
+				; MsgBox("--------- B-1. acccaret works")
+				return true
+			} else {
+				; MsgBox("--------- B-2. acccaret fail..")
+				return false
 			}
-		}
-
-		if (current_w > 0 AND current_h > 0){
-			; MsgBox("--------- B-1. acccaret works")
-			return true
-		} else {
-			; MsgBox("--------- B-2. acccaret fail..")
-			return false
-		}
-
-
 	}
 
 
 	checkUIACaret(){
 
+			static IUIA := ComObjCreate("{ff48dba4-60ef-4201-aa87-54103eef594e}", "{30cbe57d-d9d0-452a-ab13-7ac5ac4825ee}")
+
+			; GetFocusedElement
+			DllCall(NumGet(NumGet(IUIA+0)+8*A_PtrSize), "ptr", IUIA, "ptr*", FocusedEl:=0)
+			; ObjRelease(FocusedEl)
+
+			; GetCurrentPattern. TextPatternElement2 = 10024
+			DllCall(NumGet(NumGet(FocusedEl+0)+16*A_PtrSize), "ptr", FocusedEl, "int", 10024, "ptr*", patternObject:=0)
+			ObjRelease(FocusedEl)
+
+			if patternObject {
+
+				; GetCaretRange
+				DllCall(NumGet(NumGet(patternObject+0)+10*A_PtrSize), "ptr", patternObject, "int*", IsActive:=1, "ptr*", caretRange:=0)
+				ObjRelease(patternObject)
+
+				; GetBoundingRectangles
+				DllCall(NumGet(NumGet(caretRange+0)+10*A_PtrSize), "ptr", caretRange, "ptr*", boundingRects:=0)
+				ObjRelease(caretRange)
 
 
-		;~ https://www.autoahk.com/archives/44158
+				; VT_ARRAY = 0x20000 | VT_R8 = 5 (64-bit floating-point number)
+				Rect := ComObject(0x2005, boundingRects)
 
 
-		static iUIAutomation, hOleacc, IID_IAccessible
-		try{
-			if(!iUIAutomation){
-				iUIAutomation := ComObjCreate("{E22AD333-B25F-460C-83D0-0581107395C9}", "{30CBE57D-D9D0-452A-AB13-7AC5AC4825EE}")
-			}
-			hOleacc := DllCall("LoadLibrary", "str", "Oleacc.dll", "ptr")
-			VarSetCapacity(IID_IAccessible, 16),
-			NumPut(0x11CF3C3D618736E0, IID_IAccessible, "int64"),
-			NumPut(0x719B3800AA000C81, IID_IAccessible, 8, "int64")
-			VarSetCapacity(guiThreadInfo, size := (A_PtrSize == 8 ? 72 : 48)), NumPut(size, guiThreadInfo, "uint")
-		}
-
-				; goto cleanCaret
-
-		DllCall(NumGet(NumGet(iUIAutomation + 0), 8 * A_PtrSize), "ptr", iUIAutomation, "ptr*", eleFocus)
-
-		if !hwndFocus
-			hwndFocus := WinExist()
-
-		if iUIAutomation && eleFocus {
-
-			if DllCall(NumGet(NumGet(eleFocus + 0), 16 * A_PtrSize), "ptr", eleFocus, "int", 10024, "ptr*", textPattern2, "int") || !textPattern2
-				|| DllCall(NumGet(NumGet(textPattern2 + 0), 10 * A_PtrSize), "ptr", textPattern2, "int*", isActive, "ptr*", caretTextRange)
-				|| !caretTextRange || !isActive || DllCall(NumGet(NumGet(caretTextRange + 0), 10 * A_PtrSize), "ptr", caretTextRange, "ptr*", rects)
-				|| !rects || (rects := ComObject(0x2005, rects, 1)).MaxIndex() < 3
-				Sleep 1
-				try{
-					current_x := Round(rects[0]) + this.X_margin,
-					current_y := Round(rects[1]) + this.Y_margin,
-					current_w := Round(rects[2]),
-					current_h := Round(rects[3]),
-					hwnd := hwndFocus
+				if (Rect.MaxIndex() = 3) {
+						current_x:=Round(Rect[0]) + this.X_margin,
+						current_y:=Round(Rect[1]) + this.Y_margin,
+						current_w:=Round(Rect[2]),
+						current_h:=Round(Rect[3])
 				}
-
-
-				timeRecord("GetCaret - 3-3 : iUIAuto")
-				timeRecord("current_x : " current_x  " / current_y : " current_y " current_w : " current_w " current_h :" current_h)
-				; MsgBox("GetCaret - 3-3 / current_x : " current_x  " / current_y : " current_y " current_w : " current_w " current_h :" current_h)
-
-
-
-				goto cleanCaret
-
 
 
 				if(current_w > 0 AND current_h > 0){
-
 					; MsgBox("--------- C-1-1. UIA WORKS")
 					return True
-
 				} else {
-
 					; MsgBox("--------- C-1-2. UIA FAIL..")
 					return false
 				}
-		}
+
+			}
 
 
 
 
-		cleanCaret:
-		for _, p in [eleFocus, valuePattern, textPattern2, caretTextRange, textPattern, selectionRangeArray, selectionRange, accCaret,guiThreadInfo]
-			(p && ObjRelease(p))
 
 
-		; return hwnd
+
+
+
+
+
+
 	}
 
 

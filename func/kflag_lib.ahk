@@ -144,6 +144,10 @@ GetCaretPosChrome(){
 	caretLocation := Acc_Location(caret2)
 	MsgBox("caretLocationX : " caretLocation.x)
 	MsgBox("caretLocationY : " caretLocation.y)
+	MsgBox("caretLocationW : " caretLocation.w)
+	MsgBox("caretLocationH : " caretLocation.h)
+
+
 
 }
 
