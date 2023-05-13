@@ -126,9 +126,9 @@ drawFlag(){
 					; GuiControl,XPT10: -Redraw,     FlagApp
 
 
-					; GuiControl,XPT10:, FlagApp, %SplashImage%
-					; GuiControl,XPT10: +Redraw,    FlagApp
-					; Gui, XPT10:+AlwaysOnTop
+					GuiControl,XPT10:, FlagApp, %SplashImage%
+					GuiControl,XPT10: +Redraw,    FlagApp
+					Gui, XPT10:+AlwaysOnTop
 
 
 
@@ -151,11 +151,11 @@ drawFlag(){
 
 
 
- 	; if( ((IME_CHECK("A") = 1) AND current_lang = "eng")
-	; 	OR ((IME_CHECK("A") = 0) AND current_lang = "kor") ){
-	; 	; MsgBox("!!!!! -----REVIVE----- !!!!!")
-	; 	swapLangImage()
-	; }
+ 	if( ((IME_CHECK("A") = 1) AND current_lang = "eng")
+		OR ((IME_CHECK("A") = 0) AND current_lang = "kor") ){
+		; MsgBox("!!!!! -----REVIVE----- !!!!!")
+		swapLangImage()
+	}
 
 
 

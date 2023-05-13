@@ -583,12 +583,14 @@ filterPowerpointCaretW(){
 
 
 
-clearRam(PID="AHK Rocks"){
-	MsgBox("CLEAR RAM WORKS")
-    pid:=(pid="AHK Rocks") ? DllCall("GetCurrentProcessId") : pid
-    h:=DllCall("OpenProcess", "UInt", 0x001F0FFF, "Int", 0, "Int", pid)
-    DllCall("SetProcessWorkingSetSize", "UInt", h, "Int", -1, "Int", -1)
-    DllCall("CloseHandle", "Int", h)
+clearRam(){
+	; https://www.autohotkey.com/board/topic/30042-run-ahk-scripts-with-less-half-or-even-less-memory-usage/
+
+	MsgBox("memory clear")
+	 pid := DllCall("GetCurrentProcessId")
+	 h:=DllCall("OpenProcess", "UInt", 0x001F0FFF, "Int", 0, "Int", pid)
+	 DllCall("SetProcessWorkingSetSize", "UInt", h, "Int", -1, "Int", -1)
+	 DllCall("CloseHandle", "Int", h)
 }
 
 
