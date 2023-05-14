@@ -768,12 +768,14 @@ Winset, region, 131-296 841-296 841-741 131-741 131-296      168-342 316-342 316
 
 
 
- /*
-  ControlGet, ctrlHwnd, Hwnd,, %ctrlClass%, ahk_class Notepad
-		  DllCall("SendMessage","PTR",ctrlHwnd,"UInt",0xB0,"PTR*",start,"PTR*",end) ;EM_GETSEL
-		  MsgBox("start : " start)
-		  MsgBox("end : " end)
-*/
+	/*
+	ControlGet, ctrlHwnd, Hwnd,, %ctrlClass%, ahk_class Notepad
+			DllCall("SendMessage","PTR",ctrlHwnd,"UInt",0xB0,"PTR*",start,"PTR*",end) ;EM_GETSEL
+			MsgBox("start : " start)
+			MsgBox("end : " end)
+	*/
+
+	; clearRam()
 
 
 
@@ -784,7 +786,43 @@ Winset, region, 131-296 841-296 841-741 131-741 131-296      168-342 316-342 316
 
 
 
-clearRam()
+
+
+
+
+
+	eleFocus := UIA.GetFocusedElement()
+	focusedH := eleFocus.BoundingRectangle.b-eleFocus.BoundingRectangle.t
+	MsgBox("focusedH : " focusedH)
+
+
+
+
+
+
+
+	caret.detect()
+	MsgBox("X : " current_x " / Y : " current_y " / W : " current_w " / H : " current_h)
+	; SplashImageGUI()
+
+; 	PostMessage, 0x112, 0xF020,,, Telegram.exe,
+; PostMessage, 0x06, 2,,, Telegram,
+; PostMessage, 0x0201, 0x0001,,, Telegram,
+; sleep 100
+; Left Mouse Button Up
+; PostMessage, 0x0202,,,, Telegram.
+; WinShow, Telegram
+
+
+
+; checkUIACaret3()
+; checkUIACaretBK2()
+; checkUIACaretBK()
+
+
+
+
+
 
 return
 

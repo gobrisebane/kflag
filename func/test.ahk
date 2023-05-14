@@ -898,7 +898,7 @@ checkUIACaretBK(){
 				; MsgBox("GetCaret - 3-3 / current_x : " current_x  " / current_y : " current_y " current_w : " current_w " current_h :" current_h)
 
 				MsgBox("cleaning start")
-				goto cleanCaret2
+				goto cleanCaret3
 
 
 				if(current_w > 0 AND current_h > 0){
@@ -906,12 +906,12 @@ checkUIACaretBK(){
 					; MsgBox("--------- C-1-1. UIA WORKS")
 					return True
 
-				}
 
-				; 크롬에서 셀렉팅한 텍스트를 인식함
+				} else if (current_w < 1 AND current_h < 1){
 
-				/*
-				else if (current_w < 1 AND current_h < 1){
+					;이부분이 크롬에서 selecting한 부분을 인식함
+
+
 					; use IUIAutomationTextPattern::GetSelection
 					if DllCall(NumGet(NumGet(eleFocus + 0), 16 * A_PtrSize), "ptr", eleFocus, "int", 10014, "ptr*", textPattern) || !textPattern
 					|| DllCall(NumGet(NumGet(textPattern + 0), 5 * A_PtrSize), "ptr", textPattern, "ptr*", selectionRangeArray) || !selectionRangeArray
@@ -928,11 +928,12 @@ checkUIACaretBK(){
 						rects := ComObject(0x2005, rects, 1)
 						Sleep 1
 						try{
-							current_x := Round(rects[0]) + this.X_margin,
+							sx := Round(rects[0]) + this.X_margin,
 							current_y := Round(rects[1]) + this.Y_margin,
 							current_w := Round(rects[2]),
 							current_h := Round(rects[3]),
 							hwnd := hwndFocus
+
 						}
 						if(current_w > 0 AND current_h > 0){
 							MsgBox("--------- C-1-2. UIA WORKS")
@@ -948,9 +949,8 @@ checkUIACaretBK(){
 						timeRecord("GetCaret - 3-4 : usergetselection")
 						timeRecord("CaretX : " current_x  " / CaretY : " current_y " CaretW : " current_w " CaretH :" current_h)
 						; MsgBox("GetCaret - 3-4 / CaretX : " current_x  " / CaretY : " current_y " CaretW : " current_w " CaretH :" current_h)
-						goto cleanCaret2
+						goto cleanCaret3
 				}
-				*/
 
 				else {
 
@@ -963,7 +963,7 @@ checkUIACaretBK(){
 
 		}
 
-		cleanCaret2:
+		cleanCaret3:
 		for _, p in [eleFocus, valuePattern, textPattern2, caretTextRange, textPattern, selectionRangeArray, selectionRange, accCaret]
 			(p && ObjRelease(p))
 		; return hwnd
@@ -1028,8 +1028,8 @@ checkUIACaretBK(){
 				}
 
 
-				timeRecord("GetCaret - 3-3 : iUIAuto")
-				timeRecord("current_x : " current_x  " / current_y : " current_y " current_w : " current_w " current_h :" current_h)
+				; timeRecord("GetCaret - 3-3 : iUIAuto")
+				; timeRecord("current_x : " current_x  " / current_y : " current_y " current_w : " current_w " current_h :" current_h)
 				; MsgBox("GetCaret - 3-3 / current_x : " current_x  " / current_y : " current_y " current_w : " current_w " current_h :" current_h)
 
 				goto cleanCaret4
@@ -1079,6 +1079,8 @@ checkAccCaretBK(){
 				, current_y:=NumGet(y,0,"int") + this.Y_margin
 				, current_w:=NumGet(w,0,"int")
 				, current_h:=NumGet(h,0,"int")
+
+				MsgBox("current_x : " current_x)
 			}
 		}
 

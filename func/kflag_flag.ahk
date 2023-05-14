@@ -70,12 +70,13 @@ drawFlag(){
 	; MsgBox("-----------draw flag--------")
 
 
+	if( !SplashImage
+		 OR prev_winid != current_winid
+	    OR A_ThisHotKey = "~VK15" ){
 
-	if(!SplashImage OR prev_winid != current_winid OR A_ThisHotKey = "~VK15" ){
 		; 첫 시동시에 SplashImage를 체크해줘야 맨처음 아무것도 없을 때 에러가 안 생긴다.
 		; (첫 시동한 상태에서는 SplashImage가 null인 상황임)
 		MsgBox("1. differ program")
-		; 이렇게 넣은 이유는, flicker때문에?
 		updateSplashImage()
 	}
 
@@ -119,8 +120,8 @@ drawFlag(){
 			} else {
 
 
-
-				if(prev_winid != current_winid OR A_ThisHotKey = "~VK15"){
+				if(prev_winid != current_winid
+					OR A_ThisHotKey = "~VK15"){
 					changeLangFlag()
 				}
 
@@ -130,7 +131,6 @@ drawFlag(){
 	} Else {
 
 		; timeRecord("SplashImageGUI - 2-2 / else")
-
 		initFlag()
 
 	}
@@ -139,7 +139,7 @@ drawFlag(){
 
  	if( ((IME_CHECK("A") = 1) AND current_lang = "eng")
 		OR ((IME_CHECK("A") = 0) AND current_lang = "kor") ){
-		MsgBox("!!!!! -----REVIVE----- !!!!!")
+		; MsgBox("!!!!! -----REVIVE----- !!!!!")
 		swapLangImage()
 	}
 
@@ -153,7 +153,6 @@ drawFlag(){
 
 
 changeLangFlag(){
-	MsgBox("langchange")
 	GuiControl,XPT10:, FlagApp, %SplashImage%
 	Gui, XPT10:+AlwaysOnTop
 }

@@ -15,12 +15,7 @@ class Caret{
 		this.detect()
 	}
 
-
-
 	detect(){
-
-
-
 
 		CoordMode, Caret, Screen
 		WinGet, current_winid, ID, A
@@ -31,9 +26,9 @@ class Caret{
 
 		; MsgBox("prev_x : " prev_x)
 		; MsgBox("prev_y : " prev_y)
-		; MsgBox("this.type : " this.type)
+		MsgBox("this.type : " this.type)
 
-		if( current_winid = prev_winid AND this.type){
+		if( current_winid = prev_winid AND this.type != ""){
 			; MsgBox("MODE : 1. USING / WINID")
 			this.usingCaretType()
 		} else {
@@ -45,8 +40,6 @@ class Caret{
 		; MsgBox("prev_winid : " prev_winid)
 		this.setFocusedHeight()
 
-
-		; prev_winid := current_winid
 
 
 	}
@@ -85,11 +78,11 @@ class Caret{
 		; MsgBox("current_winid : " current_winid)
 		; MsgBox("prev_winid : " prev_winid)
 		if(current_winid != prev_winid){
-			MsgBox("2-1. winid 달라졌음")
-			; return True
+			; MsgBox("2-1. winid 달라졌음")
+			return True
 		} else {
 			; MsgBox("2-2. winid 그대로임")
-			; return False
+			return False
 		}
 	}
 
@@ -105,11 +98,9 @@ class Caret{
 	}
 
 
-
 	getFocusedH(Byref focusedH=""){
 		focusedH := this.focusedH
 	}
-
 
 	usingCaretType(){
 		switch this.type
@@ -117,20 +108,28 @@ class Caret{
 			case "WINDOW_CARET": this.checkWindowCaret()
 			case "ACC_CARET": this.checkAccCaret()
 			case "UIA_CARET": this.checkUIACaret()
-			; case "OFFICE_CARET": this.checkOfficeCaret()
+
+			case "OFFICE_CARET": this.checkOfficeCaret()
+			case "CUSTOM_CARET": this.checkCustomCaret()
 
 		}
 	}
 
-
 	detectCaretType(){
 
 
-		if( current_exe = "WINWORD.EXE" ){
-			MsgBox("detect winword works")
-			this.type := "UIA_CARET"
+		if( current_exe = "Telegram.exe" ){
+			this.type := "CUSTOM_CARET"
+			this.checkCustomCaret()
 			return
 		}
+
+		if( current_exe = "WINWORD.EXE" ){
+			this.type := "UIA_CARET"
+			this.checkUIACaret()
+			return
+		}
+
 
 		if( this.checkWindowCaret() ){
 			MsgBox("windowCaret WORKS")
@@ -138,13 +137,11 @@ class Caret{
 			return
 		}
 
-
 		if( this.checkAccCaret() ){
 			MsgBox("accCaret WORKS")
 			this.type := "ACC_CARET"
 			return
 		}
-
 
 		if( this.checkUIACaret() ){
 			MsgBox("UIACaret WORKS")
@@ -155,53 +152,28 @@ class Caret{
 
 		;여기까지 오면 일치하는 타입 없음
 		this.type := ""
-
 	}
 
 
 
 
 
+	checkCustomCaret(){
 
 
-	checkOfficeCaret(){
-
-
-			try{
-
-			oWord := ComObjActive("Word.application")
-			oWin := oWord.application.activeWindow
-			oRan := oWord.selection.range
-
-
-
-			VarSetCapacity(var_L, 24, 0)
-			Left_ref := ComObject(0x4003, &var_L)  ; 0x400C is a combination of VT_BYREF and VT_I4 (long).
-			VarSetCapacity(var_T, 24, 0)
-			Top_ref := ComObject(0x4003, &var_T)  ; 0x400C is a combination of VT_BYREF and VT_I4 (long).
-			VarSetCapacity(var_W, 24, 0)
-			Width_ref := ComObject(0x4003, &var_W)  ; 0x400C is a combination of VT_BYREF and VT_I4 (long).
-			VarSetCapacity(var_H, 24, 0)
-			Height_ref := ComObject(0x4003, &var_H)  ; 0x400C is a combination of VT_BYREF and VT_I4 (long).
-			oWin.GetPoint(Left_ref, Top_ref, Width_ref, Height_ref, oRan)
-
-			;~ MsgBox("Left_ref[] : " Left_ref[])
-			;~ MsgBox("Top_ref[] : " Top_ref[])
-			;~ MsgBox("width_ref[] : " width_ref[])
-			;~ MsgBox("height_ref[] : " height_ref[])
-
-			; CaretX := Left_ref[] + X_margin
-			; CaretY := Top_ref[] + Y_margin
-			current_x := Left_ref[] + this.x_margin
-			current_y := CaretY := Top_ref[] + this.y_margin
-			current_w := 1
-			current_h := 15
-
+		if( current_exe = "Telegram.exe" ){
+			this.checkAccCaret()
+			if(current_w = 0){
+				eleFocus := UIA.GetFocusedElement()
+				current_x := eleFocus.BoundingRectangle.l + this.X_margin + 4
+				current_y := eleFocus.BoundingRectangle.b + this.Y_margin - 24
+				current_w := 1
+				current_h := 15
+			}
 		}
-
-
-
 	}
+
+
 
 
 
@@ -256,12 +228,9 @@ class Caret{
 
 
 
-
-
 		;~ https://www.autoahk.com/archives/44158
 
 		static iUIAutomation, hOleacc, IID_IAccessible
-
 		try{
 			if(!iUIAutomation){
 				iUIAutomation := ComObjCreate("{ff48dba4-60ef-4201-aa87-54103eef594e}", "{30CBE57D-D9D0-452A-AB13-7AC5AC4825EE}")
@@ -306,6 +275,50 @@ class Caret{
 		cleanCaret:
 		for _, p in [eleFocus, valuePattern, textPattern2, caretTextRange, textPattern, selectionRangeArray, selectionRange, accCaret,guiThreadInfo]
 			(p && ObjRelease(p))
+
+
+
+
+	}
+
+
+
+
+	checkOfficeCaret(){
+
+
+			try{
+
+			oWord := ComObjActive("Word.application")
+			oWin := oWord.application.activeWindow
+			oRan := oWord.selection.range
+
+
+
+			VarSetCapacity(var_L, 24, 0)
+			Left_ref := ComObject(0x4003, &var_L)  ; 0x400C is a combination of VT_BYREF and VT_I4 (long).
+			VarSetCapacity(var_T, 24, 0)
+			Top_ref := ComObject(0x4003, &var_T)  ; 0x400C is a combination of VT_BYREF and VT_I4 (long).
+			VarSetCapacity(var_W, 24, 0)
+			Width_ref := ComObject(0x4003, &var_W)  ; 0x400C is a combination of VT_BYREF and VT_I4 (long).
+			VarSetCapacity(var_H, 24, 0)
+			Height_ref := ComObject(0x4003, &var_H)  ; 0x400C is a combination of VT_BYREF and VT_I4 (long).
+			oWin.GetPoint(Left_ref, Top_ref, Width_ref, Height_ref, oRan)
+
+			;~ MsgBox("Left_ref[] : " Left_ref[])
+			;~ MsgBox("Top_ref[] : " Top_ref[])
+			;~ MsgBox("width_ref[] : " width_ref[])
+			;~ MsgBox("height_ref[] : " height_ref[])
+
+			; CaretX := Left_ref[] + X_margin
+			; CaretY := Top_ref[] + Y_margin
+			current_x := Left_ref[] + this.x_margin
+			current_y := CaretY := Top_ref[] + this.y_margin
+			current_w := 1
+			current_h := 15
+
+		}
+
 
 
 	}
