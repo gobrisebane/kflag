@@ -1032,7 +1032,7 @@ checkUIACaretBK(){
 				timeRecord("current_x : " current_x  " / current_y : " current_y " current_w : " current_w " current_h :" current_h)
 				; MsgBox("GetCaret - 3-3 / current_x : " current_x  " / current_y : " current_y " current_w : " current_w " current_h :" current_h)
 
-				goto cleanCaret
+				goto cleanCaret4
 
 				if(current_w > 0 AND current_h > 0){
 					; MsgBox("--------- C-1-1. UIA WORKS")
@@ -1044,7 +1044,7 @@ checkUIACaretBK(){
 		}
 
 
-		cleanCaret:
+		cleanCaret4:
 		for _, p in [eleFocus, valuePattern, textPattern2, caretTextRange, textPattern, selectionRangeArray, selectionRange, accCaret,guiThreadInfo]
 			(p && ObjRelease(p))
 		ObjRelease(eleFocus)
@@ -1094,3 +1094,54 @@ checkAccCaretBK(){
 	; GuiControl,XPT10: +Redraw,    FlagApp
 	Gui, XPT10:+AlwaysOnTop
 */
+
+
+
+
+	checkUIACaret3(){
+
+
+			static IUIA := ComObjCreate("{ff48dba4-60ef-4201-aa87-54103eef594e}", "{30cbe57d-d9d0-452a-ab13-7ac5ac4825ee}")
+
+			; GetFocusedElement
+			DllCall(NumGet(NumGet(IUIA+0)+8*A_PtrSize), "ptr", IUIA, "ptr*", FocusedEl:=0)
+			; ObjRelease(FocusedEl)
+
+			; GetCurrentPattern. TextPatternElement2 = 10024
+			DllCall(NumGet(NumGet(FocusedEl+0)+16*A_PtrSize), "ptr", FocusedEl, "int", 10024, "ptr*", patternObject:=0)
+			ObjRelease(FocusedEl)
+
+			if patternObject {
+
+				; GetCaretRange
+				DllCall(NumGet(NumGet(patternObject+0)+10*A_PtrSize), "ptr", patternObject, "int*", IsActive:=1, "ptr*", caretRange:=0)
+				ObjRelease(patternObject)
+
+				; GetBoundingRectangles
+				DllCall(NumGet(NumGet(caretRange+0)+10*A_PtrSize), "ptr", caretRange, "ptr*", boundingRects:=0)
+				ObjRelease(caretRange)
+
+
+				; VT_ARRAY = 0x20000 | VT_R8 = 5 (64-bit floating-point number)
+				Rect := ComObject(0x2005, boundingRects)
+
+				try{
+					current_x:=Round(Rect[0]) + this.X_margin,
+					current_y:=Round(Rect[1]) + this.Y_margin,
+					current_w:=Round(Rect[2]),
+					current_h:=Round(Rect[3])
+				} catch e {
+					MsgBox("!! ERROR NOT INDEX !!")
+				}
+
+				if(current_w > 0 AND current_h > 0){
+					; MsgBox("--------- C-1-1. UIA WORKS")
+					return True
+				} else {
+					; MsgBox("--------- C-1-2. UIA FAIL..")
+					return false
+				}
+
+			}
+
+}
