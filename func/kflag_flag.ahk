@@ -120,6 +120,12 @@ drawFlag(){
 			} else {
 
 
+				; MsgBox("resource")
+				; GuiControl,XPT10:, FlagApp, %SplashImage%
+				; GuiControl,XPT10: +Redraw,    FlagApp
+				; Gui, XPT10:+AlwaysOnTop
+
+
 				if(prev_winid != current_winid
 					OR A_ThisHotKey = "~VK15"){
 					changeLangFlag()
@@ -139,7 +145,7 @@ drawFlag(){
 
  	if( ((IME_CHECK("A") = 1) AND current_lang = "eng")
 		OR ((IME_CHECK("A") = 0) AND current_lang = "kor") ){
-		; MsgBox("!!!!! -----REVIVE----- !!!!!")
+		MsgBox("!!!!! -----REVIVE----- !!!!!")
 		swapLangImage()
 	}
 
@@ -153,8 +159,12 @@ drawFlag(){
 
 
 changeLangFlag(){
+	MsgBox("CHANGE LANG")
 	GuiControl,XPT10:, FlagApp, %SplashImage%
 	Gui, XPT10:+AlwaysOnTop
+
+
+
 }
 
 

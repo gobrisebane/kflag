@@ -26,7 +26,7 @@ class Caret{
 
 		; MsgBox("prev_x : " prev_x)
 		; MsgBox("prev_y : " prev_y)
-		MsgBox("this.type : " this.type)
+		; MsgBox("this.type : " this.type)
 
 		if( current_winid = prev_winid AND this.type != ""){
 			; MsgBox("MODE : 1. USING / WINID")
@@ -175,6 +175,48 @@ class Caret{
 
 
 
+		checkOfficeCaret(){
+
+
+			try{
+
+			oWord := ComObjActive("Word.application")
+			oWin := oWord.application.activeWindow
+			oRan := oWord.selection.range
+
+
+
+			VarSetCapacity(var_L, 24, 0)
+			Left_ref := ComObject(0x4003, &var_L)  ; 0x400C is a combination of VT_BYREF and VT_I4 (long).
+			VarSetCapacity(var_T, 24, 0)
+			Top_ref := ComObject(0x4003, &var_T)  ; 0x400C is a combination of VT_BYREF and VT_I4 (long).
+			VarSetCapacity(var_W, 24, 0)
+			Width_ref := ComObject(0x4003, &var_W)  ; 0x400C is a combination of VT_BYREF and VT_I4 (long).
+			VarSetCapacity(var_H, 24, 0)
+			Height_ref := ComObject(0x4003, &var_H)  ; 0x400C is a combination of VT_BYREF and VT_I4 (long).
+			oWin.GetPoint(Left_ref, Top_ref, Width_ref, Height_ref, oRan)
+
+			;~ MsgBox("Left_ref[] : " Left_ref[])
+			;~ MsgBox("Top_ref[] : " Top_ref[])
+			;~ MsgBox("width_ref[] : " width_ref[])
+			;~ MsgBox("height_ref[] : " height_ref[])
+
+			; CaretX := Left_ref[] + X_margin
+			; CaretY := Top_ref[] + Y_margin
+			current_x := Left_ref[] + this.x_margin
+			current_y := CaretY := Top_ref[] + this.y_margin
+			current_w := 1
+			current_h := 15
+
+		}
+
+
+
+	}
+
+
+
+
 
 
 
@@ -227,8 +269,9 @@ class Caret{
 	checkUIACaret(){
 
 
-
 		;~ https://www.autoahk.com/archives/44158
+
+
 
 		static iUIAutomation, hOleacc, IID_IAccessible
 		try{
@@ -249,10 +292,14 @@ class Caret{
 
 		if iUIAutomation && eleFocus {
 
-			if DllCall(NumGet(NumGet(eleFocus + 0), 16 * A_PtrSize), "ptr", eleFocus, "int", 10024, "ptr*", textPattern2, "int") || !textPattern2
+			if DllCall(NumGet(NumGet(eleFocus + 0), 16 * A_PtrSize), "ptr", eleFocus, "int", 10024, "ptr*", textPattern2, "int")
+				|| !textPattern2
 				|| DllCall(NumGet(NumGet(textPattern2 + 0), 10 * A_PtrSize), "ptr", textPattern2, "int*", isActive, "ptr*", caretTextRange)
-				|| !caretTextRange || !isActive || DllCall(NumGet(NumGet(caretTextRange + 0), 10 * A_PtrSize), "ptr", caretTextRange, "ptr*", rects)
-				|| !rects || (rects := ComObject(0x2005, rects, 1)).MaxIndex() < 3
+				|| !caretTextRange
+				|| !isActive
+				|| DllCall(NumGet(NumGet(caretTextRange + 0), 10 * A_PtrSize), "ptr", caretTextRange, "ptr*", rects)
+				|| !rects
+				|| (rects := ComObject(0x2005, rects, 1)).MaxIndex() < 3
 				Sleep 1
 				try{
 					current_x := Round(rects[0]) + this.X_margin,
@@ -273,55 +320,31 @@ class Caret{
 				}
 		}
 		cleanCaret:
-		for _, p in [eleFocus, valuePattern, textPattern2, caretTextRange, textPattern, selectionRangeArray, selectionRange, accCaret,guiThreadInfo]
+		for _, p in [eleFocus, valuePattern, textPattern2, caretTextRange, textPattern, selectionRangeArray, selectionRange,accCaret,guiThreadInfo,rects]
 			(p && ObjRelease(p))
+			; MsgBox("done")
 
 
 
 
-	}
 
 
 
 
-	checkOfficeCaret(){
-
-
-			try{
-
-			oWord := ComObjActive("Word.application")
-			oWin := oWord.application.activeWindow
-			oRan := oWord.selection.range
 
 
 
-			VarSetCapacity(var_L, 24, 0)
-			Left_ref := ComObject(0x4003, &var_L)  ; 0x400C is a combination of VT_BYREF and VT_I4 (long).
-			VarSetCapacity(var_T, 24, 0)
-			Top_ref := ComObject(0x4003, &var_T)  ; 0x400C is a combination of VT_BYREF and VT_I4 (long).
-			VarSetCapacity(var_W, 24, 0)
-			Width_ref := ComObject(0x4003, &var_W)  ; 0x400C is a combination of VT_BYREF and VT_I4 (long).
-			VarSetCapacity(var_H, 24, 0)
-			Height_ref := ComObject(0x4003, &var_H)  ; 0x400C is a combination of VT_BYREF and VT_I4 (long).
-			oWin.GetPoint(Left_ref, Top_ref, Width_ref, Height_ref, oRan)
 
-			;~ MsgBox("Left_ref[] : " Left_ref[])
-			;~ MsgBox("Top_ref[] : " Top_ref[])
-			;~ MsgBox("width_ref[] : " width_ref[])
-			;~ MsgBox("height_ref[] : " height_ref[])
 
-			; CaretX := Left_ref[] + X_margin
-			; CaretY := Top_ref[] + Y_margin
-			current_x := Left_ref[] + this.x_margin
-			current_y := CaretY := Top_ref[] + this.y_margin
-			current_w := 1
-			current_h := 15
 
-		}
 
 
 
 	}
+
+
+
+
 
 
 

@@ -1095,6 +1095,10 @@ checkAccCaretBK(){
 	GuiControl,XPT10:, FlagApp, %SplashImage%
 	; GuiControl,XPT10: +Redraw,    FlagApp
 	Gui, XPT10:+AlwaysOnTop
+
+
+
+
 */
 
 
