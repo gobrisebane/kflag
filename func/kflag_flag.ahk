@@ -166,14 +166,6 @@ drawFlag(){
 
 
 
-changeLangFlag(){
-	; MsgBox("CHANGE LANG")
-	GuiControl,XPT10:, FlagApp, %SplashImage%
-	Gui, XPT10:+AlwaysOnTop
-
-}
-
-
 
 
 
@@ -231,12 +223,6 @@ destroySplashGUI(){
 
 
 
-setPrevLang(){
-	; 이전 언어를 기록해야 추후 변경할 때 체크가 가능하다.
-	prev_lang := current_lang
-}
-
-
 
 
 
@@ -291,11 +277,16 @@ updateSplashImage(){
 
 
 
+
+
 swapLangImage(){
 
-	setPrevLang()
 
 	; MsgBox("----------updateSplashImage works.. CHANGE- 2")
+
+	MsgBox("-->> reswap START")
+	MsgBox("current_lang : " current_lang)
+
 
 	if(current_lang){
 
@@ -324,14 +315,10 @@ swapLangImage(){
 
 
 
-
-checkLangAndCorrect(){
-
-	if( ((IME_CHECK("A") = 1) AND current_lang = "eng")
-	OR ((IME_CHECK("A") = 0) AND current_lang = "kor") ){
-		MsgBox("!!!!! -----REVIVE----- !!!!!")
-		swapLangImage()
-	}
+changeLangFlag(){
+	; MsgBox("CHANGE LANG")
+	GuiControl,XPT10:, FlagApp, %SplashImage%
+	Gui, XPT10:+AlwaysOnTop
 
 }
 
@@ -339,10 +326,27 @@ checkLangAndCorrect(){
 
 
 
+checkLangAndCorrect(){
 
-swapCapslockImage(){
-	setCapslockSplashImage()
-	drawFlag()
+	MsgBox(">> CHECKLANG AND CORRECT")
+
+
+	ime_status := % IME_CHECK("A")
+	MsgBox("ime_status : " ime_status)
+	if(ime_status = 1){
+		MsgBox("KOR")
+	} else {
+		MsgBox("ENG")
+	}
+
+
+
+	if( ((IME_CHECK("A") = 1) AND current_lang = "eng")
+	OR ((IME_CHECK("A") = 0) AND current_lang = "kor") ){
+		MsgBox("!!!!! -----REVIVE----- !!!!!")
+		swapLangImage()
+	}
+
 }
 
 
@@ -356,6 +360,16 @@ setCapslockSplashImage(){
 		SplashImage = %folderpath%\flag_eng_lo.png
 	}
 }
+
+
+swapCapslockImage(){
+	setCapslockSplashImage()
+	drawFlag()
+}
+
+
+
+
 
 
 

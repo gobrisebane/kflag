@@ -56,7 +56,7 @@ GuiGetPos( ByRef X, ByRef Y, ByRef W, ByRef H, GuiID=1 ) {
 
 IME_CHECK(WinTitle="A")  {
 
-   sleep 5
+   sleep 1
 
   ControlGet,hwnd,HWND,,,%WinTitle%
     if    (WinActive(WinTitle))    {
