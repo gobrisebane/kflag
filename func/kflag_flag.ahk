@@ -331,6 +331,10 @@ destroySplashGUI(){
 
 
 
+setPrevLang(){
+	; 이전 언어를 기록해야 추후 변경할 때 체크가 가능하다.
+	prev_lang := current_lang
+}
 
 
 
@@ -341,6 +345,7 @@ destroySplashGUI(){
 
 updateSplashImage(){
 
+	setPrevLang()
 
 	; MsgBox("----------updateSplashImage works.. CHANGE - 1")
 	ime_status := % IME_CHECK("A")
@@ -379,6 +384,7 @@ updateSplashImage(){
 
 swapLangImage(){
 
+	setPrevLang()
 
 	; MsgBox("----------updateSplashImage works.. CHANGE- 2")
 
