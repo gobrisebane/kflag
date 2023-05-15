@@ -56,10 +56,10 @@ GuiGetPos( ByRef X, ByRef Y, ByRef W, ByRef H, GuiID=1 ) {
 
 IME_CHECK(WinTitle="A")  {
 
+   sleep 5
+
   ControlGet,hwnd,HWND,,,%WinTitle%
-
     if    (WinActive(WinTitle))    {
-
         ptrSize := !A_PtrSize ? 4 : A_PtrSize
         VarSetCapacity(stGTI, cbSize:=4+4+(PtrSize*6)+16, 0)
         NumPut(cbSize, stGTI,  0, "UInt")   ;    DWORD   cbSize;

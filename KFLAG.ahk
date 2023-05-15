@@ -323,8 +323,11 @@ return
 
 
 	if(current_exe = "Code.exe"){
+
 		swapLangImage()
+
 	} else {
+
 		initInstantCaret()
 
 
