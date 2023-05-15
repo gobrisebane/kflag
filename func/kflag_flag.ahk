@@ -65,7 +65,7 @@ SplashImageGUI(mode:="default"){
 
 
 
-drawFlag(){
+drawFlag2(){
 
 	; MsgBox("-----------draw flag--------")
 
@@ -168,6 +168,98 @@ drawFlag(){
 
 
 }
+
+
+
+
+drawFlag(){
+
+	; MsgBox("-----------draw flag--------")
+
+
+
+	if(!SplashImage OR (current_exe != prev_exe) ){
+		; 첫 시동시에 SplashImage를 체크해줘야 맨처음 아무것도 없을 때 에러가 안 생긴다.
+		; (첫 시동한 상태에서는 SplashImage가 null인 상황임)
+		; MsgBox("1. differ program")
+		updateSplashImage()
+
+	}
+
+
+	GUI, XPT10:+LastFoundExist
+	If WinExist(){
+
+
+
+
+			timeRecord("drawFlag() - 1 / XPT10 Exist")
+			; MsgBox("drawFlag() - 1 / XPT10 Exist")
+
+
+			GuiGetPos( fX,fY,fW,fH, flagId )
+
+
+			; timeRecord("drawFlag() / GuiGetPos / flagId : " flagId " / fX : " fX " / fY : " fY " / fW : " fW " / fH : " fH )
+			; MsgBox("drawFlag() / GuiGetPos / flagId : " flagId " / fX : " fX " / fY : " fY " / fW : " fW " / fH : " fH )
+
+
+			if( fW < 1 ){
+
+
+				MsgBox("!! === CRITICAL ERROR IN SPLASHIMAGEUI : GuiGetPos fW return 0 === !!")
+				; timeRecord("!! === CRITICAL ERROR IN SPLASHIMAGEUI : GuiGetPos fW return 0 === !!")
+
+				; 1) patch
+				initFlag()
+
+			} else if (fW != 15 OR fH != 10){
+
+
+				MsgBox("!! === CRITICAL ERROR IN SPLASHIMAGEUI : GuiGetPos fW /fH not valid size === !!")
+				; timeRecord("!! === CRITICAL ERROR IN SPLASHIMAGEUI : GuiGetPos fW /fH not valid size === !!")
+
+				; 2) patch
+				initFlag()
+
+
+			} else {
+
+
+
+				; MsgBox("PREV LANG : " prev_lang)
+				; MsgBox("CURRENT LANG : " current_lang)
+
+				if(prev_lang != current_lang){
+					; MsgBox("--LANG CHANGE!")
+					GuiControl,XPT10:, FlagApp, %SplashImage%
+				}
+
+
+			}
+
+
+	} Else {
+
+		; timeRecord("SplashImageGUI - 2-2 / else")
+		; MsgBox("SplashImageGUI - 2-2 / else")
+		initFlag()
+
+	}
+
+
+
+ 	if( ((IME_CHECK("A") = 1) AND current_lang = "eng")
+		OR ((IME_CHECK("A") = 0) AND current_lang = "kor") ){
+		MsgBox("!!!!! -----REVIVE----- !!!!!")
+		swapLangImage()
+	}
+
+
+
+}
+
+
 
 
 
