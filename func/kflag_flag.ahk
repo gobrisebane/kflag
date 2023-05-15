@@ -71,10 +71,11 @@ drawFlag(){
 
 
 
+
+
 	; if( !SplashImage
 	; 	 OR prev_winid != current_winid
 	;     OR A_ThisHotKey = "~VK15" ){
-
 	; 	; 첫 시동시에 SplashImage를 체크해줘야 맨처음 아무것도 없을 때 에러가 안 생긴다.
 	; 	; (첫 시동한 상태에서는 SplashImage가 null인 상황임)
 	; 	MsgBox("1. differ program")
@@ -82,10 +83,9 @@ drawFlag(){
 	; }
 
 
-	MsgBox("current_exe : " current_exe)
-	MsgBox("prev_exe : " prev_exe)
-
-	if(!SplashImage OR (current_exe != prev_exe) ){
+	if( !SplashImage
+		OR prev_winid != current_winid
+		OR A_ThisHotKey = "~VK15" ){
 		; 첫 시동시에 SplashImage를 체크해줘야 맨처음 아무것도 없을 때 에러가 안 생긴다.
 		; (첫 시동한 상태에서는 SplashImage가 null인 상황임)
 		; MsgBox("1. differ program")
@@ -134,15 +134,18 @@ drawFlag(){
 			} else {
 
 
-				; MsgBox("resource")
-				GuiControl,XPT10:, FlagApp, %SplashImage%
-				GuiControl,XPT10: +Redraw,    FlagApp
-				Gui, XPT10:+AlwaysOnTop
 
-				; if(prev_winid != current_winid
-				; 	OR A_ThisHotKey = "~VK15"){
-				; 	changeLangFlag()
-				; }
+
+				if(prev_winid != current_winid
+					OR A_ThisHotKey = "~VK15"){
+					changeLangFlag()
+				}
+
+				; MsgBox("resource")
+				; GuiControl,XPT10:, FlagApp, %SplashImage%
+				; GuiControl,XPT10: +Redraw,    FlagApp
+				; Gui, XPT10:+AlwaysOnTop
+
 
 			}
 
@@ -172,11 +175,9 @@ drawFlag(){
 
 
 changeLangFlag(){
-	MsgBox("CHANGE LANG")
+	; MsgBox("CHANGE LANG")
 	GuiControl,XPT10:, FlagApp, %SplashImage%
 	Gui, XPT10:+AlwaysOnTop
-
-
 
 }
 
