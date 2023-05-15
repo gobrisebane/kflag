@@ -172,6 +172,7 @@ drawFlag2(){
 
 
 
+
 drawFlag(){
 
 	; MsgBox("-----------draw flag--------")
@@ -179,12 +180,16 @@ drawFlag(){
 
 
 	if(!SplashImage OR (current_exe != prev_exe) ){
+
 		; 첫 시동시에 SplashImage를 체크해줘야 맨처음 아무것도 없을 때 에러가 안 생긴다.
 		; (첫 시동한 상태에서는 SplashImage가 null인 상황임)
 		; MsgBox("1. differ program")
+
 		updateSplashImage()
 
 	}
+
+
 
 
 	GUI, XPT10:+LastFoundExist
@@ -196,19 +201,16 @@ drawFlag(){
 			timeRecord("drawFlag() - 1 / XPT10 Exist")
 			; MsgBox("drawFlag() - 1 / XPT10 Exist")
 
-
 			GuiGetPos( fX,fY,fW,fH, flagId )
 
-
-			; timeRecord("drawFlag() / GuiGetPos / flagId : " flagId " / fX : " fX " / fY : " fY " / fW : " fW " / fH : " fH )
+			timeRecord("drawFlag() / GuiGetPos / flagId : " flagId " / fX : " fX " / fY : " fY " / fW : " fW " / fH : " fH )
 			; MsgBox("drawFlag() / GuiGetPos / flagId : " flagId " / fX : " fX " / fY : " fY " / fW : " fW " / fH : " fH )
 
 
 			if( fW < 1 ){
 
-
 				MsgBox("!! === CRITICAL ERROR IN SPLASHIMAGEUI : GuiGetPos fW return 0 === !!")
-				; timeRecord("!! === CRITICAL ERROR IN SPLASHIMAGEUI : GuiGetPos fW return 0 === !!")
+				timeRecord("!! === CRITICAL ERROR IN SPLASHIMAGEUI : GuiGetPos fW return 0 === !!")
 
 				; 1) patch
 				initFlag()
@@ -217,7 +219,7 @@ drawFlag(){
 
 
 				MsgBox("!! === CRITICAL ERROR IN SPLASHIMAGEUI : GuiGetPos fW /fH not valid size === !!")
-				; timeRecord("!! === CRITICAL ERROR IN SPLASHIMAGEUI : GuiGetPos fW /fH not valid size === !!")
+				timeRecord("!! === CRITICAL ERROR IN SPLASHIMAGEUI : GuiGetPos fW /fH not valid size === !!")
 
 				; 2) patch
 				initFlag()
@@ -225,23 +227,28 @@ drawFlag(){
 
 			} else {
 
+					timeRecord("drawFlag() - 1-3 / Else : XPT10 exist'")
+					; MsgBox("drawFlag() - 1-3 / Else : XPT10 exist")
 
+					; 플리커현상이 없어지는지 체크를 위해 주석처리
+					; GuiControl,XPT10: -Redraw,     FlagApp
 
-				; MsgBox("PREV LANG : " prev_lang)
-				; MsgBox("CURRENT LANG : " current_lang)
-
-				if(prev_lang != current_lang){
-					; MsgBox("--LANG CHANGE!")
 					GuiControl,XPT10:, FlagApp, %SplashImage%
-				}
-
+					GuiControl,XPT10: +Redraw,    FlagApp
+					Gui, XPT10:+AlwaysOnTop
 
 			}
+
+		;~ 터미널을 이쪽에서 가동시키면 플리커현상이 일어남
+		;~ MsgBox("FLICKER TEST")
+
+
+
 
 
 	} Else {
 
-		; timeRecord("SplashImageGUI - 2-2 / else")
+		timeRecord("SplashImageGUI - 2-2 / else")
 		; MsgBox("SplashImageGUI - 2-2 / else")
 		initFlag()
 
@@ -251,13 +258,16 @@ drawFlag(){
 
  	if( ((IME_CHECK("A") = 1) AND current_lang = "eng")
 		OR ((IME_CHECK("A") = 0) AND current_lang = "kor") ){
+
 		MsgBox("!!!!! -----REVIVE----- !!!!!")
 		swapLangImage()
+
 	}
 
 
 
 }
+
 
 
 
