@@ -78,6 +78,11 @@ global current_winid
 global prev_winid
 
 
+global prev_lang
+global current_lang
+
+
+
 
 global caretChangeDelay := 80
 

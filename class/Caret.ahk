@@ -40,6 +40,8 @@ class Caret{
 		; MsgBox("prev_winid : " prev_winid)
 		this.setFocusedHeight()
 
+		prev_winid := current_winid
+
 
 
 	}

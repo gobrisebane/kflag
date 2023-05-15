@@ -84,8 +84,8 @@ drawFlag(){
 
 
 	if( !SplashImage
-		OR prev_winid != current_winid
-		OR A_ThisHotKey = "~VK15" ){
+		OR (current_exe != prev_exe)){
+
 		; 첫 시동시에 SplashImage를 체크해줘야 맨처음 아무것도 없을 때 에러가 안 생긴다.
 		; (첫 시동한 상태에서는 SplashImage가 null인 상황임)
 		; MsgBox("1. differ program")
@@ -136,7 +136,7 @@ drawFlag(){
 
 
 
-				if(prev_winid != current_winid
+				if(prev_lang != current_lang
 					OR A_ThisHotKey = "~VK15"){
 					changeLangFlag()
 				}
