@@ -788,22 +788,16 @@ Winset, region, 131-296 841-296 841-741 131-741 131-296      168-342 316-342 316
 
 
 
+	; eleFocus := UIA.GetFocusedElement()
+	; focusedH := eleFocus.BoundingRectangle.b-eleFocus.BoundingRectangle.t
+	; MsgBox("focusedH : " focusedH)
 
 
-
-	eleFocus := UIA.GetFocusedElement()
-	focusedH := eleFocus.BoundingRectangle.b-eleFocus.BoundingRectangle.t
-	MsgBox("focusedH : " focusedH)
-
-
-
-
-
-
-
-	caret.detect()
-	MsgBox("X : " current_x " / Y : " current_y " / W : " current_w " / H : " current_h)
+	; caret.detect()
+	; MsgBox("X : " current_x " / Y : " current_y " / W : " current_w " / H : " current_h)
 	; SplashImageGUI()
+
+
 
 ; 	PostMessage, 0x112, 0xF020,,, Telegram.exe,
 ; PostMessage, 0x06, 2,,, Telegram,
@@ -820,6 +814,15 @@ Winset, region, 131-296 841-296 841-741 131-741 131-296      168-342 316-342 316
 ; checkUIACaretBK()
 
 
+ime_status := % IME_CHECK("A")
+
+	MsgBox("ime_status : " ime_status)
+	if(ime_status = 1){
+		MsgBox("CURRENT : KOR(1)")
+	} else if(ime_status = 0){
+		MsgBox("CURRENT : ENG(0)")
+	}
+	MsgBox("current_lang : " current_lang)
 
 
 

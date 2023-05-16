@@ -99,6 +99,7 @@ global caret_flag_margin := 8
 
 
 ; holder
+global holdingLangKey
 global holdingBackSpace
 global holdingEnter
 global holdingArrow
@@ -290,16 +291,31 @@ return
 
 
 
+~VK15 up::
+~^VK15 up::
+~+VK15 up::
+~^+VK15 up::
+
+
+
+	if(holdingLangKey = True){
+
+		; checkLangAndCorrect()
+
+		swapLangImage()
+		holdingLangKey := False
+
+	}
+
+
+return
+
+
 
 ~VK15::
 ~^VK15::
 ~+VK15::
 ~^+VK15::
-
-; VK15::
-; ^VK15::
-; +VK15::
-; ^+VK15::
 
 
 	; 원래있던것
@@ -321,6 +337,8 @@ return
 
 
 
+/*
+
 	if(current_exe = "Code.exe"){
 
 		swapLangImage()
@@ -329,16 +347,36 @@ return
 
 		initInstantCaret()
 
-
 		; updateSplashImage()
 		; changeLangFlag()
+	}
+*/
+
+
+
+
+
+
+
+
+
+
+
+	refinedThisHotkey := RegExReplace(A_ThisHotkey, "\W", "")
+	refinedPriorHotkey := RegExReplace(A_PriorHotkey, "\W", "")
+	if( refinedThisHotkey = refinedPriorHotkey ){
+
+		MsgBox("1.holding so stop")
+		holdingLangKey := True
+
+
+	} else {
+
+		MsgBox("2.no holding so proceed")
+		initInstantCaret()
 
 
 	}
-
-
-
-
 
 
 return
