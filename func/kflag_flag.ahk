@@ -128,19 +128,11 @@ drawFlag(){
 					; 플리커현상이 없어지는지 체크를 위해 주석처리
 					; GuiControl,XPT10: -Redraw,     FlagApp
 
-					MsgBox("FINAL : " SplashImage)
-
 					GuiControl,XPT10:, FlagApp, %SplashImage%
 					GuiControl,XPT10: +Redraw,    FlagApp
 					Gui, XPT10:+AlwaysOnTop
 
 			}
-
-		;~ 터미널을 이쪽에서 가동시키면 플리커현상이 일어남
-		;~ MsgBox("FLICKER TEST")
-
-
-
 
 
 	} Else {
@@ -154,7 +146,6 @@ drawFlag(){
 
 
 
-	; checkLangAndCorrect()
 
 
 
@@ -232,51 +223,32 @@ destroySplashGUI(){
 
 
 updateSplashImage(){
+	; MsgBox("----------updateSplashImage works.. CHANGE - 1")
 
-
-	; sleep 1
-	MsgBox("----------updateSplashImage works.. CHANGE - 1")
 	ime_status := % IME_CHECK("A")
-
-	MsgBox("ime_status : " ime_status)
-	if(ime_status = 1){
-		; MsgBox("CURRENT : KOR")
-	} else {
-		; MsgBox("ENG")
-	}
-
-
-
 	if(ime_status = "0"){
 
 		GetKeyState, caps_state, CapsLock, T
-		MsgBox("UPDATE : CURRENT : ENG(0)")
+		; MsgBox("UPDATE : CURRENT : ENG(0)")
 
 		if(caps_state = "D"){
 				SplashImage = %folderpath%\flag_eng_up.png
 				timeRecord("SplashImageGUI - 1-1 / D")
-				; MsgBox("1-1 / eng_up")
 		} else if(caps_state = "U"){
 				SplashImage = %folderpath%\flag_eng_lo.png
 				timeRecord("SplashImageGUI - 1-2 / U")
-				; MsgBox("1-2 / eng_lo")
 		}
 		current_lang := "eng"
 		; MsgBox("---IME STATUS : ENG")
 
 	} else if(ime_status = "1") {
-
-		MsgBox("UPDATE : CURRENT : KOR(1)")
+		; MsgBox("UPDATE : CURRENT : KOR(1)")
 
 		SplashImage = %folderpath%\flag_kor.png
 		timeRecord("SplashImageGUI - 1-3 / else")
 		current_lang := "kor"
-		; MsgBox("1-3 / kor")
 	}
 
-
-	; MsgBox("ime_status : " lang)
-	; MsgBox("FIRST SplashImage : " SplashImage)
 
 }
 
@@ -285,103 +257,50 @@ updateSplashImage(){
 
 swapLangImage(){
 
+	; if(current_flag){
 
-	; MsgBox("----------updateSplashImage works.. CHANGE- 2")
+		ime_status := % IME_CHECK("A")
+		if(ime_status = "0"){
 
-	MsgBox("-->> WELCOME RESWAPPING PROGRAM")
-	MsgBox("current_lang : " current_lang)
+			; MsgBox("UPDATE(2) : CURRENT : ENG(0)")
+			GetKeyState, caps_state, CapsLock, T
 
+			if(caps_state = "D"){
+					SplashImage = %folderpath%\flag_eng_up.png
+					timeRecord("SplashImageGUI - 1-1 / D")
+					; MsgBox("1-1 / eng_up")
+			} else if(caps_state = "U"){
+					SplashImage = %folderpath%\flag_eng_lo.png
+					timeRecord("SplashImageGUI - 1-2 / U")
+					; MsgBox("1-2 / eng_lo")
+			}
 
-	; if(current_lang){
+		} else if(ime_status = "1") {
 
-	; if(current_lang = "kor"){
-	; 	setCapslockSplashImage()
-	; 	current_lang := "eng"
-	; } else if(current_lang = "eng"){
-	; 	SplashImage = %folderpath%\flag_kor.png
-	; 	current_lang := "kor"
-	; }
+			; MsgBox("UPDATE(2) : CURRENT : KOR(1)")
+			SplashImage = %folderpath%\flag_kor.png
 
-
-	ime_status := % IME_CHECK("A")
-
-	if(ime_status = "0"){
-		MsgBox("UPDATE(2) : CURRENT : ENG(0)")
-		GetKeyState, caps_state, CapsLock, T
-
-		if(caps_state = "D"){
-				SplashImage = %folderpath%\flag_eng_up.png
-				timeRecord("SplashImageGUI - 1-1 / D")
-				; MsgBox("1-1 / eng_up")
-		} else if(caps_state = "U"){
-				SplashImage = %folderpath%\flag_eng_lo.png
-				timeRecord("SplashImageGUI - 1-2 / U")
-				; MsgBox("1-2 / eng_lo")
 		}
 
-	} else if(ime_status = "1") {
 
-		MsgBox("UPDATE(2) : CURRENT : KOR(1)")
-		SplashImage = %folderpath%\flag_kor.png
+		GuiControl,XPT10:, FlagApp, %SplashImage%
+		Gui, XPT10:+AlwaysOnTop
 
-	}
+		; MsgBox("repair : SplashImage : " SplashImage)
+		; drawFlag()
+		; changeLangFlag()
 
-
-	GuiControl,XPT10:, FlagApp, %SplashImage%
-	Gui, XPT10:+AlwaysOnTop
-	MsgBox("repair : SplashImage : " SplashImage)
-
-
-	; drawFlag()
-	; changeLangFlag()
 
 	; } else {
 	; 	; 맨처음 초기상태에 카렛이 없는곳에서 한영키를 누를 경우
 	; 	initInstantCaret()
 	; }
 
-	; checkLangAndCorrect()
-}
-
-checkLangAndCorrect(){
-	MsgBox(">> CHECKLANG AND CORRECT")
-	if( ((IME_CHECK("A") = 1) AND current_lang = "eng")
-	OR ((IME_CHECK("A") = 0) AND current_lang = "kor") ){
-		MsgBox("!!!!! -----REVIVE----- !!!!!")
-		swapLangImage()
-	}
 }
 
 
-swapLangImage2(){
 
 
-	; MsgBox("----------updateSplashImage works.. CHANGE- 2")
-
-	MsgBox("-->> reswap START")
-	MsgBox("current_lang : " current_lang)
-
-
-	if(current_lang){
-
-		if(current_lang = "kor"){
-			setCapslockSplashImage()
-			current_lang := "eng"
-		} else if(current_lang = "eng"){
-			SplashImage = %folderpath%\flag_kor.png
-			current_lang := "kor"
-		}
-
-		; drawFlag()
-		changeLangFlag()
-
-	} else {
-		; 맨처음 초기상태에 카렛이 없는곳에서 한영키를 누를 경우
-		initInstantCaret()
-	}
-
-	; checkLangAndCorrect()
-}
 
 
 
