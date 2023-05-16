@@ -204,7 +204,20 @@ isFocusedWindowExplorerAddressBar(){
 
 
 
+isHoldingKey(){
 
+	refinedThisHotkey := RegExReplace(A_ThisHotkey, "\W", "")
+	refinedPriorHotkey := RegExReplace(A_PriorHotkey, "\W", "")
+
+	if( refinedThisHotkey = refinedPriorHotkey ){
+		; MsgBox("1.hold")
+		return True
+
+	} else {
+		; MsgBox("2.not hold")
+		return False
+	}
+}
 
 
 

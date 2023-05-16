@@ -160,19 +160,14 @@ initKflag()
 
 
 
-	refinedThisHotkey := RegExReplace(A_ThisHotkey, "\W", "")
-	refinedPriorHotkey := RegExReplace(A_PriorHotkey, "\W", "")
 
-	; MsgBox("refinedThisHotkey : " refinedThisHotkey)
-	; MsgBox("refinedPriorHotkey : " refinedPriorHotkey)
 
-	if( refinedThisHotkey = refinedPriorHotkey ){
-		; MsgBox("1. you are holindg")
+	if( isHoldingKey() ){
+
 		holdingSpace := True
 
 	} else {
 
-		; MsgBox("2. not holding")
 		; MsgBox("spaceCount : " spaceCount)
 
 		if(spaceCount >= 2){
@@ -230,22 +225,11 @@ return
 
 
 
-
-
-
-
-
 	; 브라우저일 경우 백스페이스로 뒤로가기 가능하며, 검색창으로 뒤로가기했을 때 카렛이 활성화 될 수 있다.
-	refinedThisHotkey := RegExReplace(A_ThisHotkey, "\W", "")
-	refinedPriorHotkey := RegExReplace(A_PriorHotkey, "\W", "")
 
-	if( refinedThisHotkey = refinedPriorHotkey ){
-		; MsgBox("1. you are holindg")
+	if( isHoldingKey() ){
 		holdingBackSpace := True
 	} else {
-		; MsgBox("2. not holding")
-
-
 
 		identifyBackspaceCaret()
 		correctFlagAfterSelectRemove()
@@ -297,11 +281,8 @@ return
 
 
 	if(holdingLangKey = True){
-
-
 		swapLangImage()
 		holdingLangKey := False
-
 	}
 
 
@@ -334,40 +315,11 @@ return
 
 
 
-/*
-
-	if(current_exe = "Code.exe"){
-
-		swapLangImage()
-
-	} else {
-
-		initInstantCaret()
-
-		; updateSplashImage()
-		; changeLangFlag()
-	}
-
-*/
 
 
-
-
-
-
-
-
-
-
-
-	refinedThisHotkey := RegExReplace(A_ThisHotkey, "\W", "")
-	refinedPriorHotkey := RegExReplace(A_PriorHotkey, "\W", "")
-	if( refinedThisHotkey = refinedPriorHotkey ){
-
+	if( isHoldingKey() ){
 		holdingLangKey := True
-
 	} else {
-
 
 		if(current_exe = "Code.exe"){
 			swapLangImage()
@@ -375,11 +327,15 @@ return
 			initInstantCaret()
 		}
 
-
 	}
 
 
 return
+
+
+
+
+
 
 
 
@@ -450,20 +406,10 @@ global arrowCount := 0
 	; 이게 있어야 단번으로 여러번 클릭 때 미아현상을 방지 할 수 있다.
 
 
-
-
-
-
 	if(holdingArrow = True){
-
-
 		MsgBox("!!! HOLDING STOP ")
-
 		type.newSplash()
-
-
 		holdingArrow := False
-
 	}
 
 return
@@ -493,29 +439,17 @@ return
 
 
 
-
-
-
 	KeyTyping := False
 
-	refinedThisHotkey := RegExReplace(A_ThisHotkey, "\W", "")
-	refinedPriorHotkey := RegExReplace(A_PriorHotkey, "\W", "")
-
-	; MsgBox("refinedThisHotkey : " refinedThisHotkey)
-	; MsgBox("refinedPriorHotkey : " refinedPriorHotkey)
-
-	if( refinedThisHotkey = refinedPriorHotkey ){
-
-		holdingArrow := True
+	if( isHoldingKey() ){
 		; MsgBox("1. you are holindg")
-
+		holdingArrow := True
 	} else {
 
+		;현재 홀딩키는 작동을 안 하고 이쪽만 작동한다.
 
 		; MsgBox("2. you are not hold")
 		type.loopCorrectFlag()
-
-
 	}
 
 
@@ -571,12 +505,8 @@ return
 
 
 
-
-
 	if( isBrowser() ){
-
 		caret.getFocusedH(focusedH)
-
 		if(focusedH <= 80){
 			; MsgBox("1. 크롬임 / 80이하.. 검색창임")
 			searchingLateCaret(20)
@@ -590,24 +520,21 @@ return
 
 
 
-	refinedThisHotkey := RegExReplace(A_ThisHotkey, "\W", "")
-	refinedPriorHotkey := RegExReplace(A_PriorHotkey, "\W", "")
 
-	; MsgBox("refinedThisHotkey : " refinedThisHotkey)
-	; MsgBox("refinedPriorHotkey : " refinedPriorHotkey)
 
-	if( refinedThisHotkey = refinedPriorHotkey ){
+	if( isHoldingKey() ){
 		; MsgBox("1. you are holindg")
 		holdingEnter := True
+
 	} else {
-
-
-
 		; MsgBox("2. you are not hold")
 		; 이쪽은 선택 후 삭제할 때 반응하는 곳이다.
 		correctFlagAfterSelectRemove()
 
 	}
+
+
+
 
 
 

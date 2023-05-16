@@ -71,16 +71,7 @@ drawFlag(){
 	; MsgBox("-----------draw flag--------")
 
 
-		updateSplashImage()
-
-
-	; if(!SplashImage OR (current_exe != prev_exe) ){
-	; 	; 첫 시동시에 SplashImage를 체크해줘야 맨처음 아무것도 없을 때 에러가 안 생긴다.
-	; 	; (첫 시동한 상태에서는 SplashImage가 null인 상황임)
-	; 	; MsgBox("1. differ program")
-	; 	updateSplashImage()
-	; }
-
+	updateSplashImage()
 
 
 
@@ -123,11 +114,6 @@ drawFlag(){
 					; MsgBox("drawFlag() - 1-3 / Else : XPT10 exist")
 
 
-					; 플리커현상이 없어지는지 체크를 위해 주석처리
-					; GuiControl,XPT10: -Redraw,     FlagApp
-					; GuiControl,XPT10:, FlagApp, %SplashImage%
-					; GuiControl,XPT10: +Redraw,    FlagApp
-					; Gui, XPT10:+AlwaysOnTop
 
 					changeLangFlag()
 
