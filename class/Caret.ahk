@@ -19,7 +19,10 @@ class Caret{
 
 		CoordMode, Caret, Screen
 		WinGet, current_winid, ID, A
+
 		WinGet, current_exe, ProcessName, A
+		StringUpper, current_exe, current_exe
+
 
 
 
@@ -120,7 +123,11 @@ class Caret{
 	detectCaretType(){
 
 
-		if( current_exe = "Telegram.exe" ){
+
+
+
+		if(  hasCustomExes() ){
+
 			this.type := "CUSTOM_CARET"
 			this.checkCustomCaret()
 			return
@@ -163,7 +170,8 @@ class Caret{
 	checkCustomCaret(){
 
 
-		if( current_exe = "Telegram.exe" ){
+		if( current_exe = "TELEGRAM.EXE" ){
+
 			this.checkAccCaret()
 			if(current_w = 0){
 				eleFocus := UIA.GetFocusedElement()
@@ -172,7 +180,16 @@ class Caret{
 				current_w := 1
 				current_h := 15
 			}
+
+
+		} else if( current_exe = "SOURCETREE.EXE" ){
+
+
+			this.checkAccCaret()
+
 		}
+
+
 	}
 
 

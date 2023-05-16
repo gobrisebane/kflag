@@ -12,7 +12,7 @@
 ; SetTimer, caretWatcher, 0
 ; SetTimer, caretWatcher, 100
 ; SetTimer, caretWatcher, 300
-; SetTimer, caretWatcher, 600
+; SetTimer, caretWatcher, 500
 
 
 ; SetTimer, clearRam, 10000
@@ -321,7 +321,8 @@ return
 		holdingLangKey := True
 	} else {
 
-		if(current_exe = "Code.exe"){
+
+		if(current_exe = "CODE.EXE"){
 			swapLangImage()
 		} else {
 			initInstantCaret()

@@ -117,7 +117,18 @@ checkClickedIcon()
 
 
 
+hasCustomExes(){
 
+	arr := ["TELEGRAM.EXE","SOURCETREE.EXE"]
+
+	if(  hasExactValue(arr, current_exe) ){
+		; MsgBox("1. CUSTOM YES")
+		return True
+	} else {
+		; MsgBox("2. NOT CUSTOM")
+		return False
+	}
+}
 
 
 
@@ -276,7 +287,7 @@ checkIsExcel(){
 	browser_arr := ["EXCEL.EXE"]
 
 
-	if( hasValue(browser_arr, a_exe) ) {
+	if( hasExactValue(browser_arr, a_exe) ) {
 		return true
 	} else {
 		return false
@@ -290,9 +301,10 @@ isBrowser(){
 
 
 	WinGet, a_exe, ProcessName, A
-	browser_arr := ["chrome.exe","firefox.exe","whale.exe","vivaldi.exe","opera.exe","msedge.exe","brave.exe"]
 
-	if( hasValue(browser_arr, a_exe) ) {
+	browser_arr := ["CHROME.EXE","FIREFOX.EXE","WHALE.EXE","VIVALDI.EXE","OPERA.EXE","MSEDGE.EXE","BRAVE.EXE"]
+
+	if( hasExactValue(browser_arr, a_exe) ) {
 		return true
 	} else {
 		return false
@@ -568,7 +580,7 @@ isExeSearchingLateCaret(cur_exe){
 	arr := ["WINWORD.EXE","POWERPNT.EXE"]
 	; MsgBox("cur_exe : " cur_exe)
 
-	if( hasValue(arr, cur_exe) ) {
+	if( hasExactValue(arr, cur_exe) ) {
 		return true
 	}
 

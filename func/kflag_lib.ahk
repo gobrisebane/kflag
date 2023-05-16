@@ -125,13 +125,13 @@ isStringInArray(haystack, array){
 
 
 
-hasValue(haystack, needle) {
+hasExactValue(haystack, needle) {
     if(!isObject(haystack))
         return false
     if(haystack.Length()==0)
         return false
     for k,v in haystack
-        if(v==needle)
+        if(v=needle)
             return true
     return false
 }
