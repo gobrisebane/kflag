@@ -4,13 +4,10 @@
 
 
 SplashImageGUI(mode:="default"){
-	;현재 가장 안정적인 모델
-	CoordMode, ToolTip
 
 
 	drawFlag()
 
-	; MsgBox("!SPLASH CALLED")
 
 
 	Try {
@@ -122,15 +119,21 @@ drawFlag(){
 
 			} else {
 
-					timeRecord("drawFlag() - 1-3 / Else : XPT10 exist'")
+					; timeRecord("drawFlag() - 1-3 / Else : XPT10 exist'")
 					; MsgBox("drawFlag() - 1-3 / Else : XPT10 exist")
+
 
 					; 플리커현상이 없어지는지 체크를 위해 주석처리
 					; GuiControl,XPT10: -Redraw,     FlagApp
+					; GuiControl,XPT10:, FlagApp, %SplashImage%
+					; GuiControl,XPT10: +Redraw,    FlagApp
+					; Gui, XPT10:+AlwaysOnTop
 
-					GuiControl,XPT10:, FlagApp, %SplashImage%
-					GuiControl,XPT10: +Redraw,    FlagApp
-					Gui, XPT10:+AlwaysOnTop
+					changeLangFlag()
+
+
+
+
 
 			}
 
@@ -238,7 +241,6 @@ updateSplashImage(){
 				SplashImage = %folderpath%\flag_eng_lo.png
 				timeRecord("SplashImageGUI - 1-2 / U")
 		}
-		current_lang := "eng"
 		; MsgBox("---IME STATUS : ENG")
 
 	} else if(ime_status = "1") {
@@ -246,7 +248,6 @@ updateSplashImage(){
 
 		SplashImage = %folderpath%\flag_kor.png
 		timeRecord("SplashImageGUI - 1-3 / else")
-		current_lang := "kor"
 	}
 
 
@@ -257,7 +258,6 @@ updateSplashImage(){
 
 swapLangImage(){
 
-	; if(current_flag){
 
 		ime_status := % IME_CHECK("A")
 		if(ime_status = "0"){
@@ -283,18 +283,7 @@ swapLangImage(){
 		}
 
 
-		GuiControl,XPT10:, FlagApp, %SplashImage%
-		Gui, XPT10:+AlwaysOnTop
-
-		; MsgBox("repair : SplashImage : " SplashImage)
-		; drawFlag()
-		; changeLangFlag()
-
-
-	; } else {
-	; 	; 맨처음 초기상태에 카렛이 없는곳에서 한영키를 누를 경우
-	; 	initInstantCaret()
-	; }
+		changeLangFlag()
 
 }
 
@@ -307,7 +296,6 @@ swapLangImage(){
 
 
 changeLangFlag(){
-	; MsgBox("CHANGE LANG")
 	GuiControl,XPT10:, FlagApp, %SplashImage%
 	Gui, XPT10:+AlwaysOnTop
 

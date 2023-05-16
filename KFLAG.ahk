@@ -9,7 +9,7 @@
 
 
 
-SetTimer, caretWatcher, 0
+; SetTimer, caretWatcher, 0
 ; SetTimer, caretWatcher, 100
 ; SetTimer, caretWatcher, 300
 ; SetTimer, caretWatcher, 600
@@ -78,7 +78,6 @@ global current_winid
 global prev_winid
 
 
-global current_lang
 
 
 
@@ -142,7 +141,6 @@ global UIA := UIA_Interface()
 
 
 initKflag()
-
 
 
 
@@ -349,6 +347,7 @@ return
 		; updateSplashImage()
 		; changeLangFlag()
 	}
+
 */
 
 
@@ -365,14 +364,16 @@ return
 	refinedPriorHotkey := RegExReplace(A_PriorHotkey, "\W", "")
 	if( refinedThisHotkey = refinedPriorHotkey ){
 
-		MsgBox("1.holding so stop")
 		holdingLangKey := True
-
 
 	} else {
 
-		MsgBox("2.no holding so proceed")
-		initInstantCaret()
+
+		if(current_exe = "Code.exe"){
+			swapLangImage()
+		} else {
+			initInstantCaret()
+		}
 
 
 	}
@@ -493,6 +494,8 @@ return
 
 
 
+
+
 	KeyTyping := False
 
 	refinedThisHotkey := RegExReplace(A_ThisHotkey, "\W", "")
@@ -516,8 +519,8 @@ return
 	}
 
 
-return
 
+return
 
 
 
@@ -711,8 +714,6 @@ return
 	initImgCaret()
 
 return
-
-
 
 
 

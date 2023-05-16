@@ -822,7 +822,6 @@ ime_status := % IME_CHECK("A")
 	} else if(ime_status = 0){
 		MsgBox("CURRENT : ENG(0)")
 	}
-	MsgBox("current_lang : " current_lang)
 
 
 

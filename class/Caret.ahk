@@ -21,6 +21,8 @@ class Caret{
 		WinGet, current_winid, ID, A
 		WinGet, current_exe, ProcessName, A
 
+
+
 		prev_x := current_x
 		prev_y := current_y
 
@@ -40,7 +42,7 @@ class Caret{
 		; MsgBox("prev_winid : " prev_winid)
 		this.setFocusedHeight()
 
-		prev_winid := current_winid
+		; prev_winid := current_winid
 
 
 
@@ -77,8 +79,6 @@ class Caret{
 	}
 
 	isWinidDiff(){
-		; MsgBox("current_winid : " current_winid)
-		; MsgBox("prev_winid : " prev_winid)
 		if(current_winid != prev_winid){
 			; MsgBox("2-1. winid 달라졌음")
 			return True
