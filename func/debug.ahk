@@ -822,8 +822,8 @@ Winset, region, 131-296 841-296 841-741 131-741 131-296      168-342 316-342 316
 
 
 
-	caret.detect()
-	MsgBox("X : " current_x " / Y : " current_y " / W : " current_w " / H : " current_h)
+	; caret.detect()
+	; MsgBox("X : " current_x " / Y : " current_y " / W : " current_w " / H : " current_h)
 	; SplashImageGUI()
 
 
@@ -1125,12 +1125,8 @@ MsgBox(vOutput,color:="")
 
 timeRecord(sentence){
 	try{
-
-	/*
-	FileAppend, [%A_Mon%-%A_Mday%-%A_Hour%:%A_Min%:%A_Sec%:%A_MSec%][%sentence%] `n, log\%A_Year%-%A_Mon%-%A_Mday%.js
-	*/
+		FileAppend, [%A_Mon%-%A_Mday%-%A_Hour%:%A_Min%:%A_Sec%:%A_MSec%][%sentence%] `n, log\%A_Year%-%A_Mon%-%A_Mday%.js
 	}
-
 }
 
 timeRecordCurrentProgram(){

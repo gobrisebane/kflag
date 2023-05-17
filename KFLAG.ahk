@@ -214,33 +214,6 @@ return
 
 
 
-~Del::
-~+Del::
-~^Del::
-~BackSpace::
-~+BackSpace::
-~^BackSpace::
-~^+BackSpace::
-
-
-
-
-	; 브라우저일 경우 백스페이스로 뒤로가기 가능하며, 검색창으로 뒤로가기했을 때 카렛이 활성화 될 수 있다.
-
-	if( isHoldingKey() ){
-		holdingBackSpace := True
-	} else {
-
-		identifyBackspaceCaret()
-		correctFlagAfterSelectRemove()
-
-	}
-
-
-
-
-return
-
 
 
 
@@ -266,6 +239,38 @@ return
 
 
 return
+
+
+~Del::
+~+Del::
+~^Del::
+~BackSpace::
+~+BackSpace::
+~^BackSpace::
+~^+BackSpace::
+
+
+
+
+	; 브라우저일 경우 백스페이스로 뒤로가기 가능하며, 검색창으로 뒤로가기했을 때 카렛이 활성화 될 수 있다.
+
+	if( isHoldingKey() ){
+
+		holdingBackSpace := True
+
+	} else {
+
+		; identifyBackspaceCaret()
+
+		correctFlagAfterSelectRemove()
+
+	}
+
+
+
+
+return
+
 
 
 
