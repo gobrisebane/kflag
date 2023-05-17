@@ -822,8 +822,8 @@ Winset, region, 131-296 841-296 841-741 131-741 131-296      168-342 316-342 316
 
 
 
-	; caret.detect()
-	; MsgBox("X : " current_x " / Y : " current_y " / W : " current_w " / H : " current_h)
+	caret.detect()
+	MsgBox("X : " current_x " / Y : " current_y " / W : " current_w " / H : " current_h)
 	; SplashImageGUI()
 
 
@@ -833,16 +833,6 @@ Winset, region, 131-296 841-296 841-741 131-741 131-296      168-342 316-342 316
 
 
 
-	WinGet, a_exe, ProcessName, A
-	StringUpper, a_exe, a_exe
-	browser_arr := ["EXCEL.EXE","SOURCETREE.EXE"]
-
-
-	if( hasExactValue(browser_arr, a_exe) ) {
-		; return true
-	} else {
-		; return false
-	}
 
 
 
@@ -1005,6 +995,10 @@ return
 	;  MsgBox("Y : " Y)
 
 
+
+	caret.detect()
+	MsgBox("X : " current_x " / Y : " current_y " / W : " current_w " / H : " current_h)
+	; SplashImageGUI()
 
 
 return

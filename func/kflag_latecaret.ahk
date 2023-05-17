@@ -65,14 +65,6 @@ initImgCaret(){
 
 
 
-
-
-
-
-
-
-
-
 searchingLateCaret(loopCount){
 
 		initKey()
@@ -80,12 +72,9 @@ searchingLateCaret(loopCount){
 		keyCount := 0
 
 
-		; MsgBox("=== LOOP START ===")
+		MsgBox("=== LOOP START ===")
 
 		loop, %loopCount% {
-
-
-
 
 
 			caret.detect()
@@ -97,15 +86,12 @@ searchingLateCaret(loopCount){
 
 
 
+			; MsgBox("A_ThisHotKey : " A_ThisHotKey)
 
-
-
-
-
-			arr := ["Button"]
-			if( !isStringInArray(A_ThisHotKey, arr) ){
-				break
-			}
+			; arr := ["Button"]
+			; if( !isStringInArray(A_ThisHotKey, arr) ){
+			; 	break
+			; }
 
 			if(keyTyping = True){
 				; MsgBox("===DETECT KEYTYPING SO STOP LOOP===")
@@ -116,7 +102,9 @@ searchingLateCaret(loopCount){
 
 
 
+
 			if( current_w != 0 ){
+
 				SplashImageGUI()
 			} else if(current_w = 0){
 				; 1)이쪽에 넣지 않으면 url->네이버->검색창 이동 때 반짝임 현상 있음

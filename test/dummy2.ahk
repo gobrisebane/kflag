@@ -15,8 +15,12 @@ return
 
 
 
+
 ~SSSSSSSSSSSSSSSSSSSSSSSSS^x::
 ~SSSSSSSSSSSSSSSSSSSSSSSSS^v::
+sdsdsd
+sdsds
+sdsdste
 
 	sleep caretChangeDelay
 	;삭제후 딜레이가 있는데 80은 줘야한다.

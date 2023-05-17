@@ -68,60 +68,60 @@ class Type{
 
 
 		caret.detect()
-		this.setFlagArrow()
-		; this.setFlagArrowOld()
+		if(current_w > 0){
 
-
-		sleep 50
-		loopSleep := 30
-
-		loop 10{
-
-
-
-			caret.detect()
-			; MsgBox("3-loopSleep INDEX : " A_INDEX)
 
 			this.setFlagArrow()
 			; this.setFlagArrowOld()
 
 
+			sleep 50
+			loopSleep := 30
+
+			loop 10{
 
 
-			; arrow가 아니면 중지시킴
-			arr := ["Up","Down","Left","Right"]
-			if( !isStringInArray(A_ThisHotKey, arr) ){
-				; MsgBox("------ not that key so brewak")
+				caret.detect()
+				; MsgBox("3-loopSleep INDEX : " A_INDEX)
+
+				this.setFlagArrow()
+				; this.setFlagArrowOld()
+
+
+				; arrow가 아니면 중지시킴
+				arr := ["Up","Down","Left","Right"]
+				if( !isStringInArray(A_ThisHotKey, arr) ){
+					; MsgBox("------ not that key so brewak")
+					arrowCount := 0
+					break
+				}
+
+
+				if (GetKeyState("Down", "P")
+					OR GetKeyState("Up", "P")
+					OR GetKeyState("Left", "P")
+					OR GetKeyState("Right", "P") ) {
+					; MsgBox("arrowcount up")
+					arrowCount++
+				}
+
+				loopSleep := 5 * A_index
+				sleep loopSleep
+			}
+
+
+
+
+
+			if(arrowCount > 0){
+				; MsgBox("::::::::::: REVIVE :::::::::::")
 				arrowCount := 0
-				break
+				this.loopCorrectFlag()
 			}
-
-
-			if (GetKeyState("Down", "P")
-				OR GetKeyState("Up", "P")
-				OR GetKeyState("Left", "P")
-				OR GetKeyState("Right", "P") ) {
-				; MsgBox("arrowcount up")
-				arrowCount++
-			}
-
-			loopSleep := 5 * A_index
-			sleep loopSleep
-		}
-
-
-
-
-
-		if(arrowCount > 0){
-			; MsgBox("::::::::::: REVIVE :::::::::::")
 			arrowCount := 0
-			this.loopCorrectFlag()
+
+
 		}
-		arrowCount := 0
-
-
-
 
 
 	}
@@ -132,23 +132,20 @@ class Type{
 
 	newSplash(){
 
-		MsgBox("CLASS :  -- nedSplash --")
-
 		sleep 10
 		caret.detect()
-		SplashImageGUI()
 
+		if(current_w > 0){
 
-		MsgBox("1.X : " current_x " / Y : " current_y)
+			SplashImageGUI()
 
+			sleep 350
+			caret.detect()
 
-		sleep 350
-		caret.detect()
+			; this.setFlagArrowOld()
+			this.setFlagArrow()
 
-
-
-		; this.setFlagArrowOld()
-		this.setFlagArrow()
+		}
 
 
 

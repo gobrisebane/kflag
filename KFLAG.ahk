@@ -402,14 +402,15 @@ global arrowCount := 0
 ~^+Right up::
 
 
-	;tempoff
-	; initInstantCaret()
+	initInstantCaret()
 	; 이게 있어야 단번으로 여러번 클릭 때 미아현상을 방지 할 수 있다.
 
 
 	if(holdingArrow = True){
 		MsgBox("!!! HOLDING STOP ")
-		type.newSplash()
+
+		; type.newSplash()
+
 		holdingArrow := False
 	}
 
@@ -479,8 +480,6 @@ return
 	initInstantCaret()
 	; 이쪽이 실제 엔터를 칠 때 반응해주는 곳
 
-
-
 	if(holdingEnter = True){
 		correctFlagAndCaretXY()
 		holdingEnter := False
@@ -510,7 +509,7 @@ return
 		caret.getFocusedH(focusedH)
 		if(focusedH <= 80){
 			; MsgBox("1. 크롬임 / 80이하.. 검색창임")
-			searchingLateCaret(20)
+			searchingLateCaret(10)
 		} else {
 			; MsgBox("2. 크롬임 / 80 이상.. 텍스트에어리아 엔터임")
 		}
@@ -530,8 +529,10 @@ return
 	} else {
 		; MsgBox("2. you are not hold")
 		; 이쪽은 선택 후 삭제할 때 반응하는 곳이다.
-		correctFlagAfterSelectRemove()
 
+
+		; correctFlagAfterSelectRemove()
+		; 이게 없어도 현재 up쪽의 initInstantCaret에서 반응한다.
 	}
 
 
@@ -580,25 +581,29 @@ return
 
 
 ~CapsLock::
-
 ~^CapsLock::
 ~+CapsLock::
 ~^+CapsLock::
 
+
+
 	if(IME_CHECK("A") = "1"){
+
 		; MsgBox("1. 한글이었음 - 영어로 변환완료")
 		swapLang()
+		capsLockToLowCase()
 		swapLangImage()
+
 	} else if(IME_CHECK("A") = "0"){
+
 		; MsgBox("2. 영어였음 - 캡스락변환 완료")
 		swapCapslockImage()
+
 	}
 
 
 
 return
-
-
 
 
 

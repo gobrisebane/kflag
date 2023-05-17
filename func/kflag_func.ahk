@@ -234,13 +234,17 @@ isHoldingKey(){
 
 capsLockToLowCase(){
 
-	ime_status := % IME_CHECK("A")
-	if(ime_status = "1"){
+	; ime_status := % IME_CHECK("A")
+	; if(ime_status = "1"){
+
+			MsgBox("1. CURRENT..D SO to low")
+
+
 		GetKeyState, caps_state, CapsLock, T
 		if(caps_state = "D"){
 			SetCapsLockState , Off
 		}
-	}
+	; }
 
 }
 
@@ -493,28 +497,40 @@ correctFlagAndCaretXY(loopCount:=5){
 
 
 correctFlagAfterSelectRemove(){
+
+
 	sleep caretChangeDelay
+
 	if( !keyTyping ){
 		if(flagId){
 			GuiGetPos( fX,fY,fW,fH, flagId )
 			fx := fx + 1
 			;엔터의 경우 마진(1)을 붙여야 같은자리에서 인식하고 이동한다.
 
-			caret.detect()
-				if(fX > current_x OR fy > current_y){
+				caret.detect()
+
+
+				if( (fX > current_x OR fy > current_y) AND current_w > 0 ){
+
+
 					; MsgBox("1. 현재 flag 가 오른쪽으로 떨어져있다. :: 선택상태 - 삭제")
 					/*
 					1. 엔터의 경우 여기서 init로 새로 값을 받아줘야 계속 엔터를 쳐도 업데이트된다.
+					2. current_w를 체크하지 않으면 구글 검색시 플래그가 남는다.
 					*/
 					; caret.detect()
 					; initInstantCaret()
+
 					SplashImageGUI()
 
 				} else if (fX <= current_x){
+
 					; MsgBox("2. 현재 flag가 왼쪽에 있거나 같다. :: 일반상태 - 무시")
 				}
 		}
 	}
+
+
 }
 
 
