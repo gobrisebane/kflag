@@ -327,10 +327,10 @@ GetBox(ByRef l,ByRef t,ByRef r, ByRef b){
 
 
 
-hasPriorHotKeySelectingArrow(){
+hasPriorHotKeySelectingKey(){
 
-	; MsgBox("A_PriorHotKey : " A_PriorHotKey)
-	arr := ["+Down","+Up","+Left","+Right","LButton"]
+	MsgBox("A_PriorHotKey : " A_PriorHotKey)
+	arr := ["+Down","+Up","+Left","+Right","LButton","^z","^y","^+z"]
 	if( isStringInArray(A_PriorHotKey, arr) ){
 		; MsgBox("1. shift func -yes")
 		return True
@@ -357,12 +357,12 @@ identifyBackspaceCaret(){
 
 	if(current_w > 0){
 
-		MsgBox("1 . w > 0 ")
+		; MsgBox("1 . w > 0 ")
 		correctFlagAfterSelectRemove()
 
 	} else if(current_w = 0) {
 
-		MsgBox("1 . w = 0 ")
+		; MsgBox("1 . w = 0 ")
 		initImgCaret()
 		; 크롬에서 백스페이스 했을 때 작동한다.
 	}
@@ -375,50 +375,48 @@ identifyBackspaceCaret(){
 
 
 
-
-
-
-
-
+correctFlagAfterSelectRemoveForKey(){
+	if( hasPriorHotKeySelectingKey() ){
+		correctFlag()
+	}
+}
 
 correctFlagAfterSelectRemove(){
 
+		correctFlag()
+
+}
+
+
+correctFlag(){
+
 	sleep caretChangeDelay
 
-	; MsgBox("keyTyping : " keyTyping)
+	if(flagId){
+		GuiGetPos( fX,fY,fW,fH, flagId )
+		fx := fx + 1
+		;엔터의 경우 마진(1)을 붙여야 같은자리에서 인식하고 이동한다.
 
-	if( !keyTyping ){
-
-
-		if(flagId){
-			GuiGetPos( fX,fY,fW,fH, flagId )
-			fx := fx + 1
-			;엔터의 경우 마진(1)을 붙여야 같은자리에서 인식하고 이동한다.
-
-				caret.detect()
+			caret.detect()
+			if( (fX > current_x OR fy > current_y) AND current_w > 0 ){
 
 
-				if( (fX > current_x OR fy > current_y) AND current_w > 0 ){
+				; MsgBox("1. 현재 flag 가 오른쪽으로 떨어져있다. :: 선택상태 - 삭제")
+				/*
+				1. 엔터의 경우 여기서 init로 새로 값을 받아줘야 계속 엔터를 쳐도 업데이트된다.
+				2. current_w를 체크하지 않으면 구글 검색시 플래그가 남는다.
+				*/
+				; caret.detect()
+				; initInstantCaret()
 
+				SplashImageGUI()
 
-					; MsgBox("1. 현재 flag 가 오른쪽으로 떨어져있다. :: 선택상태 - 삭제")
-					/*
-					1. 엔터의 경우 여기서 init로 새로 값을 받아줘야 계속 엔터를 쳐도 업데이트된다.
-					2. current_w를 체크하지 않으면 구글 검색시 플래그가 남는다.
-					*/
-					; caret.detect()
-					; initInstantCaret()
+			} else if (fX <= current_x){
 
-					SplashImageGUI()
-
-				} else if (fX <= current_x){
-
-					; MsgBox("2. 현재 flag가 왼쪽에 있거나 같다. :: 일반상태 - 무시")
-				}
-
-		}
-
+				; MsgBox("2. 현재 flag가 왼쪽에 있거나 같다. :: 일반상태 - 무시")
+			}
 	}
+
 
 }
 

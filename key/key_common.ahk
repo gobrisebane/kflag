@@ -241,24 +241,17 @@ return
 	spaceCount := 0
 	lastKeyTypingSec := 0
 
-
-
-	correctFlagAfterSelectRemove()
-
-
 	keyTyping := True
 
 
-	; detectingCaretYPosChange()
 
 
 
+	correctFlagAfterSelectRemoveForKey()
 
 
-	; fortest
-	; caret.detect()
-	; initInstantCaret()
-	; MsgBox("X : " current_x " / Y : " current_y)
+	detectingCaretYPosChange()
+
 
 
 

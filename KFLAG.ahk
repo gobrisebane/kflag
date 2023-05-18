@@ -157,34 +157,23 @@ initKflag()
 
 
 	spaceCount++
-	MsgBox("spaceCount from up : " spaceCount)
-
-	if(spaceCount >= 2){
-		MsgBox("1-1.space  move")
+	if(spaceCount >= 3){
+		/*
+		 UP쪽에서 COUNT가 먹히지않고 잘 반영되며, spaceCount도 아래쪽에 두면 먹힐 가능성이 있어서 위에 같이 둠
+		*/
 		sleep caretChangeDelay
 		initInstantCaret()
 	} else {
-		MsgBox("1-2.space stop")
+
 		detectingCaretYPosChange()
-		; spaceCount++
+
 	}
-
-
-
-; if(spaceCount >= 2){
-; } else {
-; 	spaceCount++
-; 	MsgBox("spaceCount from up : " spaceCount)
-; }
-
-
 
 
 
 
 	if(holdingSpace = True){
 
-		MsgBox("UP-!!!holder")
 		initInstantCaret()
 
 		correctFlagAndCaretXY()
@@ -204,32 +193,12 @@ return
 
 
 
-	; spaceCount++
-	; MsgBox("spaceCount from up : " spaceCount)
-
-
 
 	if( isHoldingKey() ){
-
-		MsgBox("!!!holder")
-
 
 		holdingSpace := True
 
 	} else {
-
-
-		MsgBox("spaceCount : " spaceCount)
-		; if(spaceCount >= 2){
-		; 	MsgBox("1-1.space  move")
-		; 	sleep caretChangeDelay
-		; 	initInstantCaret()
-		; } else {
-		; 	MsgBox("1-2.space stop")
-		; 	detectingCaretYPosChange()
-		; 	; spaceCount++
-		; }
-
 
 		correctFlagAfterSelectRemove()
 
@@ -272,7 +241,6 @@ return
 		correctFlagAndCaretXY()
 
 		holdingBackSpace := False
-
 	}
 
 
@@ -340,28 +308,13 @@ return
 
 
 	; 원래있던것
-	; capsLockToLowCase()
-
-
-
-	; v1
-	; initInstantCaret()
-
-
-	; v2
-	; swapLangImage()
-
-
-
-
-
-
-
-
+	capsLockToLowCase()
 
 
 	if( isHoldingKey() ){
+
 		holdingLangKey := True
+
 	} else {
 
 
@@ -370,6 +323,7 @@ return
 		} else {
 			initInstantCaret()
 		}
+
 
 	}
 

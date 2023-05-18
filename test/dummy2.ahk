@@ -91,14 +91,13 @@ sdsd
 ttttt
 
 sdf
-
-~SSSSSSSSSSSSSSSSSSSSSSSSS^w::
+d
+~SSSSSSSSSSSSSSSSSSSSSSSSS^w::d
 ~SSSSSSSSSSSSSSSSSSSSSSSSS^F4::
 ~SSSSSSSSSSSSSSSSSSSSSSSSS!Home::
 ~SSSSSSSSSSSSSSSSSSSSSSSSS!Left::
 ~SSSSSSSSSSSSSSSSSSSSSSSSS!Right::
-
-
+d
 
 	if(isBrowser()){
 		initImgCaret()
@@ -461,13 +460,12 @@ qqqqqbbfbf
 qqqqq
 	spaceCount := 0qqq
 	lastKeyTypingSec := 0
-bankbank
+bankbankasdasdjlkasjd
 qqqq
 qqqqq
 sdsdsdsd
 
 sdsd
-SSSSSDDD	correctFlagAfterSelectRemove()
 ds
 	keyTyping := True
 wwwe
