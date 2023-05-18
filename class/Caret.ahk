@@ -32,7 +32,7 @@ class Caret{
 		; MsgBox("prev_x : " prev_x)
 		; MsgBox("prev_y : " prev_y)
 		; MsgBox("=======")
-		MsgBox("this.type : " this.type)
+		; MsgBox("this.type : " this.type)
 		; MsgBox("c_winid : " current_winid)
 		; MsgBox("p_winid : " prev_winid)
 

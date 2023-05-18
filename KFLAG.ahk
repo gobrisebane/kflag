@@ -151,51 +151,40 @@ initKflag()
 
 
 
-
-
-~Space::
-~^Space::
-~+Space::
-
-
-
-
-
-
-	if( isHoldingKey() ){
-
-		holdingSpace := True
-
-	} else {
-
-		; MsgBox("spaceCount : " spaceCount)
-
-		if(spaceCount >= 2){
-			; MsgBox("1.space ")
-			sleep caretChangeDelay
-			initInstantCaret()
-
-		} else {
-			; MsgBox("2.space")
-			detectingCaretYPosChange()
-			spaceCount++
-		}
-
-
-		correctFlagAfterSelectRemove()
-
-	}
-
-
-return
-
-
-
 ~Space up::
 ~^Space up::
 ~+Space up::
 
+
+	spaceCount++
+	MsgBox("spaceCount from up : " spaceCount)
+
+	if(spaceCount >= 2){
+		MsgBox("1-1.space  move")
+		sleep caretChangeDelay
+		initInstantCaret()
+	} else {
+		MsgBox("1-2.space stop")
+		detectingCaretYPosChange()
+		; spaceCount++
+	}
+
+
+
+; if(spaceCount >= 2){
+; } else {
+; 	spaceCount++
+; 	MsgBox("spaceCount from up : " spaceCount)
+; }
+
+
+
+
+
+
 	if(holdingSpace = True){
+
+		MsgBox("UP-!!!holder")
 		initInstantCaret()
 
 		correctFlagAndCaretXY()
@@ -204,6 +193,56 @@ return
 	}
 
 return
+
+
+
+
+
+~Space::
+~^Space::
+~+Space::
+
+
+
+	; spaceCount++
+	; MsgBox("spaceCount from up : " spaceCount)
+
+
+
+	if( isHoldingKey() ){
+
+		MsgBox("!!!holder")
+
+
+		holdingSpace := True
+
+	} else {
+
+
+		MsgBox("spaceCount : " spaceCount)
+		; if(spaceCount >= 2){
+		; 	MsgBox("1-1.space  move")
+		; 	sleep caretChangeDelay
+		; 	initInstantCaret()
+		; } else {
+		; 	MsgBox("1-2.space stop")
+		; 	detectingCaretYPosChange()
+		; 	; spaceCount++
+		; }
+
+
+		correctFlagAfterSelectRemove()
+
+	}
+
+
+
+
+
+return
+
+
+
 
 
 
@@ -249,7 +288,8 @@ return
 ~^BackSpace::
 ~^+BackSpace::
 
-
+	keyTyping := False
+	; 백스페이스의 correctFlagAfterSelectRemove 중 keyTyping 을 위해서 적용
 
 
 	; 브라우저일 경우 백스페이스로 뒤로가기 가능하며, 검색창으로 뒤로가기했을 때 카렛이 활성화 될 수 있다.

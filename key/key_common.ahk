@@ -243,20 +243,13 @@ return
 
 
 
+	correctFlagAfterSelectRemove()
 
-
-	; tempoff
-	; correctFlagAfterSelectRemove()
 
 	keyTyping := True
 
 
-	; tempoff
 	; detectingCaretYPosChange()
-
-
-
-
 
 
 

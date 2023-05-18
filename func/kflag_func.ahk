@@ -385,7 +385,11 @@ correctFlagAfterSelectRemove(){
 
 	sleep caretChangeDelay
 
-	; if( !keyTyping ){
+	; MsgBox("keyTyping : " keyTyping)
+
+	if( !keyTyping ){
+
+
 		if(flagId){
 			GuiGetPos( fX,fY,fW,fH, flagId )
 			fx := fx + 1
@@ -411,8 +415,10 @@ correctFlagAfterSelectRemove(){
 
 					; MsgBox("2. 현재 flag가 왼쪽에 있거나 같다. :: 일반상태 - 무시")
 				}
+
 		}
-	; }
+
+	}
 
 }
 
