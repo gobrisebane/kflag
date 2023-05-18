@@ -375,20 +375,8 @@ identifyBackspaceCaret(){
 
 
 
-correctFlagAfterSelectRemoveForKey(){
-	if( hasPriorHotKeySelectingKey() ){
-		correctFlag()
-	}
-}
 
 correctFlagAfterSelectRemove(){
-
-		correctFlag()
-
-}
-
-
-correctFlag(){
 
 	sleep caretChangeDelay
 
@@ -417,8 +405,8 @@ correctFlag(){
 			}
 	}
 
-
 }
+
 
 
 
