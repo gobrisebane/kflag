@@ -117,19 +117,6 @@ checkClickedIcon()
 
 
 
-hasCustomExes(){
-
-	arr := ["TELEGRAM.EXE","SOURCETREE.EXE"]
-
-	if(  hasExactValue(arr, current_exe) ){
-		; MsgBox("1. CUSTOM YES")
-		return True
-	} else {
-		; MsgBox("2. NOT CUSTOM")
-		return False
-	}
-}
-
 
 
 
@@ -362,18 +349,20 @@ hasPriorHotKeySelectingArrow(){
 identifyBackspaceCaret(){
 
 	; sleep caretChangeDelay
-	sleep 100
+	; sleep 100
+	; sleep 10
 	;이쪽에 딜레이가 있어야 아래에서 업데이트된 current_ 값을 받는다.
 
 	caret.detect()
 
 	if(current_w > 0){
 
-		; MsgBox("1 . w > 0 ")
-		detectRightOrBottomFlagAndCorrect()
+		MsgBox("1 . w > 0 ")
+		correctFlagAfterSelectRemove()
 
 	} else if(current_w = 0) {
-		; MsgBox("1 . w = 0 ")
+
+		MsgBox("1 . w = 0 ")
 		initImgCaret()
 		; 크롬에서 백스페이스 했을 때 작동한다.
 	}
@@ -381,11 +370,22 @@ identifyBackspaceCaret(){
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
 correctFlagAfterSelectRemove(){
 
 	sleep caretChangeDelay
 
-	if( !keyTyping ){
+	; if( !keyTyping ){
 		if(flagId){
 			GuiGetPos( fX,fY,fW,fH, flagId )
 			fx := fx + 1
@@ -412,36 +412,8 @@ correctFlagAfterSelectRemove(){
 					; MsgBox("2. 현재 flag가 왼쪽에 있거나 같다. :: 일반상태 - 무시")
 				}
 		}
-	}
+	; }
 
-}
-
-
-
-
-
-
-
-
-detectRightOrBottomFlagAndCorrect(){
-	if(flagId){
-			GuiGetPos( fX,fY,fW,fH, flagId )
-			; fx := fx + caret_flag_margin
-			fx := fx - 6 ; 6-7-8 이 이상적임
-			; fx := fx + 8 ;
-			; fx := fx ;
-
-			if(fX > current_x OR fy > current_y){
-
-				; MsgBox("1. BACKSPACE / 현재 flag 가 오른쪽으로 떨어져있다.")
-				SplashImageGUI()
-				; initInstantCaret()
-
-			} else if (fX <= current_x){
-				; MsgBox("2. BACKSPACE / 현재 flag가 왼쪽에 있거나 같다.")
-
-			}
-	}
 }
 
 
@@ -608,21 +580,6 @@ isExeSearchingLateCaret(cur_exe){
 
 
 
-filterPowerpointCaretW(){
-
-	; MsgBox("powerpointworks")
-
-	if( current_exe = "POWERPNT.EXE" ){
-		try{
-			ppt := ComObjActive("PowerPoint.application")
-			pptType := ppt.ActiveWindow.Selection.Type
-			if(pptType != 3){
-				current_w := 0
-			}
-		}
-	}
-
-}
 
 
 

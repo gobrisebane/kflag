@@ -49,15 +49,7 @@ cccs
 
 		sleep caretChangeDelay
 
-		initInstantCaret()
-
-
-return
-
-
-scscw
-
-
+		initInstantCa
 sd
 
 
@@ -75,7 +67,14 @@ sd
 ~SSSSSSSSSSSSSSSSSSSSSSSSS^PgUp::
 ~SSSSSSSSSSSSSSSSSSSSSSSSS^PgDn::
 ~SSSSSSSSSSSSSSSSSSSSSSSSS^Tab::
-~SSSSSSSSSSSSSSSSSSSSSSSSS^+Tab::
+~SSSSSSSSSSSSSSSSSSSSSSSSS
+
+
+
+
+
+
+
 
 
 sdsd

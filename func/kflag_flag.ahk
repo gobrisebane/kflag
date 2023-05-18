@@ -6,6 +6,9 @@
 SplashImageGUI(mode:="default"){
 
 
+
+
+
 	drawFlag()
 
 
@@ -48,7 +51,7 @@ SplashImageGUI(mode:="default"){
 
 
 	prev_exe := current_exe
-	prev_winid := current_winid
+	; prev_winid := current_winid
 
 
 }

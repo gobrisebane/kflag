@@ -260,9 +260,7 @@ return
 
 	} else {
 
-		; identifyBackspaceCaret()
-
-		correctFlagAfterSelectRemove()
+		identifyBackspaceCaret()
 
 	}
 

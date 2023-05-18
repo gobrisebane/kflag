@@ -73,7 +73,11 @@ return
 
 
 
-	initInstantCaret()
+	; initInstantCaret()
+
+
+	searchingLateCaret(5)
+
 
 
 

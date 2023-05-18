@@ -72,7 +72,7 @@ searchingLateCaret(loopCount){
 		keyCount := 0
 
 
-		MsgBox("=== LOOP START ===")
+		; MsgBox("=== LOOP START ===")
 
 		loop, %loopCount% {
 
@@ -80,8 +80,7 @@ searchingLateCaret(loopCount){
 			caret.detect()
 
 
-			; MsgBox("INDEX : " A_Index)
-			MsgBox("LateCaret INDEX : " A_Index " X : " current_x " / Y : " current_y " / W : " current_w " / H " current_h)
+			; MsgBox("LateCaret INDEX : " A_Index " X : " current_x " / Y : " current_y " / W : " current_w " / H " current_h)
 
 
 
@@ -166,7 +165,8 @@ initInstantCaret(){
 
 
 	caret.detect()
-	; MsgBox("X : " current_x " / Y : " current_y)
+
+	; MsgBox("X : " current_x " / Y : " current_y " / W : " current_w " / H : " current_h)
 
 
 

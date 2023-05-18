@@ -895,7 +895,7 @@ checkUIACaretBK(){
 
 				timeRecord("GetCaret - 3-3 : iUIAuto")
 				timeRecord("current_x : " current_x  " / current_y : " current_y " current_w : " current_w " current_h :" current_h)
-				; MsgBox("GetCaret - 3-3 / current_x : " current_x  " / current_y : " current_y " current_w : " current_w " current_h :" current_h)
+				MsgBox("GetCaret - 3-3 / current_x : " current_x  " / current_y : " current_y " current_w : " current_w " current_h :" current_h)
 
 				MsgBox("cleaning start")
 				goto cleanCaret3
@@ -948,7 +948,7 @@ checkUIACaretBK(){
 
 						timeRecord("GetCaret - 3-4 : usergetselection")
 						timeRecord("CaretX : " current_x  " / CaretY : " current_y " CaretW : " current_w " CaretH :" current_h)
-						; MsgBox("GetCaret - 3-4 / CaretX : " current_x  " / CaretY : " current_y " CaretW : " current_w " CaretH :" current_h)
+						MsgBox("GetCaret - 3-4 / CaretX : " current_x  " / CaretY : " current_y " CaretW : " current_w " CaretH :" current_h)
 						goto cleanCaret3
 				}
 
@@ -1075,14 +1075,17 @@ checkAccCaretBK(){
 			{
 				Acc:=ComObject(9,pacc,1), ObjAddRef(pacc)
 				, Acc.accLocation( ComObj(0x4003,&x:=0), ComObj(0x4003,&y:=0), ComObj(0x4003,&w:=0), ComObj(0x4003,&h:=0), ChildId:=0)
-				, current_x:=NumGet(x,0,"int") + this.X_margin
-				, current_y:=NumGet(y,0,"int") + this.Y_margin
+				; , current_x:=NumGet(x,0,"int") + this.X_margin
+				; , current_y:=NumGet(y,0,"int") + this.Y_margin
+				, current_x:=NumGet(x,0,"int")
+				, current_y:=NumGet(y,0,"int")
 				, current_w:=NumGet(w,0,"int")
 				, current_h:=NumGet(h,0,"int")
 
-				MsgBox("current_x : " current_x)
+				MsgBox("x : " current_x " / y : " current_y " / w : " current_w " / h : " current_h )
 			}
 		}
+
 
 
 }

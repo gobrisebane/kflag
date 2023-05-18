@@ -832,6 +832,23 @@ Winset, region, 131-296 841-296 841-741 131-741 131-296      168-342 316-342 316
 
 
 
+	checkUIACaretBK()
+	; MsgBox("A_CaretY : " A_CaretY)
+
+	; checkAccCaretBK()
+	; MsgBox("X : " current_x " / Y : " current_y " / W : " current_w " / H : " current_h)
+
+
+
+
+		; eleFocus := UIA.GetFocusedElement()
+		; focusedH := eleFocus.BoundingRectangle.l
+		; focusedH := eleFocus.BoundingRectangle.b-eleFocus.BoundingRectangle.t
+		; MsgBox("focusedH : " focusedH)
+
+		; caret.detect()
+		; MsgBox("X : " current_x " / Y : " current_y)
+
 
 
 
@@ -843,15 +860,13 @@ return
 
 
 
-
-
-
-
-
-
-
-
 ^g::
+
+
+
+
+
+
 
 /*
 	UIA := UIA_Interface() ; Initialize UIA interface
@@ -938,13 +953,6 @@ return
 
 
 
-		; eleFocus := UIA.GetFocusedElement()
-		; focusedH := eleFocus.BoundingRectangle.l
-		; ; focusedH := eleFocus.BoundingRectangle.b-eleFocus.BoundingRectangle.t
-		; MsgBox("focusedH : " focusedH)
-		; caret.detect()
-		; MsgBox("X : " current_x " / Y : " current_y)
-
 
 
 
@@ -996,9 +1004,15 @@ return
 
 
 
-	caret.detect()
-	MsgBox("X : " current_x " / Y : " current_y " / W : " current_w " / H : " current_h)
+	; caret.detect()
+	; MsgBox("X : " current_x " / Y : " current_y " / W : " current_w " / H : " current_h)
 	; SplashImageGUI()
+
+
+
+
+
+
 
 
 return

@@ -31,7 +31,10 @@ class Caret{
 
 		; MsgBox("prev_x : " prev_x)
 		; MsgBox("prev_y : " prev_y)
-		; MsgBox("this.type : " this.type)
+		; MsgBox("=======")
+		MsgBox("this.type : " this.type)
+		; MsgBox("c_winid : " current_winid)
+		; MsgBox("p_winid : " prev_winid)
 
 		if( current_winid = prev_winid AND this.type != ""){
 			; MsgBox("MODE : 1. USING / WINID")
@@ -41,25 +44,38 @@ class Caret{
 			this.detectCaretType()
 		}
 
-		; MsgBox("current_winid : " current_winid)
-		; MsgBox("prev_winid : " prev_winid)
-		this.setFocusedHeight()
-
-		; prev_winid := current_winid
+		this.setFocusedH()
 
 
+		; winid는 이쪽에 있어야 워드-vscode/크롬 전환시 정확히 인식한다.
+		prev_winid := current_winid
 
 	}
 
 
-	setFocusedHeight(){
+
+	getFocusedInputHeight(ByRef focusedH){
+		eleFocus := UIA.GetFocusedElement()
+		focusedH := eleFocus.BoundingRectangle.b-eleFocus.BoundingRectangle.t
+	}
+
+
+	setFocusedH(){
+
+
 		if( current_w > 0 AND isBrowser()
 			AND ( this.isXYMove() OR this.isWinidDiff())  ){
+
 			if( this.HasBrowserKey() ){
 				try {
-					eleFocus := UIA.GetFocusedElement()
-					this.focusedH := eleFocus.BoundingRectangle.b-eleFocus.BoundingRectangle.t
+
+					this.getFocusedInputHeight(focusedH)
+					this.focusedH := focusedH
+
+					; eleFocus := UIA.GetFocusedElement()
+					; this.focusedH := eleFocus.BoundingRectangle.b-eleFocus.BoundingRectangle.t
 					; MsgBox("5.WORKS : this.focusedH : " this.focusedH)
+
 				} catch e{
 						timeRecord("!! === CRITICAL ERROR : getFocuisedELement ")
 						timeRecord("!! === e.what : " e.what " / e.message : " e.message " / e.extra : " e.extra)
@@ -73,12 +89,13 @@ class Caret{
 
 
 	isXYMove(){
+
 		if(current_x != prev_x OR current_y != prev_y){
-			; MsgBox("1. X,Y값 달라졌음")
 			return True
 		} else {
 			return False
 		}
+
 	}
 
 	isWinidDiff(){
@@ -103,15 +120,37 @@ class Caret{
 	}
 
 
+	hasCustomExes(){
+
+		arr := ["TELEGRAM.EXE","SOURCETREE.EXE"]
+
+		if(  hasExactValue(arr, current_exe) ){
+			; MsgBox("1. CUSTOM YES")
+			return True
+		} else {
+			; MsgBox("2. NOT CUSTOM")
+			return False
+		}
+	}
+
+
+
+
+
+
 	getFocusedH(Byref focusedH=""){
 		focusedH := this.focusedH
 	}
+
+
+
 
 	usingCaretType(){
 		switch this.type
 		{
 			case "WINDOW_CARET": this.checkWindowCaret()
 			case "ACC_CARET": this.checkAccCaret()
+
 			case "UIA_CARET": this.checkUIACaret()
 
 			case "OFFICE_CARET": this.checkOfficeCaret()
@@ -126,10 +165,11 @@ class Caret{
 
 
 
-		if(  hasCustomExes() ){
+		if(  this.hasCustomExes() ){
 
 			this.type := "CUSTOM_CARET"
 			this.checkCustomCaret()
+
 			return
 		}
 
@@ -170,6 +210,7 @@ class Caret{
 	checkCustomCaret(){
 
 
+
 		if( current_exe = "TELEGRAM.EXE" ){
 
 			this.checkAccCaret()
@@ -182,12 +223,23 @@ class Caret{
 			}
 
 
-		} else if( current_exe = "SOURCETREE.EXE" ){
+		} else if ( current_exe = "SOURCETREE.EXE" ){
 
 
-			this.checkAccCaret()
+
+			; Sourcetree의 경우 acc과 win 둘다 반응하므로 win에만 강제시킴
+			this.checkWindowCaret()
+
+			; 플래그가 남는 증상이 있어서 이쪽에서 focusedH로 체크하고 제거
+			this.getFocusedInputHeight(focusedH)
+			if( focusedH >= 80){
+				current_w = 0
+			}
+
 
 		}
+
+
 
 
 	}
@@ -238,23 +290,40 @@ class Caret{
 
 
 
+	windowCustomFilter(){
+
+
+
+		if( current_exe = "POWERPNT.EXE" ){
+			try{
+				ppt := ComObjActive("PowerPoint.application")
+				pptType := ppt.ActiveWindow.Selection.Type
+				if(pptType != 3){
+					current_w := 0
+				}
+			}
+		}
+	}
+
 
 
 
 	checkWindowCaret(){
 
-
 		if (A_CaretX OR A_CaretY) {
+
 			current_x := A_CaretX + this.X_margin
 			current_y := A_CaretY + this.Y_margin
 			current_w := 1
 			current_h := 15
 
-			filterPowerpointCaretW()
+			this.windowCustomFilter()
+
 			; MsgBox("--------- A-1. wincaret works")
 			return true
 
 		} else {
+
 			; MsgBox("--------- A-2. wincaret fail..")
 			return false
 		}
@@ -274,6 +343,8 @@ class Caret{
 			current_y := caretLocation.y + this.Y_margin
 			current_w := caretLocation.w
 			current_h := caretLocation.h
+
+
 
 			if (current_w > 0 AND current_h > 0){
 				; MsgBox("--------- B-1. acccaret works")
