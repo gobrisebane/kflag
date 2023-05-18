@@ -30,10 +30,13 @@ GuiGetPos( ByRef X, ByRef Y, ByRef W, ByRef H, GuiID=1 ) {
 			if(GuiID){
 				MsgBox("!! === CRITICAL ERROR-1 : GUID HAVE BUT NOT VALID GuiID === !!")
 				timeRecord("!! == CRITICAL ERROR-1 : GUID HAVE BUT NOT VALID GuiID === !!")
+
 			} else {
 
-        MsgBox("!! === CRITICAL ERROR-2 : DOESNT HAVE GuiID === !!")
-				timeRecord("!! == CRITICAL ERROR-2 : DOESNT HAVE GuiID === !!")
+       	   MsgBox("!! === CRITICAL ERROR-2 : DOESNT HAVE GuiID === !!")
+			   timeRecord("!! == CRITICAL ERROR-2 : DOESNT HAVE GuiID === !!")
+				MsgBox("---> SO STOP WORKING")
+				return
 
 			}
 

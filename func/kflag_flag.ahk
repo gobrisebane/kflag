@@ -158,12 +158,9 @@ drawFlag(){
 
 initFlag(){
 
-
+		Gui, XPT10:Destroy
 
 		Try {
-
-			Gui, XPT10:Destroy
-
 			Gui, XPT10:Margin , 0, 0
 			Gui, XPT10:Add, Picture,vFlagApp, %SplashImage%
 			Gui, XPT10:+LastFound -Caption +AlwaysOnTop +ToolWindow -Border

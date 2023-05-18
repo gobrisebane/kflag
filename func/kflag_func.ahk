@@ -374,12 +374,28 @@ identifyBackspaceCaret(){
 
 
 
+correctFlagAfterSelectRemoveForKey(){
+	if( hasPriorHotKeySelectingKey() ){
+		correctFlag()
+	}
+}
+
 
 
 correctFlagAfterSelectRemove(){
 
-	sleep caretChangeDelay
+	correctFlag()
 
+}
+
+
+
+
+
+
+correctFlag(){
+
+	sleep caretChangeDelay
 	if(flagId){
 		GuiGetPos( fX,fY,fW,fH, flagId )
 		fx := fx + 1

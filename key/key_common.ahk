@@ -247,10 +247,9 @@ return
 
 
 
+	correctFlagAfterSelectRemoveForKey()
 
-	if( hasPriorHotKeySelectingKey() ){
-		correctFlagAfterSelectRemove()
-	}
+
 
 
 	detectingCaretYPosChange()
