@@ -832,23 +832,9 @@ Winset, region, 131-296 841-296 841-741 131-741 131-296      168-342 316-342 316
 
 
 
-	checkUIACaretBK()
-	; MsgBox("A_CaretY : " A_CaretY)
 
-	; checkAccCaretBK()
-	; MsgBox("X : " current_x " / Y : " current_y " / W : " current_w " / H : " current_h)
-
-
-
-
-		; eleFocus := UIA.GetFocusedElement()
-		; focusedH := eleFocus.BoundingRectangle.l
-		; focusedH := eleFocus.BoundingRectangle.b-eleFocus.BoundingRectangle.t
-		; MsgBox("focusedH : " focusedH)
-
-		; caret.detect()
-		; MsgBox("X : " current_x " / Y : " current_y)
-
+	GuiGetPos( fX,fY,fW,fH, flagId )
+	MsgBox("SplashImageGUI / GuiGetPos / flagId : " flagId " / fX : " fX " / fY : " fY " / fW : " fW " / fH : " fH )
 
 
 

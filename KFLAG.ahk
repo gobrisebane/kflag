@@ -667,17 +667,17 @@ return
 #include %A_ScriptDir%/key/key_common.ahk
 
 
-#include %A_ScriptDir%/func/UIA_Interface.ahk
-#include %A_ScriptDir%/func/UIA_Browser.ahk
-#include %A_ScriptDir%/func/Acc_lib.ahk
+#include %A_ScriptDir%/lib/UIA_Interface.ahk
+#include %A_ScriptDir%/lib/UIA_Browser.ahk
+#include %A_ScriptDir%/lib/Acc_lib.ahk
 
 
 
-#include %A_ScriptDir%/func/kflag_latecaret.ahk
-#include %A_ScriptDir%/func/kflag_flag.ahk
-#include %A_ScriptDir%/func/kflag_lib.ahk
-#include %A_ScriptDir%/func/kflag_func.ahk
-#include %A_ScriptDir%/func/kflag_img.ahk
+#include %A_ScriptDir%/func/latecaret.ahk
+#include %A_ScriptDir%/func/flag.ahk
+#include %A_ScriptDir%/func/lib.ahk
+#include %A_ScriptDir%/func/func.ahk
+#include %A_ScriptDir%/func/img.ahk
 
 
 #include %A_ScriptDir%/class/Caret.ahk

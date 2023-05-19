@@ -7,10 +7,7 @@ SplashImageGUI(mode:="default"){
 
 
 
-
-
 	drawFlag()
-
 
 
 	Try {
@@ -73,15 +70,10 @@ drawFlag(){
 
 	; MsgBox("-----------draw flag--------")
 
-
 	updateSplashImage()
-
-
 
 	GUI, XPT10:+LastFoundExist
 	If WinExist(){
-
-
 
 
 			timeRecord("drawFlag() - 1 / XPT10 Exist")
@@ -98,32 +90,28 @@ drawFlag(){
 				MsgBox("!! === CRITICAL ERROR IN SPLASHIMAGEUI : GuiGetPos fW return 0 === !!")
 				timeRecord("!! === CRITICAL ERROR IN SPLASHIMAGEUI : GuiGetPos fW return 0 === !!")
 
-				; 1) patch
-				initFlag()
+				; initImg()
+				resetFlag()
+
 
 			} else if (fW != 15 OR fH != 10){
 
 
 				MsgBox("!! === CRITICAL ERROR IN SPLASHIMAGEUI : GuiGetPos fW /fH not valid size === !!")
 				timeRecord("!! === CRITICAL ERROR IN SPLASHIMAGEUI : GuiGetPos fW /fH not valid size === !!")
-
 				; 2) patch
-				initFlag()
+
+				; initImg()
+				resetFlag()
+
+
 
 
 			} else {
 
 					; timeRecord("drawFlag() - 1-3 / Else : XPT10 exist'")
 					; MsgBox("drawFlag() - 1-3 / Else : XPT10 exist")
-
-
-
 					changeLangFlag()
-
-
-
-
-
 			}
 
 
@@ -136,10 +124,17 @@ drawFlag(){
 	}
 
 
+}
 
 
 
+resetFlag(){
 
+	destroySplashGUI()
+
+	initImg()
+
+	initFlag()
 
 }
 
@@ -147,18 +142,39 @@ drawFlag(){
 
 
 
+initImg(){
+
+
+	if !FileExist(folderpath){
+		FileCreateDir, %folderpath%
+	}
+
+	CoordMode, Pixel, Screen
+
+	GoSub, LoadImgFlagEngUp
+	WriteFile(imgpath_flag_eng_up, picture)
+
+	GoSub, LoadImgFlagEngLo
+	WriteFile(imgpath_flag_eng_lo, picture)
+
+	GoSub, LoadImgFlagKor
+	WriteFile(imgpath_flag_kor, picture)
 
 
 
-
-
-
+}
 
 
 
 initFlag(){
 
+
+	GUI, XPT10:+LastFoundExist
+	If WinExist(){
+
 		Gui, XPT10:Destroy
+
+	} else {
 
 		Try {
 			Gui, XPT10:Margin , 0, 0
@@ -184,6 +200,10 @@ initFlag(){
 			throw e
 
 		}
+
+
+
+	}
 
 
 }

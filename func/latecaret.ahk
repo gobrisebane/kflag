@@ -105,6 +105,10 @@ searchingLateCaret(loopCount){
 			if( current_w != 0 ){
 
 				SplashImageGUI()
+
+				flag.show()
+
+
 			} else if(current_w = 0){
 				; 1)이쪽에 넣지 않으면 url->네이버->검색창 이동 때 반짝임 현상 있음
 				; 2)네이버 -> 구글 이동시 없어지므로 break걸면 안됨
@@ -172,8 +176,12 @@ initInstantCaret(){
 
 	if(current_w > 0 ){
 		timeRecord("initInstantCaret()-1-1 (W>0) / SplashImageGUI() w : " w)
+
 		; MsgBox("INSTANT-1-WORKS")
-		SplashImageGUI()
+		; SplashImageGUI()
+		flag.Show()
+
+
 	} else {
 		timeRecord("initInstantCaret()-1-1 (W<1) / hideSplashGUI() w : " w)
 		; MsgBox("INSTANT-2-HIDE")

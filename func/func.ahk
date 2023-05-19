@@ -9,6 +9,7 @@ initKflag(){
 	initImg()
 	caret := new Caret()
 	type := new Type()
+	flag := new Flag()
 
 
 
@@ -21,29 +22,6 @@ initKflag(){
 
 
 
-
-initImg(){
-
-
-	if !FileExist(folderpath){
-		FileCreateDir, %folderpath%
-	}
-
-	CoordMode, Pixel, Screen
-
-	GoSub, LoadImgFlagEngUp
-	WriteFile(imgpath_flag_eng_up, picture)
-
-	GoSub, LoadImgFlagEngLo
-	WriteFile(imgpath_flag_eng_lo, picture)
-
-	GoSub, LoadImgFlagKor
-	WriteFile(imgpath_flag_kor, picture)
-
-
-
-
-}
 
 
 
@@ -221,17 +199,10 @@ isHoldingKey(){
 
 capsLockToLowCase(){
 
-	; ime_status := % IME_CHECK("A")
-	; if(ime_status = "1"){
-
-			MsgBox("1. CURRENT..D SO to low")
-
-
 		GetKeyState, caps_state, CapsLock, T
 		if(caps_state = "D"){
 			SetCapsLockState , Off
 		}
-	; }
 
 }
 
@@ -329,7 +300,7 @@ GetBox(ByRef l,ByRef t,ByRef r, ByRef b){
 
 hasPriorHotKeySelectingKey(){
 
-	MsgBox("A_PriorHotKey : " A_PriorHotKey)
+	; MsgBox("A_PriorHotKey : " A_PriorHotKey)
 	arr := ["+Down","+Up","+Left","+Right","LButton","^z","^y","^+z"]
 	if( isStringInArray(A_PriorHotKey, arr) ){
 		; MsgBox("1. shift func -yes")
